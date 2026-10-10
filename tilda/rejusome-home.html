@@ -79,27 +79,28 @@
 #rj .hero .claim{display:flex;align-items:center;gap:14px;margin-top:48px;font:300 14px/1.5 var(--f);color:var(--muted)}
 #rj .hero .claim:before{content:"";width:40px;height:1px;background:var(--gold);flex:none}
 
-/* схема экзосомы вокруг продукта */
-#rj .stage{position:relative;aspect-ratio:1;max-width:620px;width:100%;margin-inline:auto}
-#rj .stage svg.diagram{position:absolute;inset:0;width:100%;height:100%}
-#rj .stage .main{position:absolute;inset:15%;z-index:2}
-#rj .stage .sat{position:absolute;z-index:3;width:30%;aspect-ratio:1;left:-1%;top:6%;border:6px solid var(--paper)}
-#rj .note{position:absolute;z-index:3;display:flex;flex-direction:column;gap:2px;font:300 12px/1.4 var(--f);color:var(--muted);max-width:180px}
-#rj .note b{font:300 22px/1.1 var(--f);color:var(--ink);letter-spacing:-.01em;white-space:nowrap}
-#rj .note:before{content:"";position:absolute;top:12px;height:1px;width:46px;background:var(--ink);opacity:.35}
-#rj .note.n1{top:9%;right:-2%;padding-left:56px}
+/* два препарата — две «экзосомы» со своими подписями */
+#rj .stage{position:relative;aspect-ratio:1;max-width:600px;width:100%;margin-inline:auto}
+#rj .pm{position:absolute;left:3%;top:4%;width:62%;aspect-ratio:1;z-index:2}
+#rj .pm svg{position:absolute;inset:-11%;width:122%;height:122%}
+#rj .pm .orb,#rj .ps .orb{position:absolute;inset:0}
+#rj .ps{position:absolute;right:1%;bottom:3%;width:42%;aspect-ratio:1;z-index:3}
+#rj .ps .orb{box-shadow:0 0 0 8px var(--paper),0 0 0 9px rgba(20,38,102,.10),0 30px 60px -30px rgba(20,38,102,.35)}
+#rj .note{position:absolute;z-index:4;display:flex;flex-direction:column;gap:3px;font:300 12px/1.45 var(--f);color:var(--muted);max-width:190px}
+#rj .note b{font:300 24px/1.1 var(--f);color:var(--ink);letter-spacing:-.01em;white-space:nowrap}
+#rj .note i{font-style:normal;font-weight:500;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-top:4px;white-space:nowrap}
+#rj .note:before{content:"";position:absolute;top:12px;height:1px;width:40px;background:var(--ink);opacity:.35}
+#rj .note.n1{top:12%;left:72%;padding-left:50px}
 #rj .note.n1:before{left:0}
-#rj .note.n2{bottom:16%;left:-4%;padding-right:56px;text-align:right;align-items:flex-end}
+#rj .note.n2{bottom:8%;right:47%;padding-right:50px;text-align:right;align-items:flex-end}
 #rj .note.n2:before{right:0}
-#rj .note.n3{bottom:2%;right:6%;padding-left:56px}
-#rj .note.n3:before{left:0}
 @media (max-width:900px){
   #rj .hero .grid{grid-template-columns:1fr}
-  #rj .stage{max-width:480px}
+  #rj .stage{max-width:460px}
   #rj .note{position:static;max-width:none;padding:0!important;text-align:left!important;align-items:flex-start!important}
   #rj .note:before{display:none}
-  #rj .notes{position:absolute;left:0;right:0;top:100%;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px;padding-top:20px;border-top:1px solid var(--line)}
-  #rj .stage{margin-bottom:110px}
+  #rj .stage{margin-bottom:96px}
+  #rj .notes{position:absolute;left:0;right:0;top:100%;display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px;padding-top:18px;border-top:1px solid var(--line)}
 }
 @media (min-width:901px){#rj .notes{display:contents}}
 
@@ -275,13 +276,11 @@
       </div>
       <div class="rv" style="--rd:.2s">
         <div class="stage">
-          <svg class="diagram"><use href="#rjExo"/></svg>
-          <div class="orb main"><img src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@b849dfa9797ca3fcddc75d993bb0eb6582490dba/img/hero-deco-2.webp" width="706" height="690" alt="Стерильные препараты Реджусом: порошок 20 мг и ампула 5 мл" fetchpriority="high"></div>
-          <div class="orb sat"><img src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@b849dfa9797ca3fcddc75d993bb0eb6582490dba/img/hero-deco-1.webp" width="760" height="582" alt="Реджусом Плюс 2 мл"></div>
+          <div class="pm"><svg aria-hidden="true"><use href="#rjExo"/></svg><div class="orb"><img src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@9b2d45415e7fb6d4cf11672ac420f4beb1729f6b/img/hero-plus.webp" width="760" height="760" alt="Реджусом Плюс 2 мл — 54 миллиарда экзосом" fetchpriority="high"></div></div>
+          <div class="ps"><div class="orb"><img src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@9b2d45415e7fb6d4cf11672ac420f4beb1729f6b/img/hero-rejusome.webp" width="760" height="760" alt="Реджусом: порошок 20 мг и ампула 5 мл — 5 миллиардов экзосом"></div></div>
           <div class="notes">
-            <div class="note n1"><b>54 млрд</b>экзосом в Реджусом Плюс</div>
-            <div class="note n2"><b>2804</b>micro RNAs</div>
-            <div class="note n3"><b>GMP · MFDS</b>стандарты качества</div>
+            <div class="note n1"><b>54 млрд</b>экзосом<i>Реджусом Плюс</i></div>
+            <div class="note n2"><b>5 млрд</b>экзосом<i>Реджусом</i></div>
           </div>
         </div>
       </div>
