@@ -197,13 +197,30 @@
 #rj .ba-nav button:hover{border-color:var(--ink);background:var(--ink);color:#fff}
 #rj .ba-nav svg{width:18px;height:18px;stroke:currentColor;stroke-width:1.2;fill:none}
 
-/* ===== 7. Амбассадор ===== */
-#rj .amb{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;margin-top:clamp(48px,6vw,80px)}
-#rj .amb > div{border-top:1px solid var(--ink);padding-top:28px}
-#rj .amb h3{font:400 18px/1.3 var(--f)}
-#rj .amb p{font-weight:300;font-size:15px;line-height:1.7;color:var(--muted);margin-top:12px}
+/* ===== 7. Амбассадор — тёмная панель, главный акцент страницы ===== */
+#rj .ambp{position:relative;overflow:hidden;isolation:isolate;border-radius:28px;padding:clamp(44px,6vw,96px) clamp(20px,5vw,72px);background:radial-gradient(110% 90% at 88% -10%,#2f56b8 0%,#1a2f7d 38%,#142666 62%,#0c1745 100%);color:#fff;box-shadow:0 40px 80px -40px rgba(20,38,102,.6)}
+#rj .ambp .deco{position:absolute;z-index:-1;pointer-events:none}
+#rj .ambp .deco.d1{width:520px;height:520px;right:-140px;top:-170px}
+#rj .ambp .deco.d2{width:300px;height:300px;left:-120px;bottom:-130px;opacity:.6}
+#rj .ambp .label{color:rgba(255,255,255,.62)}
+#rj .ambp .label b{color:var(--gold)}
+#rj .ambp .h2{color:#fff}
+#rj .ambp .h2 strong{color:#fff;background:linear-gradient(90deg,#fff,#bfe0f7);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+#rj .ambp .sub{color:rgba(255,255,255,.74)}
+#rj .amb{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:clamp(40px,5vw,64px);text-align:left}
+#rj .amb > div{position:relative;padding:28px 24px 30px;border-radius:20px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);transition:background .4s,transform .4s,border-color .4s}
+#rj .amb > div:hover{background:rgba(255,255,255,.11);border-color:rgba(255,255,255,.3);transform:translateY(-4px)}
+#rj .amb .n{display:flex;align-items:center;justify-content:space-between;margin-bottom:26px}
+#rj .amb .n span{font:500 11px/1 var(--f);letter-spacing:.28em;color:var(--gold)}
+#rj .amb .n svg{width:34px;height:34px;stroke:#bfe0f7;stroke-width:1.1;fill:none}
+#rj .amb h3{font:400 19px/1.3 var(--f);color:#fff}
+#rj .amb p{font-weight:300;font-size:14.5px;line-height:1.7;color:rgba(255,255,255,.72);margin-top:12px}
+#rj .ambp .btn{background:#fff;border-color:#fff;color:var(--ink)}
+#rj .ambp .btn:hover{background:transparent;color:#fff}
+#rj .ambp .link{color:#fff;border-color:rgba(255,255,255,.3)}
+#rj .ambp .link:hover{border-color:#fff}
 @media (max-width:980px){#rj .amb{grid-template-columns:1fr 1fr}}
-@media (max-width:520px){#rj .amb{grid-template-columns:1fr}}
+@media (max-width:520px){#rj .amb{grid-template-columns:1fr}#rj .ambp{border-radius:22px}#rj .ambp .deco.d1{width:320px;height:320px;right:-150px;top:-140px}}
 
 /* ===== 8. Клиники ===== */
 #rj .clin{margin-top:clamp(48px,6vw,80px);border-top:1px solid var(--line)}
@@ -432,19 +449,21 @@
   <!-- ================= 7. АМБАССАДОР ================= -->
   <section class="sec">
     <div class="wrap">
-      <div class="center">
-        <span class="port" aria-hidden="true"></span>
-        <span class="label rv">Профессиональная экосистема</span>
+      <div class="center"><span class="port" aria-hidden="true"></span></div>
+      <div class="ambp center">
+        <svg class="deco d1" viewBox="0 0 400 400" aria-hidden="true"><g fill="none" stroke="#bfe0f7"><circle cx="200" cy="200" r="196" stroke-opacity=".25" stroke-dasharray="1 7"/><circle cx="200" cy="200" r="172" stroke-opacity=".35"/><circle cx="200" cy="200" r="163" stroke="#7abbe5" stroke-opacity=".6"/><circle cx="200" cy="200" r="120" stroke-opacity=".12"/></g><circle cx="200" cy="28" r="3" fill="#d9b63c"/></svg>
+        <svg class="deco d2" viewBox="0 0 400 400" aria-hidden="true"><g fill="none" stroke="#bfe0f7"><circle cx="200" cy="200" r="196" stroke-opacity=".25" stroke-dasharray="1 7"/><circle cx="200" cy="200" r="172" stroke-opacity=".35"/><circle cx="200" cy="200" r="163" stroke="#7abbe5" stroke-opacity=".6"/><circle cx="200" cy="200" r="120" stroke-opacity=".12"/></g><circle cx="200" cy="28" r="3" fill="#d9b63c"/></svg>
+        <span class="label rv">Профессиональная экосистема <b>·</b> Rejusome</span>
         <h2 class="h2 rv" style="--rd:.08s">Станьте <strong>амбассадором</strong> бренда</h2>
         <p class="sub rv" style="--rd:.16s">Откройте новые возможности роста, получив доступ к закрытым протоколам и экспертному сообществу лидеров индустрии.</p>
+        <div class="amb">
+          <div class="rv"><div class="n"><span>01</span><svg viewBox="0 0 32 32"><path d="M4 26h24"/><path d="M7 26V18M13 26V13M19 26V16M25 26V7"/><path d="M6 13l7-6 6 4 8-6"/></svg></div><h3>Рост бизнеса</h3><p>Масштабируйте личную практику, привлекая лояльных клиентов через премиальные стандарты бренда.</p></div>
+          <div class="rv" style="--rd:.08s"><div class="n"><span>02</span><svg viewBox="0 0 32 32"><path d="M3 12l13-6 13 6-13 6z"/><path d="M8 14.5V21c0 2 3.6 4 8 4s8-2 8-4v-6.5"/><path d="M29 12v8"/></svg></div><h3>Обучение</h3><p>Полный доступ к уникальной научной базе знаний, закрытым протоколам и авторским мастер-классам.</p></div>
+          <div class="rv" style="--rd:.16s"><div class="n"><span>03</span><svg viewBox="0 0 32 32"><circle cx="16" cy="12" r="7"/><path d="M11.5 17.5L9 28l7-3.5 7 3.5-2.5-10.5"/><path d="M13.5 12l2 2 3.5-3.5"/></svg></div><h3>Ваш статус</h3><p>Официальное признание экспертности на национальном уровне и привилегии в профессиональной среде.</p></div>
+          <div class="rv" style="--rd:.24s"><div class="n"><span>04</span><svg viewBox="0 0 32 32"><path d="M5 13v6h4l10 6V7L9 13z"/><path d="M23 11.5a6 6 0 0 1 0 9"/><path d="M9 19l2 7h3l-1.5-6"/></svg></div><h3>Маркетинг</h3><p>Приоритетная медиа-поддержка, готовые инструменты коммуникации и сопровождение ваших запусков.</p></div>
+        </div>
+        <div class="ctas rv"><a class="btn" href="https://rejusome.com/ambassador-rejusome">Стать амбассадором</a><a class="link" href="#popup:study">Обучение</a></div>
       </div>
-      <div class="amb">
-        <div class="rv"><h3>Рост бизнеса</h3><p>Масштабируйте личную практику, привлекая лояльных клиентов через премиальные стандарты бренда.</p></div>
-        <div class="rv" style="--rd:.08s"><h3>Обучение</h3><p>Полный доступ к уникальной научной базе знаний, закрытым протоколам и авторским мастер-классам.</p></div>
-        <div class="rv" style="--rd:.16s"><h3>Ваш статус</h3><p>Официальное признание экспертности на национальном уровне и привилегии в профессиональной среде.</p></div>
-        <div class="rv" style="--rd:.24s"><h3>Маркетинг</h3><p>Приоритетная медиа-поддержка, готовые инструменты коммуникации и сопровождение ваших запусков.</p></div>
-      </div>
-      <div class="ctas rv"><a class="btn" href="https://rejusome.com/ambassador-rejusome">Стать амбассадором</a><a class="link" href="#popup:study">Обучение</a></div>
     </div>
   </section>
 
