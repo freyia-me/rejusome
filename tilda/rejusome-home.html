@@ -105,16 +105,20 @@
 @media (min-width:901px){#rj .notes{display:contents}}
 
 /* ===== 2. Быстрые действия ===== */
-#rj .quick{border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-#rj .quick .row{display:grid;grid-template-columns:repeat(4,1fr)}
-#rj .qa{display:flex;align-items:center;gap:18px;padding:30px 24px;border-left:1px solid var(--line);transition:background .4s}
-#rj .qa:first-child{border-left:0}
-#rj .qa:hover{background:var(--mist)}
-#rj .qa svg{width:30px;height:30px;flex:none;stroke:var(--ink);stroke-width:1;fill:none}
-#rj .qa b{display:block;font:400 15px/1.3 var(--f);color:var(--ink)}
-#rj .qa span{display:block;font:300 13px/1.4 var(--f);color:var(--muted)}
-@media (max-width:900px){#rj .quick .row{grid-template-columns:1fr 1fr}#rj .qa:nth-child(3){border-left:0}#rj .qa:nth-child(n+3){border-top:1px solid var(--line)}}
-@media (max-width:460px){#rj .qa{padding:22px 12px;gap:12px}}
+#rj .quick{padding-block:8px clamp(8px,2vw,24px)}
+#rj .quick .row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+#rj .qa{position:relative;min-width:0;display:flex;align-items:center;gap:16px;padding:18px 58px 18px 18px;border:1px solid var(--line);border-radius:18px;background:var(--paper);box-shadow:0 10px 30px -22px rgba(20,38,102,.45);cursor:pointer;transition:border-color .35s,background .35s,transform .35s,box-shadow .35s}
+#rj .qa .ic{flex:none;width:48px;height:48px;border-radius:50%;background:var(--mist);display:grid;place-items:center;transition:background .35s}
+#rj .qa svg{width:24px;height:24px;stroke:var(--ink);stroke-width:1.2;fill:none;transition:stroke .35s}
+#rj .qa b{display:block;font:500 15px/1.3 var(--f);color:var(--ink)}
+#rj .qa span.t{display:block;font:300 13px/1.4 var(--f);color:var(--muted);margin-top:2px}
+#rj .qa:after{content:"\2192";position:absolute;right:16px;top:50%;width:30px;height:30px;margin-top:-15px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;font:400 14px/1 var(--f);color:var(--ink);transition:background .35s,color .35s,border-color .35s,transform .35s}
+#rj .qa:hover{border-color:var(--ink);transform:translateY(-2px);box-shadow:0 18px 40px -24px rgba(20,38,102,.55)}
+#rj .qa:hover .ic{background:var(--ink)}
+#rj .qa:hover svg{stroke:#fff}
+#rj .qa:hover:after{background:var(--ink);border-color:var(--ink);color:#fff;transform:translateX(3px)}
+@media (max-width:1060px){#rj .quick .row{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){#rj .quick .row{grid-template-columns:1fr;gap:10px}#rj .qa{padding:14px 44px 14px 12px;gap:10px;border-radius:14px}#rj .qa .ic{width:38px;height:38px}#rj .qa svg{width:20px;height:20px}#rj .qa b{font-size:14px}#rj .qa span.t{font-size:12px}#rj .qa:after{right:10px;width:26px;height:26px;margin-top:-13px}}
 
 /* ===== 3. Стерильные сыворотки ===== */
 #rj .duo{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:clamp(48px,6vw,80px)}
@@ -291,10 +295,10 @@
   <div class="quick">
     <div class="wrap">
       <div class="row">
-        <a class="qa" href="#popup:study"><svg viewBox="0 0 32 32"><path d="M3 12l13-6 13 6-13 6z"/><path d="M8 14.5V21c0 2 3.6 4 8 4s8-2 8-4v-6.5"/><path d="M29 12v8"/></svg><div><b>Обучение</b><span>Для косметологов</span></div></a>
-        <a class="qa" href="#popup:protocols"><svg viewBox="0 0 32 32"><path d="M12 4h8M13 4v9L6 26a2 2 0 0 0 1.8 3h16.4A2 2 0 0 0 26 26l-7-13V4"/><path d="M9 21h14"/></svg><div><b>Протоколы</b><span>Методики работы</span></div></a>
-        <a class="qa" href="#popup:pricemain"><svg viewBox="0 0 32 32"><path d="M17 4h10v10L15 26a2 2 0 0 1-2.8 0L5 18.8a2 2 0 0 1 0-2.8z"/><circle cx="22" cy="9" r="1.6"/></svg><div><b>Цены</b><span>Условия закупки</span></div></a>
-        <a class="qa" href="#popup:consultation"><svg viewBox="0 0 32 32"><path d="M5 6h22v15H14l-6 5v-5H5z"/><path d="M10 12h12M10 16h8"/></svg><div><b>Консультация</b><span>Подбор ухода</span></div></a>
+        <a class="qa" href="#popup:study"><span class="ic"><svg viewBox="0 0 32 32"><path d="M3 12l13-6 13 6-13 6z"/><path d="M8 14.5V21c0 2 3.6 4 8 4s8-2 8-4v-6.5"/><path d="M29 12v8"/></svg></span><div><b>Обучение</b><span class="t">Для косметологов</span></div></a>
+        <a class="qa" href="#popup:protocols"><span class="ic"><svg viewBox="0 0 32 32"><path d="M12 4h8M13 4v9L6 26a2 2 0 0 0 1.8 3h16.4A2 2 0 0 0 26 26l-7-13V4"/><path d="M9 21h14"/></svg></span><div><b>Протоколы</b><span class="t">Методики работы</span></div></a>
+        <a class="qa" href="#popup:pricemain"><span class="ic"><svg viewBox="0 0 32 32"><path d="M17 4h10v10L15 26a2 2 0 0 1-2.8 0L5 18.8a2 2 0 0 1 0-2.8z"/><circle cx="22" cy="9" r="1.6"/></svg></span><div><b>Цены</b><span class="t">Условия закупки</span></div></a>
+        <a class="qa" href="#popup:consultation"><span class="ic"><svg viewBox="0 0 32 32"><path d="M5 6h22v15H14l-6 5v-5H5z"/><path d="M10 12h12M10 16h8"/></svg></span><div><b>Консультация</b><span class="t">Подбор ухода</span></div></a>
       </div>
     </div>
   </div>
