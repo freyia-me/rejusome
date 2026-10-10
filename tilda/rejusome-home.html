@@ -42,26 +42,28 @@
 #rj h1,#rj h2,#rj h3,#rj p,#rj figure{margin:0;padding:0}
 #rj h1,#rj h2,#rj h3{font-family:var(--f);color:var(--ink);text-wrap:balance}
 #rj .wrap{position:relative;z-index:2;max-width:var(--wrap);margin:0 auto;padding-inline:var(--pad)}
-#rj .sec{position:relative;padding-block:clamp(80px,10vw,140px)}
+#rj .sec{position:relative;padding-block:clamp(56px,7vw,100px)}
 #rj .center{text-align:center}
 #rj a:focus-visible,#rj button:focus-visible{outline:1px solid var(--ink);outline-offset:4px}
 
 /* типографика */
-#rj .label{display:block;font:500 11px/1 var(--f);letter-spacing:.32em;text-transform:uppercase;color:var(--muted)}
+#rj .label{display:inline-flex;align-items:center;gap:16px;font:500 12px/1 var(--f);letter-spacing:.3em;text-transform:uppercase;color:#b8902a}
 #rj .label b{font-weight:500;color:var(--gold)}
-#rj .h2{font-weight:200;font-size:clamp(32px,4.4vw,58px);line-height:1.12;letter-spacing:-.02em;margin-top:22px}
+#rj .center > .label:before,#rj .center > .label:after{content:"";width:clamp(28px,4vw,56px);height:1px;background:linear-gradient(90deg,transparent,var(--gold))}
+#rj .center > .label:after{transform:scaleX(-1)}
+#rj .h2{font-weight:200;font-size:clamp(30px,4vw,54px);line-height:1.1;letter-spacing:-.025em;margin-top:18px}
 #rj .h2 strong{font-weight:400}
-#rj .sub{font-weight:300;font-size:clamp(16px,1.35vw,18px);line-height:1.75;color:var(--muted);max-width:620px;margin:22px auto 0}
+#rj .sub{font-weight:400;font-size:clamp(15px,1.3vw,18px);line-height:1.65;color:#4a5170;max-width:640px;margin:18px auto 0}
 
 /* кнопки: тонкие, прописные, без эффектов */
 #rj .ctas{display:flex;gap:16px 32px;justify-content:center;align-items:center;flex-wrap:wrap;margin-top:40px}
-#rj .btn{display:inline-flex;align-items:center;justify-content:center;gap:14px;padding:18px 36px;border-radius:999px;background:var(--ink);border:1px solid var(--ink);color:#fff;font:500 11px/1 var(--f);letter-spacing:.24em;text-transform:uppercase;transition:background .4s,color .4s}
+#rj .btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;padding:17px 34px;border-radius:999px;background:var(--ink);border:1px solid var(--ink);color:#fff;font:500 14px/1 var(--f);letter-spacing:.01em;transition:background .4s,color .4s}
 #rj .btn:hover{background:transparent;color:var(--ink)}
 #rj .btn--line{background:transparent;color:var(--ink)}
 #rj .btn--line:hover{background:var(--ink);color:#fff}
-#rj .link{display:inline-flex;align-items:center;gap:12px;font:500 11px/1 var(--f);letter-spacing:.24em;text-transform:uppercase;color:var(--ink);padding-bottom:6px;border-bottom:1px solid var(--line);transition:border-color .4s}
+#rj .link{display:inline-flex;align-items:center;gap:10px;font:400 14px/1.3 var(--f);color:var(--ink);padding-bottom:4px;border-bottom:1px solid rgba(20,38,102,.4);transition:border-color .4s}
 #rj .link:after{content:"";width:18px;height:1px;background:currentColor;transition:width .4s}
-#rj .link:hover{border-color:var(--ink)}
+#rj .link:hover{border-color:var(--gold)}
 #rj .link:hover:after{width:28px}
 
 /* единая «сфера»: круглое фото с тонким кольцом мембраны */
@@ -70,15 +72,16 @@
 #rj .orb:after{content:"";position:absolute;inset:0;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(255,255,255,.55);pointer-events:none}
 
 /* ===== 1. HERO: экзосома отдаёт содержимое флакону ===== */
-#rj .hero2{position:relative;padding-block:clamp(32px,4.5vw,64px) clamp(48px,6vw,80px)}
+#rj .hero2{position:relative;padding-block:clamp(16px,2.4vw,32px) clamp(28px,3vw,40px)}
 #rj .eyebrow{display:inline-flex;align-items:center;gap:22px;font:500 clamp(11px,1.1vw,14px)/1 var(--f);letter-spacing:.32em;text-transform:uppercase;color:#b8902a}
 #rj .eyebrow:before,#rj .eyebrow:after{content:"";width:clamp(32px,5vw,72px);height:1px;background:linear-gradient(90deg,transparent,var(--gold))}
 #rj .eyebrow:after{transform:scaleX(-1)}
-#rj .hero2 h1{margin-top:clamp(18px,2vw,28px);letter-spacing:-.03em}
-#rj .hero2 h1 strong{display:block;font-weight:400;font-size:clamp(40px,6.6vw,96px);line-height:1.02}
-#rj .hero2 h1 span{display:block;font-weight:200;font-size:clamp(30px,5vw,72px);line-height:1.08;margin-top:.12em}
+#rj .hero2 h1{margin-top:clamp(12px,1.4vw,18px);letter-spacing:-.03em}
+#rj .hero2 h1 strong{display:block;font-weight:400;font-size:clamp(34px,4.6vw,66px);line-height:1.05}
+#rj .hero2 h1 em{font-style:normal;font-weight:200;font-size:.62em;letter-spacing:-.01em;white-space:nowrap}
+#rj .hero2 h1 span{display:block;font-weight:200;font-size:clamp(24px,3.1vw,44px);line-height:1.15;margin-top:.15em}
 
-#rj .scene{position:relative;z-index:2;width:min(1040px,100%);aspect-ratio:1040/374;margin:clamp(12px,2vw,28px) auto 0}
+#rj .scene{position:relative;z-index:2;width:min(980px,100%,max(400px,calc((100svh - 560px) * 2.78)));aspect-ratio:1040/374;margin:clamp(6px,1vw,14px) auto 0}
 #rj .scene .fw{position:absolute;inset:0;animation:rjBreath 10s ease-in-out infinite;transform-origin:40% 60%}
 #rj .scene .art{width:100%;height:100%;display:block}
 /* мягкий световой блик, раз в несколько секунд проходит по экзосоме */
@@ -102,19 +105,21 @@
 @keyframes rjSheen{0%{transform:translateX(-70%)}40%,100%{transform:translateX(70%)}}
 @keyframes rjTw{0%,100%{opacity:0;transform:scale(.3) rotate(0)}45%{opacity:1;transform:scale(1) rotate(20deg)}60%{opacity:.85;transform:scale(.9) rotate(30deg)}}
 
-#rj .hero2 .lead{font:400 clamp(16px,1.5vw,21px)/1.55 var(--f);color:var(--text);max-width:40em;margin:clamp(8px,1.5vw,20px) auto 0}
-#rj .aud{display:flex;justify-content:center;align-items:center;gap:clamp(18px,4vw,52px);margin-top:20px}
+#rj .hero2 .lead{font:400 clamp(15px,1.3vw,18px)/1.5 var(--f);color:var(--text);max-width:52em;margin:clamp(4px,.8vw,10px) auto 0}
+#rj .aud{display:flex;justify-content:center;align-items:center;gap:clamp(18px,4vw,48px);margin-top:12px}
 #rj .aud a{font:400 clamp(14px,1.2vw,17px)/1.3 var(--f);color:var(--ink);padding-bottom:4px;border-bottom:1px solid rgba(20,38,102,.45);transition:border-color .3s,color .3s}
 #rj .aud a:hover{border-color:var(--gold);color:#0c1745}
-#rj .aud i{width:1px;height:28px;background:var(--gold)}
-#rj .hero2 .ctas{margin-top:22px;gap:14px 20px}
-#rj .hero2 .btn{min-width:min(280px,100%);padding:21px 40px;font:500 15px/1 var(--f);letter-spacing:.01em;text-transform:none}
+#rj .aud i{width:1px;height:22px;background:var(--gold)}
+#rj .hero2 .ctas{margin-top:16px;gap:12px 18px}
+#rj .hero2 .btn{min-width:min(250px,100%);padding:18px 36px;font-size:15px}
 #rj .btn--arr:after{content:"\2192";font-size:17px;transition:transform .35s}
 #rj .btn--arr:hover:after{transform:translateX(4px)}
-#rj .cue{display:inline-flex;align-items:center;gap:10px;margin-top:22px;font:300 14px/1 var(--f);color:var(--muted);transition:color .3s}
+#rj .cue{display:inline-flex;align-items:center;gap:10px;margin-top:12px;font:300 14px/1 var(--f);color:var(--muted);transition:color .3s}
 #rj .cue svg{width:12px;height:16px;stroke:currentColor;fill:none;stroke-width:1.2;animation:rjCue 2.2s ease-in-out infinite}
 #rj .cue:hover{color:var(--ink)}
 @keyframes rjCue{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
+#rj .hero2 .lead,#rj .sub{text-wrap:balance}
+@media (max-width:520px){#rj .eyebrow,#rj .center > .label{letter-spacing:.16em;gap:10px;font-size:11px}#rj .eyebrow:before,#rj .eyebrow:after,#rj .center > .label:before,#rj .center > .label:after{width:18px}}
 @media (max-width:700px){
   #rj .scene{width:112%;margin-left:-6%}
   #rj .hero2 .btn{width:100%}
@@ -145,7 +150,9 @@
 #rj .serum .unit{font:500 11px/1.5 var(--f);letter-spacing:.28em;text-transform:uppercase;color:var(--muted);margin-top:16px;max-width:16ch}
 #rj .serum .lbl{font:500 10px/1.6 var(--f);letter-spacing:.28em;text-transform:uppercase;color:var(--gold);text-align:right;max-width:14em;padding-top:10px}
 #rj .serum .shot{position:relative;width:min(64%,330px);aspect-ratio:1;margin:28px auto 40px}
-#rj .serum .shot svg{position:absolute;inset:-14%;width:128%;height:128%}
+#rj .serum .shot:before{content:"";position:absolute;inset:-12%;border-radius:50%;background:radial-gradient(closest-side,rgba(122,187,229,.22),rgba(122,187,229,0));z-index:0}
+#rj .serum .shot .orb{z-index:1}
+#rj .serum .shot .prl{z-index:2}
 #rj .serum .shot .orb{position:absolute;inset:0;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
 #rj .serum:hover .shot .orb{transform:scale(1.04)}
 #rj .serum .foot{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding:24px clamp(24px,3vw,44px) clamp(28px,3vw,40px);border-top:1px solid var(--line);background:var(--paper)}
@@ -153,7 +160,7 @@
 #rj .serum .desc{font:300 14px/1.6 var(--f);color:var(--muted);margin-top:6px;max-width:34ch}
 @media (max-width:860px){#rj .duo{grid-template-columns:1fr}}
 
-#rj .care-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-top:clamp(80px,9vw,120px);padding-bottom:24px;border-bottom:1px solid var(--line)}
+#rj .care-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-top:clamp(56px,7vw,96px);padding-bottom:24px;border-bottom:1px solid var(--line)}
 #rj .care-head h3{font:200 clamp(26px,2.8vw,38px)/1.15 var(--f);letter-spacing:-.015em;margin-top:14px}
 #rj .lineup{display:grid;grid-template-columns:repeat(6,1fr);gap:24px;margin-top:40px}
 #rj .lu{min-width:0;display:flex;flex-direction:column;align-items:center;gap:18px;text-align:center}
@@ -197,7 +204,7 @@
 #rj .card h3{font:400 17px/1.35 var(--f)}
 #rj .card p{font-weight:300;font-size:14px;line-height:1.65;color:var(--muted);flex:1}
 #rj .card .acts{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-top:10px}
-#rj .card .price{font:500 10px/1 var(--f);letter-spacing:.22em;text-transform:uppercase;color:var(--ink);padding:12px 20px;border-radius:999px;border:1px solid var(--ink);transition:background .4s,color .4s}
+#rj .card .price{font:500 13px/1 var(--f);color:var(--ink);padding:12px 20px;border-radius:999px;border:1px solid var(--ink);transition:background .4s,color .4s}
 #rj .card .price:hover{background:var(--ink);color:#fff}
 @media (max-width:1060px){#rj .cat{grid-template-columns:repeat(3,1fr)}}
 @media (max-width:760px){#rj .cat{grid-template-columns:repeat(2,1fr);gap:32px 16px}}
@@ -216,9 +223,7 @@
 
 /* ===== 7. Амбассадор — тёмная панель, главный акцент страницы ===== */
 #rj .ambp{position:relative;overflow:hidden;isolation:isolate;border-radius:28px;padding:clamp(44px,6vw,96px) clamp(20px,5vw,72px);background:radial-gradient(110% 90% at 88% -10%,#2f56b8 0%,#1a2f7d 38%,#142666 62%,#0c1745 100%);color:#fff;box-shadow:0 40px 80px -40px rgba(20,38,102,.6)}
-#rj .ambp .deco{position:absolute;z-index:-1;pointer-events:none}
-#rj .ambp .deco.d1{width:520px;height:520px;right:-140px;top:-170px}
-#rj .ambp .deco.d2{width:300px;height:300px;left:-120px;bottom:-130px;opacity:.6}
+#rj .ambp .deco{z-index:-1}
 #rj .ambp .label{color:rgba(255,255,255,.62)}
 #rj .ambp .label b{color:var(--gold)}
 #rj .ambp .h2{color:#fff}
@@ -237,7 +242,7 @@
 #rj .ambp .link{color:#fff;border-color:rgba(255,255,255,.3)}
 #rj .ambp .link:hover{border-color:#fff}
 @media (max-width:980px){#rj .amb{grid-template-columns:1fr 1fr}}
-@media (max-width:520px){#rj .amb{grid-template-columns:1fr}#rj .ambp{border-radius:22px}#rj .ambp .deco.d1{width:320px;height:320px;right:-150px;top:-140px}}
+@media (max-width:520px){#rj .amb{grid-template-columns:1fr}#rj .ambp{border-radius:22px}}
 
 /* ===== 8. Клиники ===== */
 #rj .clin{margin-top:clamp(48px,6vw,80px);border-top:1px solid var(--line)}
@@ -260,16 +265,20 @@
 #rj .final .pic img{width:100%;max-width:440px}
 @media (max-width:860px){#rj .final{grid-template-columns:1fr}#rj .final .pic{padding-top:0}}
 
-/* ---------- Связь блоков: тонкая линия + экзосома ---------- */
-#rj .port{position:relative;display:block;width:21px;height:21px;margin:0 auto 26px;border-radius:50%;border:1px solid rgba(20,38,102,.35);background:var(--paper);transition:border-color .6s}
-#rj .port:before{content:"";position:absolute;inset:3px;border-radius:50%;border:1px solid rgba(20,38,102,.18)}
-#rj .port:after{content:"";position:absolute;left:50%;top:50%;width:5px;height:5px;margin:-2.5px 0 0 -2.5px;border-radius:50%;background:var(--gold);transform:scale(0);transition:transform .6s cubic-bezier(.2,.7,.2,1)}
-#rj .port.lit{border-color:var(--ink)}
-#rj .port.lit:after{transform:scale(1)}
-#rj .rj-link{position:absolute;left:50%;width:1px;margin-left:-.5px;z-index:1;pointer-events:none;background:linear-gradient(to bottom,transparent,var(--line) 25%,var(--line));--p:0;--o:0}
-#rj .rj-link .fill{position:absolute;left:0;top:0;width:1px;height:calc(var(--p) * 100%);background:linear-gradient(to bottom,transparent,var(--blue) 30%)}
-#rj .rj-link .msg{position:absolute;left:50%;top:calc(var(--p) * 100%);width:13px;height:13px;margin:-6.5px 0 0 -6.5px;border-radius:50%;background:var(--paper);border:1px solid var(--ink);opacity:var(--o);transition:opacity .4s}
-#rj .rj-link .msg:after{content:"";position:absolute;inset:3px;border-radius:50%;border:1px solid var(--blue)}
+
+/* ---------- Декор: жемчужины и стеклянные пузырьки, как на первом экране ---------- */
+#rj .prl{position:absolute;z-index:1;border-radius:50%;pointer-events:none;background:radial-gradient(circle at 32% 28%,#fff 0 10%,#e4eefb 30%,#a8c1ea 70%,#86a3d6 100%);box-shadow:inset -3px -4px 8px rgba(40,70,140,.22),0 12px 22px -10px rgba(20,38,102,.35);animation:rjBob 9s ease-in-out infinite}
+#rj .prl.g{background:radial-gradient(circle at 32% 28%,#fff 0 10%,#f5eedf 32%,#d6c39c 74%,#b79f74 100%)}
+#rj .prl.gl{background:radial-gradient(circle at 30% 26%,rgba(255,255,255,.95) 0 5%,rgba(255,255,255,0) 16%),radial-gradient(circle,rgba(214,232,252,.10) 0 58%,rgba(150,190,240,.45) 70%,rgba(255,255,255,.85) 73%,rgba(160,200,245,.25) 78%,rgba(160,200,245,0) 82%);box-shadow:none}
+@keyframes rjBob{0%,100%{transform:translate(0,0)}33%{transform:translate(6%,-14%)}66%{transform:translate(-8%,-6%)}}
+@media (max-width:760px){#rj .prl.hide-m{display:none}}
+
+/* ---------- Связь блоков: тонкая линия + жемчужина ---------- */
+#rj .port{position:relative;display:block;width:22px;height:22px;margin:0 auto 22px;border-radius:50%;background:radial-gradient(circle at 32% 28%,#fff 0 12%,#e8f1fc 34%,#bcd2f0 72%,#9db6e2 100%);box-shadow:0 0 0 6px rgba(122,187,229,.10),0 8px 16px -8px rgba(20,38,102,.4);transition:box-shadow .6s,background .6s}
+#rj .port.lit{background:radial-gradient(circle at 32% 28%,#fff 0 12%,#f6efdf 34%,#dcc79c 72%,#bfa676 100%);box-shadow:0 0 0 7px rgba(217,182,60,.14),0 0 22px 2px rgba(217,182,60,.35)}
+#rj .rj-link{position:absolute;left:50%;width:1px;margin-left:-.5px;z-index:1;pointer-events:none;background:linear-gradient(to bottom,transparent,rgba(122,187,229,.35) 25%,rgba(122,187,229,.35));--p:0;--o:0}
+#rj .rj-link .fill{position:absolute;left:0;top:0;width:1px;height:calc(var(--p) * 100%);background:linear-gradient(to bottom,transparent,var(--gold) 40%)}
+#rj .rj-link .msg{position:absolute;left:50%;top:calc(var(--p) * 100%);width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;background:radial-gradient(circle at 32% 28%,#fff 0 12%,#e4eefb 32%,#a8c1ea 72%,#86a3d6 100%);box-shadow:0 0 12px 2px rgba(122,187,229,.55);opacity:var(--o);transition:opacity .4s}
 
 /* ---------- Появление при прокрутке ---------- */
 #rj.rj-js .rv{opacity:0;transform:translateY(24px);transition:opacity 1.1s cubic-bezier(.2,.7,.2,1),transform 1.1s cubic-bezier(.2,.7,.2,1);transition-delay:var(--rd,0s)}
@@ -280,30 +289,13 @@
 }
 </style>
 
-<!-- Схема экзосомы: двойная мембрана + шкала, как в научной статье -->
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <defs>
-    <symbol id="rjExo" viewBox="0 0 400 400">
-      <circle cx="200" cy="200" r="196" fill="none" stroke="#142666" stroke-opacity=".10" stroke-dasharray="1 7"/>
-      <circle cx="200" cy="200" r="172" fill="#ffffff" fill-opacity=".55" stroke="#142666" stroke-opacity=".28"/>
-      <circle cx="200" cy="200" r="163" fill="none" stroke="#7abbe5" stroke-opacity=".7"/>
-      <circle cx="200" cy="200" r="120" fill="none" stroke="#142666" stroke-opacity=".06"/>
-      <g stroke="#142666" stroke-opacity=".3">
-        <line x1="200" y1="0" x2="200" y2="14"/><line x1="200" y1="386" x2="200" y2="400"/>
-        <line x1="0" y1="200" x2="14" y2="200"/><line x1="386" y1="200" x2="400" y2="200"/>
-      </g>
-      <circle cx="200" cy="28" r="3" fill="#d9b63c"/>
-    </symbol>
-  </defs>
-</svg>
-
 <div id="rj">
 
   <!-- ================= 1. HERO ================= -->
   <section class="hero2">
     <div class="wrap center">
-      <span class="eyebrow rv">Exosome Professional</span>
-      <h1 class="rv" style="--rd:.08s"><strong>Экзосомы Rejusome</strong><span>для косметологов<br>и домашнего ухода</span></h1>
+      <span class="eyebrow rv">Профессиональные экзосомы</span>
+      <h1 class="rv" style="--rd:.08s"><strong>Экзосомы Реджусом <em>(Rejusome)</em></strong><span>для косметологов и&nbsp;домашнего ухода</span></h1>
     </div>
     <div class="scene rv" style="--rd:.16s" aria-hidden="true">
       <div class="fw">
@@ -335,6 +327,7 @@
 
   <!-- ================= 3. СТЕРИЛЬНЫЕ СЫВОРОТКИ ================= -->
   <section class="sec" id="rj-pro">
+    <span class="prl hide-m" style="width:28px;aspect-ratio:1;left:6%;top:9%"></span><span class="prl g hide-m" style="width:14px;aspect-ratio:1;right:9%;top:16%;animation-delay:-4s"></span>
     <div class="wrap">
       <div class="center">
         <span class="port" aria-hidden="true"></span>
@@ -347,7 +340,7 @@
             <div><div class="big" data-count="54">54</div><div class="unit">миллиарда экзосом</div></div>
             <span class="lbl">Максимальная концентрация</span>
           </div>
-          <div class="shot"><svg><use href="#rjExo"/></svg><div class="orb"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@b849dfa9797ca3fcddc75d993bb0eb6582490dba/img/serum-rejusome-plus.webp" width="720" height="720" alt="Реджусом Плюс"></div></div>
+          <div class="shot"><span class="prl" style="width:9%;aspect-ratio:1;right:-6%;top:12%"></span><span class="prl g" style="width:5%;aspect-ratio:1;left:-5%;bottom:22%;animation-delay:-3s"></span><span class="prl gl" style="width:16%;aspect-ratio:1;right:2%;bottom:-6%;animation-delay:-5s"></span><div class="orb"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@b849dfa9797ca3fcddc75d993bb0eb6582490dba/img/serum-rejusome-plus.webp" width="720" height="720" alt="Реджусом Плюс"></div></div>
           <div class="foot">
             <div><div class="name">Реджусом Плюс</div><p class="desc">27 миллиардов экзосом на 1 мл — готовая сыворотка для применения</p></div>
             <a class="btn" href="#popup:pricemain">Узнать цену</a>
@@ -358,7 +351,7 @@
             <div><div class="big" data-count="5">5</div><div class="unit">миллиардов экзосом</div></div>
             <span class="lbl">Для лица и тела</span>
           </div>
-          <div class="shot"><svg><use href="#rjExo"/></svg><div class="orb"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@b849dfa9797ca3fcddc75d993bb0eb6582490dba/img/serum-rejusome.webp" width="720" height="720" alt="Реджусом"></div></div>
+          <div class="shot"><span class="prl" style="width:9%;aspect-ratio:1;right:-6%;top:12%"></span><span class="prl g" style="width:5%;aspect-ratio:1;left:-5%;bottom:22%;animation-delay:-3s"></span><span class="prl gl" style="width:16%;aspect-ratio:1;right:2%;bottom:-6%;animation-delay:-5s"></span><div class="orb"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@b849dfa9797ca3fcddc75d993bb0eb6582490dba/img/serum-rejusome.webp" width="720" height="720" alt="Реджусом"></div></div>
           <div class="foot">
             <div><div class="name">Реджусом</div><p class="desc">Аминокислоты, пептиды и другие компоненты, 5 мл + 20 мг</p></div>
             <a class="btn" href="#popup:pricemain">Узнать цену</a>
@@ -383,6 +376,7 @@
 
   <!-- ================= 4. НАУКА И ПРОИЗВОДСТВО ================= -->
   <section class="sec" id="rj-sci">
+    <span class="prl gl hide-m" style="width:120px;aspect-ratio:1;right:4%;top:6%;animation-delay:-2s"></span><span class="prl hide-m" style="width:18px;aspect-ratio:1;left:8%;top:22%;animation-delay:-6s"></span>
     <div class="wrap">
       <div class="center">
         <span class="port" aria-hidden="true"></span>
@@ -394,7 +388,7 @@
       <div class="facts">
         <div class="fact rv"><div class="k sm">GMP<small>·</small>MFDS</div><h3>Стандарты качества</h3><p>Производство препаратов Реджусом соответствует международным и корейским стандартам качества GMP и MFDS.</p></div>
         <div class="fact rv" style="--rd:.1s"><div class="k">2<small>ступени</small></div><h3>Фильтрация</h3><p>Процесс получения экзосом Реджусом включает двухступенчатую фильтрацию, что гарантирует максимальное качество и эффективность наших продуктов.</p></div>
-        <div class="fact rv" style="--rd:.2s"><div class="k" data-count="2804">2804</div><h3>micro RNAs</h3><p>Именно столько micro RNAs переносят экзосомы в препаратах Реджусом.</p></div>
+        <div class="fact rv" style="--rd:.2s"><div class="k" data-count="2804">2804</div><h3>микроРНК</h3><p>Именно столько микроРНК переносят экзосомы в препаратах Реджусом.</p></div>
       </div>
       <div class="refine">
         <div class="pic rv"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@b849dfa9797ca3fcddc75d993bb0eb6582490dba/img/exorefine-technology.webp" width="1200" height="861" alt="ЭкзоРефайн Технология: экзосомы проникают в слои кожи"></div>
@@ -410,6 +404,7 @@
 
   <!-- ================= 5. КАТАЛОГ ================= -->
   <section class="sec" id="rj-catalog">
+    <span class="prl g hide-m" style="width:20px;aspect-ratio:1;left:10%;top:7%;animation-delay:-1s"></span><span class="prl gl hide-m" style="width:90px;aspect-ratio:1;right:7%;top:4%;animation-delay:-5s"></span>
     <div class="wrap">
       <div class="center">
         <span class="port" aria-hidden="true"></span>
@@ -425,7 +420,7 @@
         <div class="card rv"><a class="ph" href="https://rejusome.com/eyecream"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@936942adaa0d8abaac0d90961c12f067a506f52a/img/catalog-exo-eye-cream-20ml.webp" width="800" height="1000" alt="Реджусом Экзо крем для глаз 20 мл"></a><div class="tx"><span class="tag">Космецевтика</span><h3>Реджусом Экзо крем для глаз 20 мл</h3><p>Экзо-пробиотическая сыворотка для кожи вокруг глаз</p><div class="acts"><a class="link" href="https://rejusome.com/eyecream">Подробнее</a><a class="price" href="#popup:pricemain">Цена</a></div></div></div>
         <div class="card rv" style="--rd:.08s"><a class="ph" href="https://rejusome.com/rejusome-mask"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@936942adaa0d8abaac0d90961c12f067a506f52a/img/catalog-exo-mask-25g.webp" width="800" height="1000" alt="Реджусом Экзо Маска 25 гр"></a><div class="tx"><span class="tag">Космецевтика</span><h3>Реджусом Экзо Маска 25 гр</h3><p>Экзо-пробиотическая маска для экстренного восстановления и успокоения кожи лица и шеи</p><div class="acts"><a class="link" href="https://rejusome.com/rejusome-mask">Подробнее</a><a class="price" href="#popup:pricemain">Цена</a></div></div></div>
         <div class="card rv" style="--rd:.16s"><a class="ph" href="https://rejusome.com/mist"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@936942adaa0d8abaac0d90961c12f067a506f52a/img/catalog-exo-spray-150ml.webp" width="800" height="1000" alt="Реджусом Экзо Спрей 150 мл"></a><div class="tx"><span class="tag">Космецевтика</span><h3>Реджусом Экзо Спрей 150 мл</h3><p>Лёгкий мист — тоник на основе экзосом, 5 видов гиалуроновой кислоты и других компонентов</p><div class="acts"><a class="link" href="https://rejusome.com/mist">Подробнее</a><a class="price" href="#popup:pricemain">Цена</a></div></div></div>
-        <div class="card rv" style="--rd:.24s"><a class="ph" href="https://rejusome.com/rejusome-lip-balm"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@936942adaa0d8abaac0d90961c12f067a506f52a/img/catalog-exo-lip-balm-15ml.webp" width="800" height="1000" alt="Бальзам для губ с экзосомами Rejusome Exo Lip Balm 15 мл"></a><div class="tx"><span class="tag">Космецевтика</span><h3>Реджусом Экзо Бальзам для губ 15 мл</h3><p>Интенсивное увлажнение и восстановление кожи губ с экзосомами, пептидами и натуральными маслами.</p><div class="acts"><a class="link" href="https://rejusome.com/rejusome-lip-balm">Подробнее</a><a class="price" href="#popup:pricemain">Цена</a></div></div></div>
+        <div class="card rv" style="--rd:.24s"><a class="ph" href="https://rejusome.com/rejusome-lip-balm"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@936942adaa0d8abaac0d90961c12f067a506f52a/img/catalog-exo-lip-balm-15ml.webp" width="800" height="1000" alt="Реджусом Экзо бальзам для губ 15 мл"></a><div class="tx"><span class="tag">Космецевтика</span><h3>Реджусом Экзо Бальзам для губ 15 мл</h3><p>Интенсивное увлажнение и восстановление кожи губ с экзосомами, пептидами и натуральными маслами.</p><div class="acts"><a class="link" href="https://rejusome.com/rejusome-lip-balm">Подробнее</a><a class="price" href="#popup:pricemain">Цена</a></div></div></div>
       </div>
     </div>
   </section>
@@ -439,16 +434,16 @@
       <p class="sub rv" style="--rd:.16s">Реальные результаты применения экзосомных препаратов в профессиональных протоколах. Улучшение качества кожи, выравнивание тона, повышение плотности и сокращение признаков возрастных изменений.</p>
     </div>
     <div class="ba-track" id="rjBa">
-      <figure><img loading="lazy" src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@b849dfa9797ca3fcddc75d993bb0eb6582490dba/img/before-after-01.webp" width="1000" height="1250" alt="До и после Rejusome"></figure>
-      <figure><img loading="lazy" src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@b849dfa9797ca3fcddc75d993bb0eb6582490dba/img/before-after-02.webp" width="1000" height="1250" alt="До и после Rejusome"></figure>
-      <figure><img loading="lazy" src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@b849dfa9797ca3fcddc75d993bb0eb6582490dba/img/before-after-03.webp" width="1000" height="1250" alt="До и после Rejusome"></figure>
-      <figure><img loading="lazy" src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@b849dfa9797ca3fcddc75d993bb0eb6582490dba/img/before-after-04.webp" width="1000" height="1250" alt="До и после Rejusome"></figure>
-      <figure><img loading="lazy" src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@b849dfa9797ca3fcddc75d993bb0eb6582490dba/img/before-after-05.webp" width="1000" height="1250" alt="До и после Rejusome"></figure>
-      <figure><img loading="lazy" src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@b849dfa9797ca3fcddc75d993bb0eb6582490dba/img/before-after-06.webp" width="1000" height="1250" alt="До и после Rejusome"></figure>
-      <figure><img loading="lazy" src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@b849dfa9797ca3fcddc75d993bb0eb6582490dba/img/before-after-07.webp" width="1000" height="1250" alt="До и после Rejusome"></figure>
-      <figure><img loading="lazy" src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@b849dfa9797ca3fcddc75d993bb0eb6582490dba/img/before-after-08.webp" width="1000" height="1250" alt="До и после Rejusome"></figure>
-      <figure><img loading="lazy" src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@b849dfa9797ca3fcddc75d993bb0eb6582490dba/img/before-after-09.webp" width="1000" height="1250" alt="До и после Rejusome"></figure>
-      <figure><img loading="lazy" src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@b849dfa9797ca3fcddc75d993bb0eb6582490dba/img/before-after-10.webp" width="1000" height="1250" alt="До и после Rejusome"></figure>
+      <figure><img loading="lazy" src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@b849dfa9797ca3fcddc75d993bb0eb6582490dba/img/before-after-01.webp" width="1000" height="1250" alt="До и после применения препаратов Реджусом"></figure>
+      <figure><img loading="lazy" src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@b849dfa9797ca3fcddc75d993bb0eb6582490dba/img/before-after-02.webp" width="1000" height="1250" alt="До и после применения препаратов Реджусом"></figure>
+      <figure><img loading="lazy" src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@b849dfa9797ca3fcddc75d993bb0eb6582490dba/img/before-after-03.webp" width="1000" height="1250" alt="До и после применения препаратов Реджусом"></figure>
+      <figure><img loading="lazy" src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@b849dfa9797ca3fcddc75d993bb0eb6582490dba/img/before-after-04.webp" width="1000" height="1250" alt="До и после применения препаратов Реджусом"></figure>
+      <figure><img loading="lazy" src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@b849dfa9797ca3fcddc75d993bb0eb6582490dba/img/before-after-05.webp" width="1000" height="1250" alt="До и после применения препаратов Реджусом"></figure>
+      <figure><img loading="lazy" src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@b849dfa9797ca3fcddc75d993bb0eb6582490dba/img/before-after-06.webp" width="1000" height="1250" alt="До и после применения препаратов Реджусом"></figure>
+      <figure><img loading="lazy" src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@b849dfa9797ca3fcddc75d993bb0eb6582490dba/img/before-after-07.webp" width="1000" height="1250" alt="До и после применения препаратов Реджусом"></figure>
+      <figure><img loading="lazy" src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@b849dfa9797ca3fcddc75d993bb0eb6582490dba/img/before-after-08.webp" width="1000" height="1250" alt="До и после применения препаратов Реджусом"></figure>
+      <figure><img loading="lazy" src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@b849dfa9797ca3fcddc75d993bb0eb6582490dba/img/before-after-09.webp" width="1000" height="1250" alt="До и после применения препаратов Реджусом"></figure>
+      <figure><img loading="lazy" src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@b849dfa9797ca3fcddc75d993bb0eb6582490dba/img/before-after-10.webp" width="1000" height="1250" alt="До и после применения препаратов Реджусом"></figure>
     </div>
     <div class="ba-bar">
       <div class="ba-nav">
@@ -464,9 +459,8 @@
     <div class="wrap">
       <div class="center"><span class="port" aria-hidden="true"></span></div>
       <div class="ambp center">
-        <svg class="deco d1" viewBox="0 0 400 400" aria-hidden="true"><g fill="none" stroke="#bfe0f7"><circle cx="200" cy="200" r="196" stroke-opacity=".25" stroke-dasharray="1 7"/><circle cx="200" cy="200" r="172" stroke-opacity=".35"/><circle cx="200" cy="200" r="163" stroke="#7abbe5" stroke-opacity=".6"/><circle cx="200" cy="200" r="120" stroke-opacity=".12"/></g><circle cx="200" cy="28" r="3" fill="#d9b63c"/></svg>
-        <svg class="deco d2" viewBox="0 0 400 400" aria-hidden="true"><g fill="none" stroke="#bfe0f7"><circle cx="200" cy="200" r="196" stroke-opacity=".25" stroke-dasharray="1 7"/><circle cx="200" cy="200" r="172" stroke-opacity=".35"/><circle cx="200" cy="200" r="163" stroke="#7abbe5" stroke-opacity=".6"/><circle cx="200" cy="200" r="120" stroke-opacity=".12"/></g><circle cx="200" cy="28" r="3" fill="#d9b63c"/></svg>
-        <span class="label rv">Профессиональная экосистема <b>·</b> Rejusome</span>
+        <span class="prl gl deco" style="width:clamp(180px,26vw,360px);aspect-ratio:1;right:-6%;top:-18%;opacity:.7"></span><span class="prl gl deco" style="width:clamp(110px,14vw,200px);aspect-ratio:1;left:-4%;bottom:-10%;opacity:.55;animation-delay:-4s"></span><span class="prl deco hide-m" style="width:22px;aspect-ratio:1;left:5%;top:7%;opacity:.9"></span><span class="prl g deco hide-m" style="width:14px;aspect-ratio:1;right:16%;bottom:22%;animation-delay:-2s"></span>
+        <span class="label rv">Профессиональная экосистема</span>
         <h2 class="h2 rv" style="--rd:.08s">Станьте <strong>амбассадором</strong> бренда</h2>
         <p class="sub rv" style="--rd:.16s">Откройте новые возможности роста, получив доступ к закрытым протоколам и экспертному сообществу лидеров индустрии.</p>
         <div class="amb">
@@ -490,7 +484,7 @@
         <p class="sub rv" style="--rd:.16s">Ведущие медицинские учреждения выбирают экзосомы Реджусом для заботы о своих пациентах. В клинике — партнёре компании Революшн БИО вы можете записаться на индивидуальную консультацию со специалистами.</p>
       </div>
       <div class="clin">
-        <div class="cl rv"><div><span class="kind">Клиника-партнёр</span><h3>Частная Клиника</h3></div><p>Мы гордимся тем, что являемся давними партнёрами Частная Клиника (LA Private Clinic) и пионерами в области экзосомальной терапии. Высококвалифицированные специалисты клиники, использующие передовые технологии и методы для процедур Rejusome, предложат вам индивидуальные программы ухода, учитывающие ваши потребности и особенности кожи.</p><a class="link" href="https://laprivateclinic.com/" target="_blank" rel="noopener">На сайт</a></div>
+        <div class="cl rv"><div><span class="kind">Клиника-партнёр</span><h3>Частная Клиника</h3></div><p>Мы гордимся тем, что являемся давними партнёрами Частная Клиника (LA Private Clinic) и пионерами в области экзосомальной терапии. Высококвалифицированные специалисты клиники, использующие передовые технологии и методы для процедур с препаратами Реджусом (Rejusome), предложат вам индивидуальные программы ухода, учитывающие ваши потребности и особенности кожи.</p><a class="link" href="https://laprivateclinic.com/" target="_blank" rel="noopener">На сайт</a></div>
         <div class="cl rv"><div><span class="kind">Клиника-партнёр</span><h3>Центр Лучший</h3></div><p>Высококлассные специалисты с научными степенями и успешным опытом, 800 м² изысканного дизайна и уютной атмосферы — всё для вашей красоты в центре красоты и здоровья премиум-класса. Эксперты центра создают индивидуальные программы лечения и ухода, применяя в том числе возможности экзосоматической терапии.</p><a class="link" href="https://center.best/" target="_blank" rel="noopener">На сайт</a></div>
         <div class="cl rv"><div><span class="kind">Клиника-партнёр</span><h3>Профессионал (Москва)</h3></div><p>Клиника эстетической медицины и врачебной косметологии доктора Саромыцкой предлагает широкий спектр услуг для решения эстетических проблем лица и тела, а также лечения различных заболеваний. Благодаря использованию современных методов, отличному техническому оснащению и команде профессионалов, клиника стала признанным лидером в России.</p><a class="link" href="https://msk.proficlinica.com/" target="_blank" rel="noopener">На сайт</a></div>
       </div>
@@ -504,14 +498,14 @@
       <div class="center"><span class="port" aria-hidden="true"></span></div>
       <div class="final rv">
         <div class="txt">
-          <span class="label">Экзосомы <b>·</b> Exosomes</span>
-          <h2>Rejusome <strong style="font-weight:400">Exo</strong></h2>
-          <p>Интересуют условия покупки препаратов Rejusome? Оставьте заявку — и мы свяжемся с вами.</p>
+          <span class="label">Экзосомы Реджусом</span>
+          <h2>Реджусом <strong style="font-weight:400">Экзо</strong></h2>
+          <p>Интересуют условия покупки препаратов Реджусом (Rejusome)? Оставьте заявку — и мы свяжемся с вами.</p>
           <div class="ctas"><a class="btn" href="#popup:pricemain">Запросить цены</a><a class="link" href="#popup:consultation">Консультация</a></div>
           <p class="legal">Нажимая на кнопку, вы даете <a href="https://rejusome.com/consentpriv">согласие</a> на обработку персональных данных и соглашаетесь c <a href="https://rejusome.com/privacy">политикой конфиденциальности</a>.</p>
         </div>
         <div class="pic">
-          <img loading="lazy" src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@b849dfa9797ca3fcddc75d993bb0eb6582490dba/img/banner-facelines.webp" width="900" height="858" alt="Экзосомы Rejusome Exo">
+          <img loading="lazy" src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@b849dfa9797ca3fcddc75d993bb0eb6582490dba/img/banner-facelines.webp" width="900" height="858" alt="Экзосомы Реджусом">
         </div>
       </div>
     </div>
