@@ -218,6 +218,14 @@
 #rj .step p{font:400 14.5px/1.6 var(--f);color:var(--muted);margin-top:10px}
 @media (max-width:860px){#rj .steps{grid-template-columns:1fr;gap:26px}#rj .steps:before{left:27px;right:auto;top:28px;bottom:28px;width:1px;height:auto;background:linear-gradient(180deg,var(--gold2),rgba(122,187,229,.6),var(--gold2))}#rj .step{display:grid;grid-template-columns:56px 1fr;gap:0 20px}#rj .step b{grid-row:1/3}#rj .step h3{margin-top:4px}#rj .step p{margin-top:6px}}
 
+#rj .course{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:clamp(32px,4vw,48px);text-align:left}
+#rj .course > div{padding:20px 22px;border-radius:22px}
+#rj .course > div:before{border-radius:18px}
+#rj .course b{display:block;font:400 clamp(28px,2.8vw,40px)/1 var(--f);letter-spacing:-.03em;color:var(--ink);white-space:nowrap}
+#rj .course b small{font-size:.45em;letter-spacing:0;margin-left:5px;color:var(--muted)}
+#rj .course span{display:block;font:400 13px/1.4 var(--f);color:var(--muted);margin-top:8px}
+@media (max-width:860px){#rj .course{grid-template-columns:1fr 1fr}}
+
 /* ===== 6. ПРОИЗВОДСТВО ===== */
 #rj .facts{display:grid;grid-template-columns:repeat(3,1fr);margin-top:clamp(36px,4vw,56px);border-top:1px solid var(--line);border-bottom:1px solid var(--line);text-align:left}
 #rj .fact{padding:clamp(26px,3.5vw,44px) clamp(18px,3vw,36px);border-left:1px solid var(--line)}
@@ -247,7 +255,11 @@
 #rj .faq summary b{flex:none;display:grid;place-items:center;width:32px;height:32px;border:1px solid var(--gold);border-radius:50%;font:300 20px/1 var(--f);color:var(--gold);transition:transform .3s,background .3s,color .3s}
 #rj .faq summary:hover b{background:var(--gold);color:#fff}
 #rj .faq details[open] summary b{transform:rotate(45deg)}
-#rj .faq details p{font:400 15px/1.7 var(--f);color:var(--muted);padding:0 52px 24px 0;max-width:70ch}
+#rj .faq details p,#rj .faq .fq{font:400 15px/1.7 var(--f);color:var(--muted);padding:0 52px 18px 0;max-width:70ch}
+#rj .faq details > :last-child{padding-bottom:26px}
+#rj .faq .fq{list-style:none;display:grid;gap:8px}
+#rj .faq .fq li{position:relative;padding-left:22px}
+#rj .faq .fq li:before{content:"";position:absolute;left:2px;top:.62em;width:8px;height:8px;border-radius:50%;background:var(--gold2)}
 
 /* ===== 9. С ЭТИМ ТОВАРОМ ===== */
 #rj .cat{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:clamp(36px,4vw,56px);text-align:left}
@@ -400,7 +412,7 @@
         <span class="port" aria-hidden="true"></span>
         <span class="label rv">Состав набора</span>
         <h2 class="h2 rv" style="--rd:.08s">Два флакона. <strong>Одна сыворотка.</strong></h2>
-        <p class="sub rv" style="--rd:.12s">Лиофилизированный порошок и активный растворитель соединяют перед процедурой.</p>
+        <p class="sub rv" style="--rd:.12s">Лиофилизированный порошок и активный растворитель соединяют перед процедурой — готовую сыворотку используют в течение 3 часов.</p>
       </div>
       <div class="kit">
         <article class="vial glass rv">
@@ -457,15 +469,22 @@
     <div class="wrap">
       <div class="center">
         <span class="port" aria-hidden="true"></span>
-        <span class="label rv">Как проходит процедура</span>
-        <h2 class="h2 rv" style="--rd:.08s">Четыре шага <strong>в кабинете специалиста</strong></h2>
+        <span class="label rv">Как работать с препаратом</span>
+        <h2 class="h2 rv" style="--rd:.08s">Приготовление <strong>и курс процедур</strong></h2>
       </div>
       <ol class="steps">
-        <li class="step rv"><b>01</b><h3>Консультация</h3><p>Специалист оценивает состояние кожи и подбирает протокол.</p></li>
-        <li class="step rv" style="--rd:.08s"><b>02</b><h3>Подготовка</h3><p>Очищение кожи и подготовка зоны процедуры.</p></li>
-        <li class="step rv" style="--rd:.16s"><b>03</b><h3>Приготовление сыворотки</h3><p>Лиофилизированный порошок (флакон 1) соединяют с активным растворителем (флакон 2) непосредственно перед применением.</p></li>
-        <li class="step rv" style="--rd:.24s"><b>04</b><h3>Применение и уход</h3><p>Процедура по протоколу и рекомендации по домашнему уходу с экзосомами.</p></li>
+        <li class="step rv"><b>01</b><h3>Смешать</h3><p>Активный растворитель 5&nbsp;мл соединить с&nbsp;лиофилизированным порошком 20&nbsp;мг.</p></li>
+        <li class="step rv" style="--rd:.08s"><b>02</b><h3>Настоять</h3><p>Хорошо перемешать и&nbsp;оставить на&nbsp;3–5&nbsp;минут.</p></li>
+        <li class="step rv" style="--rd:.16s"><b>03</b><h3>Применить</h3><p>Использовать сыворотку в&nbsp;течение 3&nbsp;часов после приготовления.</p></li>
+        <li class="step rv" style="--rd:.24s"><b>04</b><h3>Повторить курсом</h3><p>Не менее 5&nbsp;процедур с&nbsp;перерывом не&nbsp;менее 7&nbsp;дней.</p></li>
       </ol>
+      <div class="course rv">
+        <div class="glass"><b>от 5</b><span>процедур в&nbsp;курсе</span></div>
+        <div class="glass"><b>от 7<small>дней</small></b><span>перерыв между процедурами</span></div>
+        <div class="glass"><b>5–7<small>день</small></b><span>когда заметен эффект</span></div>
+        <div class="glass"><b>2–4<small>°C</small></b><span>рекомендуемая температура хранения</span></div>
+      </div>
+      <p class="note center" style="margin-top:14px">Эффект зависит от состояния кожи, общего состояния здоровья и индивидуальных особенностей пациента.</p>
       <div class="ctas rv"><a class="btn btn--arr" href="#popup:protocols">Запросить протоколы</a><a class="link" href="#popup:study">Обучение для косметологов</a></div>
     </div>
   </section>
@@ -492,7 +511,7 @@
       <span class="port" aria-hidden="true"></span>
       <span class="label rv">Результаты</span>
       <h2 class="h2 rv" style="--rd:.08s">До <strong>/</strong> После</h2>
-      <p class="sub rv" style="--rd:.12s">Результаты применения экзосомных препаратов в профессиональных протоколах.</p>
+      <p class="sub rv" style="--rd:.12s">Результат зависит от изначального состояния кожи пациента. Как правило, эффект отмечают на&nbsp;5–7&nbsp;день после первой процедуры; он усиливается нарастающим итогом после курса.</p>
     </div>
     <div class="ba-track" id="rjBa">
       <figure><img loading="lazy" src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@b849dfa9797ca3fcddc75d993bb0eb6582490dba/img/before-after-01.webp" width="1000" height="1250" alt="До и после применения препаратов Реджусом"></figure>
@@ -519,11 +538,10 @@
         <h2 class="h2 rv" style="--rd:.08s">Частые <strong>вопросы</strong></h2>
       </div>
       <div class="faq rv">
-        <!-- Ответы сверить с текущей страницей / инструкцией производителя -->
-        <details><summary>Какому пациенту показана процедура Реджусом?<b aria-hidden="true">+</b></summary><p>Процедура подходит для работы с возрастными изменениями, восстановления кожного барьера, регенерации, укрепления сосудов и чистоты кожи, в том числе при постакне. Показания и протокол определяет специалист.</p></details>
-        <details><summary>Как приготовить сыворотку?<b aria-hidden="true">+</b></summary><p>Лиофилизированный порошок из флакона 1 (20 мг) соединяют с активным растворителем из флакона 2 (5 мл) непосредственно перед процедурой, по протоколу производителя.</p></details>
-        <details><summary>Как хранить сыворотку Реджусом?<b aria-hidden="true">+</b></summary><p>Условия хранения указаны в инструкции к препарату. Запросите протокол — пришлём подробные рекомендации.</p></details>
-        <details><summary>Сколько процедур Реджусом рекомендовать пациенту?<b aria-hidden="true">+</b></summary><p>Количество процедур и интервалы специалист подбирает индивидуально по протоколу. Препарат имеет накопительный эффект.</p></details>
+        <details><summary>Какому пациенту показана процедура Реджусом?<b aria-hidden="true">+</b></summary><p>Процедуры с использованием экзосом подходят для тех, кто хочет улучшить состояние своей кожи, придать ей молодой и свежий вид, бороться с различными проблемами кожи: акне, шрамы, жирная или сухая кожа, кожа, склонная к раздражению, — а также если у пациента есть склонность к различного рода дерматитам и к розацеа.</p><p>Экзосомы, пептиды и факторы роста, входящие в препарат Реджусом, помогают стимулировать производство коллагена и эластина, которые отвечают за упругость и эластичность кожи. Кроме того, они могут помочь в восстановлении повреждённых клеток кожи и улучшении микроциркуляции. Процедуры с экзосомами подходят для людей разных возрастов и типов кожи, включая чувствительную и склонную к аллергии.</p></details>
+        <details><summary>Как приготовить сыворотку?<b aria-hidden="true">+</b></summary><ul class="fq"><li>Смешать активный растворитель 5&nbsp;мл с&nbsp;лиофилизированным порошком 20&nbsp;мг.</li><li>Хорошо перемешать и оставить на 3–5 минут.</li><li>Использовать сыворотку в течение 3 часов после приготовления.</li></ul></details>
+        <details><summary>Как хранить сыворотку Реджусом?<b aria-hidden="true">+</b></summary><ul class="fq"><li>Рекомендуемая температура хранения лиофилизата — 2–4&nbsp;°C, растворителя — до&nbsp;25&nbsp;°C.</li><li>Общая рекомендуемая температура хранения — 2–4&nbsp;°C.</li></ul></details>
+        <details><summary>Сколько процедур Реджусом рекомендовать пациенту?<b aria-hidden="true">+</b></summary><p>В идеале процедуру следует выполнять не менее 5 раз. Перерыв между процедурами должен составлять не менее 7 дней.</p><p>Эффект варьируется в зависимости от состояния кожи пациента, общего состояния его здоровья и индивидуальных особенностей. Эффект можно увидеть через 5–7 дней после начала процедур.</p></details>
         <details><summary>Чем Реджусом отличается от Реджусом Плюс?<b aria-hidden="true">+</b></summary><p>Реджусом — двухкомпонентный набор (лиофилизат 20 мг и растворитель 5 мл), 5 миллиардов экзосом, для лица и тела. Реджусом Плюс — готовая сыворотка во флаконе 2 мл, 27 миллиардов экзосом на 1 мл.</p></details>
       </div>
     </div>
