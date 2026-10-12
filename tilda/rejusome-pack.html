@@ -54,7 +54,7 @@
 #rj .link:hover:after{transform:translateX(4px)}
 
 /* ---------- живое стекло ---------- */
-#rj .glass{position:relative;border-radius:26px;background:linear-gradient(135deg,rgba(255,255,255,.72),rgba(232,243,255,.25) 45%,rgba(255,255,255,.48));border:1px solid rgba(177,197,220,.6);border-top-color:rgba(255,255,255,.95);-webkit-backdrop-filter:blur(16px) saturate(120%);backdrop-filter:blur(16px) saturate(120%);box-shadow:inset 0 1px 2px rgba(255,255,255,.95),inset 0 -1px 2px rgba(255,255,255,.6),0 14px 35px rgba(50,76,114,.10)}
+#rj .glass{position:relative;border-radius:26px;background:linear-gradient(135deg,rgba(255,255,255,.72),rgba(232,243,255,.25) 45%,rgba(255,255,255,.48));border:1px solid rgba(177,197,220,.7);-webkit-backdrop-filter:blur(16px) saturate(120%);backdrop-filter:blur(16px) saturate(120%);box-shadow:inset 0 1px 2px rgba(255,255,255,.95),inset 0 -1px 2px rgba(255,255,255,.6),0 14px 35px rgba(50,76,114,.10)}
 #rj .glass:before{content:"";position:absolute;inset:4px;border-radius:22px;border:1px solid rgba(255,255,255,.75);pointer-events:none}
 #rj .ic{flex:none;display:grid;place-items:center;width:56px;height:56px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff 0,#fbf6ee 60%,#f1e6d4);box-shadow:inset 0 0 0 1px rgba(255,255,255,.9),0 8px 18px rgba(181,140,70,.18)}
 #rj .ic svg{width:30px;height:30px;fill:none;stroke:url(#rjGold);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
@@ -91,8 +91,6 @@
 #rj .thumbs button img{width:100%;height:100%;object-fit:cover}
 #rj .thumbs button[aria-pressed="true"]{opacity:1;border-color:var(--gold);transform:translateY(-2px)}
 #rj .thumbs button:hover{opacity:1}
-#rj .gal .exd{z-index:3;width:clamp(64px,8vw,120px);right:-5%;top:-4%}
-#rj .gal .exd.b{width:clamp(36px,4vw,56px);right:auto;left:-3%;top:56%;animation-delay:-5s}
 /* описание */
 #rj .tags{display:flex;flex-wrap:wrap;gap:8px}
 #rj .tag{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:999px;border:1px solid var(--gold);font:500 11px/1 var(--f);letter-spacing:.16em;text-transform:uppercase;color:#9b783e}
@@ -102,12 +100,12 @@
 #rj .pd h1 em{font-style:normal;font-weight:200;font-size:.55em;white-space:nowrap}
 #rj .pd h1 span{display:block;font-weight:200;font-size:clamp(20px,2.2vw,30px);line-height:1.25;margin-top:.4em}
 #rj .kpi{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:28px}
-#rj .kpi > div{padding:18px 18px 16px;border-radius:22px}
+#rj .kpi > div{padding:20px 18px 18px;border-radius:22px;box-shadow:inset 0 1px 2px #fff,0 12px 28px -14px rgba(50,76,114,.28)}
 #rj .kpi > div:before{border-radius:18px}
 #rj .kpi b{display:block;font:400 clamp(28px,2.8vw,40px)/1 var(--f);letter-spacing:-.03em;color:var(--ink);white-space:nowrap}
 #rj .kpi b small{font-size:.48em;letter-spacing:0;margin-left:4px}
 #rj .kpi span{display:block;font:400 12.5px/1.35 var(--f);color:var(--muted);margin-top:8px}
-#rj .pd .lead{font:400 16px/1.7 var(--f);color:#4a5170;margin-top:24px;max-width:46ch}
+#rj .pd .lead{font:400 15.5px/1.7 var(--f);color:#4a5170;margin-top:24px;max-width:52ch}
 #rj .pd .ctas{justify-content:flex-start;margin-top:28px;gap:12px 16px}
 #rj .pd .btn{padding:18px 34px;font-size:15px}
 #rj .pro{display:flex;align-items:center;gap:12px;margin-top:22px;font:400 13px/1.45 var(--f);color:var(--muted)}
@@ -336,11 +334,9 @@
   <!-- ================= 1. ТОВАР ================= -->
   <section class="pd">
     <div class="wrap">
-      <nav class="crumbs rv" aria-label="Навигация"><a href="https://rejusome.com/">Главная</a><i>·</i><a href="https://rejusome.com/products">Продукция</a><i>·</i><span>Экзосомы для лица и тела Реджусом</span></nav>
+      <nav class="crumbs rv" aria-label="Навигация"><a href="https://rejusome.com/">Главная</a><i>·</i><a href="https://rejusome.com/products">Продукция</a><i>·</i><span>Экзосомы для лица Реджусом</span></nav>
       <div class="pd-grid">
         <div class="gal rv">
-          <img class="exd hide-m" src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@3cfd0894ec82d3c77e814f5b025831f543a2ddc0/img/exo-4.webp" alt="" aria-hidden="true">
-          <img class="exd b hide-m" src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@3cfd0894ec82d3c77e814f5b025831f543a2ddc0/img/exo-1.webp" alt="" aria-hidden="true">
           <div class="gal-main" id="rjMain">
             <img class="on" src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@30c8df8dc9f5f8889309cd9ab52fa0a4f6add807/img/pack-vials.webp" width="800" height="1000" alt="Реджусом: флакон 1 — лиофилизат 20 мг, флакон 2 — растворитель 5 мл" fetchpriority="high">
             <img class="ct" src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@b849dfa9797ca3fcddc75d993bb0eb6582490dba/img/catalog-rejusome-5ml-20mg.webp" width="800" height="1000" alt="Реджусом, двухкомпонентный набор 20 мг + 5 мл" loading="lazy">
@@ -355,13 +351,13 @@
         </div>
         <div class="rv" style="--rd:.1s">
           <div class="tags"><span class="tag">Стерильный</span><span class="tag n">Для специалистов</span></div>
-          <h1><strong>Экзосомы Реджусом <em>(Rejusome)</em></strong><span>для лица и&nbsp;тела</span></h1>
+          <h1><strong>Экзосомы для лица Реджусом <em>(Rejusome)</em></strong><span>профессиональный препарат для косметологов</span></h1>
           <div class="kpi">
             <div class="glass"><b data-count="5">5<small>млрд</small></b><span>экзосом в&nbsp;наборе</span></div>
             <div class="glass"><b>20<small>мг</small></b><span>лиофилизат, флакон 1</span></div>
             <div class="glass"><b>5<small>мл</small></b><span>растворитель, флакон 2</span></div>
           </div>
-          <p class="lead">Двухкомпонентный набор: лиофилизированный порошок с&nbsp;5&nbsp;миллиардами чистых экзосом и&nbsp;активный растворитель с&nbsp;пептидами, аминокислотами, витаминами и&nbsp;полисахаридами.</p>
+          <p class="lead">Экзосомы для лица Реджусом (Rejusome)&nbsp;— профессиональный препарат с&nbsp;высокой концентрацией экзосом для регенерации, восстановления и&nbsp;омоложения кожи лица. Двухкомпонентный набор: лиофилизированный порошок с&nbsp;5&nbsp;миллиардами чистых экзосом и&nbsp;активный растворитель с&nbsp;пептидами, аминокислотами, витаминами и&nbsp;полисахаридами. Для лица и&nbsp;тела.</p>
           <div class="ctas"><a class="btn btn--arr" href="#popup:pricemain">Узнать цену</a><a class="btn btn--line" href="#popup:protocols">Получить протокол</a></div>
           <p class="pro"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8.3-7 10-4-1.7-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg>Препарат для профессионального применения. Продажа — специалистам и клиникам.</p>
           <div class="trust"><div><i></i>Стандарты GMP · MFDS</div><div><i></i>Двухступенчатая фильтрация</div><div><i></i>Республика Корея</div></div>
@@ -388,7 +384,7 @@
       <div class="center">
         <span class="port" aria-hidden="true"></span>
         <span class="label rv">Преимущества</span>
-        <h2 class="h2 rv" style="--rd:.08s">Экзосомы Реджусом <strong>для кожи лица</strong></h2>
+        <h2 class="h2 rv" style="--rd:.08s">Преимущества экзосом Реджусом <strong>для кожи лица</strong></h2>
       </div>
       <div class="ben">
         <div class="orbit rv" aria-hidden="true"><span class="ring r1"></span><span class="ring r2"></span><span class="rays"></span><img src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@3cfd0894ec82d3c77e814f5b025831f543a2ddc0/img/exo-6.webp" alt="" loading="lazy"><span class="spk o1"></span><span class="spk o2"></span><span class="spk o3"></span><span class="spk o4"></span>
