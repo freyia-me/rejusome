@@ -3,7 +3,7 @@
   Шаблон внутренних страниц: тот же стиль, что и главная.
   Вставка в Tilda: блок T123 «HTML-код» — весь код целиком
   (меню и подвал — стандартные блоки Тильды).
-  Поп-апы Tilda: buy_rejusome — цены; protocol_rejusome — протоколы и консультация; study — обучение.
+  Поп-апы Tilda: buy_rejusomecream — цены; protocol_rejusome — протоколы и консультация; study — обучение.
 ===================================================================== -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -434,6 +434,14 @@
 /* линейка */
 #rj .line-ph{max-width:1100px;margin:clamp(28px,3.4vw,48px) auto 0;border-radius:30px;overflow:hidden;box-shadow:0 40px 70px -40px rgba(24,39,95,.35)}
 #rj .line-ph img{width:100%}
+/* ===== КРЕМ: отзывы ===== */
+#rj .rvws{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:clamp(28px,3.4vw,48px)}
+#rj .rvw{display:block;padding:10px;overflow:hidden}
+#rj .rvw img{width:100%;aspect-ratio:1;object-fit:contain;border-radius:18px;background:#fff;transition:transform 1s cubic-bezier(.2,.7,.2,1)}
+#rj .rvw:hover img{transform:scale(1.03)}
+#rj .rvw .zoom{position:absolute;right:20px;bottom:20px;z-index:2;display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.85);box-shadow:0 6px 16px -6px rgba(24,39,95,.35),inset 0 0 0 1px rgba(196,162,107,.6);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+#rj .rvw .zoom svg{width:20px;height:20px;fill:none;stroke:var(--gold);stroke-width:1.6;stroke-linecap:round}
+@media (max-width:900px){#rj .rvws{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;margin-inline:calc(var(--pad) * -1);padding:4px var(--pad) 12px;scrollbar-width:none}#rj .rvws::-webkit-scrollbar{display:none}#rj .rvw{flex:0 0 78%;scroll-snap-align:center}}
 </style>
 
 <div id="rj">
@@ -468,7 +476,7 @@
             <div class="glass"><b>50<small>мл</small></b><span>объём</span></div>
           </div>
           <p class="lead">Крем, обогащённый экзосомами и&nbsp;лизатами пробиотических бактерий,&nbsp;— сочетание инновационных технологий и&nbsp;натуральных компонентов.</p>
-          <div class="ctas"><a class="btn btn--arr" href="#popup:buy_rejusome">Узнать цену</a><a class="btn btn--line" href="#popup:protocol_rejusome">Подобрать уход</a></div>
+          <div class="ctas"><a class="btn btn--arr" href="#popup:buy_rejusomecream">Узнать цену</a><a class="btn btn--line" href="#popup:protocol_rejusome">Подобрать уход</a></div>
           <p class="pro"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8.3-7 10-4-1.7-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg>Для домашнего ухода и&nbsp;в&nbsp;составе комплексной экзосомальной терапии.</p>
           <div class="trust"><div><i></i>Все типы кожи</div><div><i></i>12 месяцев после вскрытия</div><div><i></i>Стандарты GMP</div></div>
         </div>
@@ -559,7 +567,7 @@
       <div class="quick-in"><div class="row">
         <a class="qa" href="#popup:study"><span class="ic"><svg viewBox="0 0 32 32"><path d="M3 12l13-6 13 6-13 6z"/><path d="M8 14.5V21c0 2 3.6 4 8 4s8-2 8-4v-6.5"/><path d="M29 12v8"/></svg></span><div><b>Обучение</b><span class="t">Для косметологов</span></div></a>
         <a class="qa" href="#popup:protocol_rejusome"><span class="ic"><svg viewBox="0 0 32 32"><path d="M12 4h8M13 4v9L6 26a2 2 0 0 0 1.8 3h16.4A2 2 0 0 0 26 26l-7-13V4"/><path d="M9 21h14"/></svg></span><div><b>Протоколы</b><span class="t">Методики работы</span></div></a>
-        <a class="qa" href="#popup:buy_rejusome"><span class="ic"><svg viewBox="0 0 32 32"><path d="M17 4h10v10L15 26a2 2 0 0 1-2.8 0L5 18.8a2 2 0 0 1 0-2.8z"/><circle cx="22" cy="9" r="1.6"/></svg></span><div><b>Цены</b><span class="t">Условия закупки</span></div></a>
+        <a class="qa" href="#popup:buy_rejusomecream"><span class="ic"><svg viewBox="0 0 32 32"><path d="M17 4h10v10L15 26a2 2 0 0 1-2.8 0L5 18.8a2 2 0 0 1 0-2.8z"/><circle cx="22" cy="9" r="1.6"/></svg></span><div><b>Цены</b><span class="t">Условия закупки</span></div></a>
         <a class="qa" href="#popup:protocol_rejusome"><span class="ic"><svg viewBox="0 0 32 32"><path d="M5 6h22v15H14l-6 5v-5H5z"/><path d="M10 12h12M10 16h8"/></svg></span><div><b>Консультация</b><span class="t">Подбор ухода</span></div></a>
       </div></div>
     </div>
@@ -585,6 +593,23 @@
     </div>
   </section>
 
+  <!-- ================= ОТЗЫВЫ ================= -->
+  <section class="sec tight" id="rj-reviews">
+    <div class="wrap">
+      <div class="center">
+        <span class="port" aria-hidden="true"></span>
+        <span class="label rv">Отзывы</span>
+        <h2 class="h2 rv" style="--rd:.08s">Что говорят <strong>о&nbsp;креме</strong></h2>
+        <p class="sub rv" style="--rd:.12s">Отзывы клиентов и&nbsp;специалистов. Нажмите на&nbsp;отзыв, чтобы открыть его полностью.</p>
+      </div>
+      <div class="rvws">
+        <a class="rvw pc rv" style="--rd:0.00s" href="https://static.tildacdn.com/tild3537-3665-4331-b066-613866643733/1.png" target="_blank" rel="noopener"><img src="https://static.tildacdn.com/tild3537-3665-4331-b066-613866643733/1.png" alt="Отзыв о креме Реджусом Экзо — 1" loading="lazy"><span class="zoom" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5M11 8v6M8 11h6"/></svg></span></a>
+        <a class="rvw pc rv" style="--rd:0.08s" href="https://static.tildacdn.com/tild3831-3064-4030-a630-363933643133/2.png" target="_blank" rel="noopener"><img src="https://static.tildacdn.com/tild3831-3064-4030-a630-363933643133/2.png" alt="Отзыв о креме Реджусом Экзо — 2" loading="lazy"><span class="zoom" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5M11 8v6M8 11h6"/></svg></span></a>
+        <a class="rvw pc rv" style="--rd:0.16s" href="https://static.tildacdn.com/tild6538-3161-4231-b163-623236643761/3.png" target="_blank" rel="noopener"><img src="https://static.tildacdn.com/tild6538-3161-4231-b163-623236643761/3.png" alt="Отзыв о креме Реджусом Экзо — 3" loading="lazy"><span class="zoom" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5M11 8v6M8 11h6"/></svg></span></a>
+      </div>
+    </div>
+  </section>
+
   <!-- ================= 7. ЛИНЕЙКА ================= -->
   <section class="sec" id="rj-more">
     <div class="wrap">
@@ -595,10 +620,10 @@
       </div>
       <figure class="line-ph rv"><img src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@586c1796fce23340bfd9281b1d29769447228ad7/img/lineup-care.webp" width="1600" height="1022" alt="Линейка Реджусом: маска, бальзам, набор, крем, мист, крем для глаз, сыворотка" loading="lazy"></figure>
       <div class="cat">
-        <div class="card rv"><a class="ph" href="https://rejusome.com/exoboost-serum"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@b849dfa9797ca3fcddc75d993bb0eb6582490dba/img/catalog-exo-serum-30ml.webp" width="800" height="1000" alt="Реджусом Экзо сыворотка 30 мл"></a><div class="tx"><span class="tg">Космецевтика</span><h3>Экзо сыворотка<small>(EXO BOOST SERUM) · 30 мл</small></h3><p>Экзо-пробиотическая сыворотка для активной регенерации и увлажнения кожи</p><div class="row"><a class="link" href="https://rejusome.com/exoboost-serum">Подробнее</a><a class="price" href="#popup:buy_rejusome">Цена</a></div></div></div>
-        <div class="card rv" style="--rd:.06s"><a class="ph" href="https://rejusome.com/eyecream"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@b849dfa9797ca3fcddc75d993bb0eb6582490dba/img/catalog-exo-eye-cream-20ml.webp" width="800" height="1000" alt="Реджусом Экзо крем для глаз 20 мл"></a><div class="tx"><span class="tg">Космецевтика</span><h3>Экзо крем для глаз<small>(EXO EYE CREAM) · 20 мл</small></h3><p>Уход за деликатной кожей вокруг глаз</p><div class="row"><a class="link" href="https://rejusome.com/eyecream">Подробнее</a><a class="price" href="#popup:buy_rejusome">Цена</a></div></div></div>
-        <div class="card rv" style="--rd:.12s"><a class="ph" href="https://rejusome.com/rejusome-mask"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@b849dfa9797ca3fcddc75d993bb0eb6582490dba/img/catalog-exo-mask-25g.webp" width="800" height="1000" alt="Реджусом Экзо маска 25 г"></a><div class="tx"><span class="tg">Космецевтика</span><h3>Экзо маска<small>(EXO BOOST MASK) · 25 г</small></h3><p>Маска для экстренного восстановления и успокоения кожи лица и шеи</p><div class="row"><a class="link" href="https://rejusome.com/rejusome-mask">Подробнее</a><a class="price" href="#popup:buy_rejusome">Цена</a></div></div></div>
-        <div class="card rv" style="--rd:.18s"><a class="ph" href="https://rejusome.com/mist"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@b849dfa9797ca3fcddc75d993bb0eb6582490dba/img/catalog-exo-spray-150ml.webp" width="800" height="1000" alt="Реджусом Экзо спрей 150 мл"></a><div class="tx"><span class="tg">Космецевтика</span><h3>Экзо спрей<small>(EXO BOOST SPRAY) · 150 мл</small></h3><p>Лёгкий мист-тоник на основе экзосом и гиалуроновой кислоты</p><div class="row"><a class="link" href="https://rejusome.com/mist">Подробнее</a><a class="price" href="#popup:buy_rejusome">Цена</a></div></div></div>
+        <div class="card rv"><a class="ph" href="https://rejusome.com/exoboost-serum"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@b849dfa9797ca3fcddc75d993bb0eb6582490dba/img/catalog-exo-serum-30ml.webp" width="800" height="1000" alt="Реджусом Экзо сыворотка 30 мл"></a><div class="tx"><span class="tg">Космецевтика</span><h3>Экзо сыворотка<small>(EXO BOOST SERUM) · 30 мл</small></h3><p>Экзо-пробиотическая сыворотка для активной регенерации и увлажнения кожи</p><div class="row"><a class="link" href="https://rejusome.com/exoboost-serum">Подробнее</a><a class="price" href="#popup:buy_rejusomecream">Цена</a></div></div></div>
+        <div class="card rv" style="--rd:.06s"><a class="ph" href="https://rejusome.com/eyecream"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@b849dfa9797ca3fcddc75d993bb0eb6582490dba/img/catalog-exo-eye-cream-20ml.webp" width="800" height="1000" alt="Реджусом Экзо крем для глаз 20 мл"></a><div class="tx"><span class="tg">Космецевтика</span><h3>Экзо крем для глаз<small>(EXO EYE CREAM) · 20 мл</small></h3><p>Уход за деликатной кожей вокруг глаз</p><div class="row"><a class="link" href="https://rejusome.com/eyecream">Подробнее</a><a class="price" href="#popup:buy_rejusomecream">Цена</a></div></div></div>
+        <div class="card rv" style="--rd:.12s"><a class="ph" href="https://rejusome.com/rejusome-mask"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@b849dfa9797ca3fcddc75d993bb0eb6582490dba/img/catalog-exo-mask-25g.webp" width="800" height="1000" alt="Реджусом Экзо маска 25 г"></a><div class="tx"><span class="tg">Космецевтика</span><h3>Экзо маска<small>(EXO BOOST MASK) · 25 г</small></h3><p>Маска для экстренного восстановления и успокоения кожи лица и шеи</p><div class="row"><a class="link" href="https://rejusome.com/rejusome-mask">Подробнее</a><a class="price" href="#popup:buy_rejusomecream">Цена</a></div></div></div>
+        <div class="card rv" style="--rd:.18s"><a class="ph" href="https://rejusome.com/mist"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@b849dfa9797ca3fcddc75d993bb0eb6582490dba/img/catalog-exo-spray-150ml.webp" width="800" height="1000" alt="Реджусом Экзо спрей 150 мл"></a><div class="tx"><span class="tg">Космецевтика</span><h3>Экзо спрей<small>(EXO BOOST SPRAY) · 150 мл</small></h3><p>Лёгкий мист-тоник на основе экзосом и гиалуроновой кислоты</p><div class="row"><a class="link" href="https://rejusome.com/mist">Подробнее</a><a class="price" href="#popup:buy_rejusomecream">Цена</a></div></div></div>
       </div>
     </div>
   </section>
@@ -613,7 +638,7 @@
           <span class="label">Реджусом Экзо</span>
           <h2>Узнайте цену <strong>и условия закупки</strong></h2>
           <p>Оставьте заявку — пришлём цены и поможем подобрать домашний уход с экзосомами.</p>
-          <div class="ctas"><a class="btn btn--arr" href="#popup:buy_rejusome">Узнать цену</a><a class="link" href="#popup:protocol_rejusome">Консультация</a></div>
+          <div class="ctas"><a class="btn btn--arr" href="#popup:buy_rejusomecream">Узнать цену</a><a class="link" href="#popup:protocol_rejusome">Консультация</a></div>
           <p class="legal">Нажимая на кнопку, вы даёте <a href="https://rejusome.com/consentpriv">согласие</a> на обработку персональных данных и соглашаетесь с <a href="https://rejusome.com/privacy">политикой конфиденциальности</a>.</p>
         </div>
         <div class="pic"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@586c1796fce23340bfd9281b1d29769447228ad7/img/cream-box.webp" width="900" height="1125" alt="Реджусом Экзо Крем 50 мл"></div>
@@ -622,7 +647,7 @@
   </section>
 
   <!-- плавающая кнопка (телефон) -->
-  <div class="sticky glass" id="rjSticky"><div><b>Реджусом Экзо Крем</b><small>10 000 ppm экзосом · 50 мл</small></div><a class="btn" href="#popup:buy_rejusome">Узнать цену</a></div>
+  <div class="sticky glass" id="rjSticky"><div><b>Реджусом Экзо Крем</b><small>10 000 ppm экзосом · 50 мл</small></div><a class="btn" href="#popup:buy_rejusomecream">Узнать цену</a></div>
 
 </div>
 
