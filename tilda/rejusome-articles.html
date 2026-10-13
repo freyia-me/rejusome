@@ -482,6 +482,15 @@
 #rjFeed h1,#rjFeed h2,#rjFeed h3,#rjFeed [class*="title"],#rjFeed [class*="name"]{color:#18275f}
 #rjFeed [class*="descr"]{color:#5d6788}
 #rjFeed [class*="date"]{color:#b58c46}
+/* ровная сетка карточек ленты */
+#rjFeed .t-container,#rjFeed .t-feed__container,#rjFeed .t-feed{width:100%!important;max-width:none!important;padding-left:0!important;padding-right:0!important;margin-left:0!important;margin-right:0!important}
+#rjFeed .rj-grid,#rjFeed :has(> .t-feed__grid-col){display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px 24px;width:100%!important;max-width:none!important;margin:0!important;padding:0!important}
+#rjFeed .rj-grid > :not(.t-feed__grid-col),#rjFeed :has(> .t-feed__grid-col) > :not(.t-feed__grid-col){grid-column:1/-1}
+#rjFeed .t-feed__grid-separator,#rjFeed .rj-grid > .t-clear,#rjFeed .rj-grid > .t-feed__post-preloader{display:none!important}
+#rjFeed .t-feed__grid-col{float:none!important;width:auto!important;max-width:none!important;margin:0!important;padding:0!important;display:flex}
+#rjFeed .t-feed__grid-col > *{flex:1;display:flex;flex-direction:column;height:100%}
+@media (max-width:960px){#rjFeed .rj-grid,#rjFeed :has(> .t-feed__grid-col){grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}}
+@media (max-width:600px){#rjFeed .rj-grid,#rjFeed :has(> .t-feed__grid-col){grid-template-columns:1fr;gap:16px}}
 #rjFeed .t-btn,#rjFeed .t-feed__showmore-btn{border-radius:999px!important;background:#18275f!important;color:#fff!important;border:0!important;box-shadow:0 14px 30px -14px rgba(24,39,95,.6)}
 </style>
 
@@ -586,10 +595,12 @@
     var slot=document.getElementById('rjFeed');if(!slot)return;
     var list=recs();list.forEach(function(r){if(!slot.contains(r))slot.appendChild(r);});
     if(slot.children.length)slot.classList.add('has');
+    [].slice.call(slot.querySelectorAll('.t-feed__grid-col')).forEach(function(c){c.parentNode.classList.add('rj-grid');});
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',move);else move();
   window.addEventListener('load',move);
   var n=0,iv=setInterval(function(){move();if(++n>20)clearInterval(iv);},500);
+  if('MutationObserver' in window){var mo=new MutationObserver(function(){[].slice.call(document.querySelectorAll('#rjFeed .t-feed__grid-col')).forEach(function(c){c.parentNode.classList.add('rj-grid');});});document.addEventListener('DOMContentLoaded',function(){var sl=document.getElementById('rjFeed');if(sl)mo.observe(sl,{childList:true,subtree:true});});}
 })();
 (function(){
   var root=document.getElementById('rj');if(!root)return;
