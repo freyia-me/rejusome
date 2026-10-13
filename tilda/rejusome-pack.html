@@ -116,9 +116,9 @@
 @media (max-width:900px){#rj .pd-grid{grid-template-columns:1fr}#rj .gal{max-width:520px;width:100%;margin:0 auto}}
 @media (max-width:520px){#rj .kpi{gap:8px}#rj .kpi > div{padding:14px 12px}#rj .kpi b{font-size:24px}#rj .kpi span{font-size:11.5px}#rj .pd .btn{width:100%}#rj .thumbs button{flex-basis:64px}#rj .label{letter-spacing:.16em;gap:10px;font-size:11px}#rj .center > .label:before,#rj .center > .label:after{width:18px}}
 
-/* ===== БЫСТРЫЕ ДЕЙСТВИЯ ===== */
-#rj .quick{padding-block:0 clamp(8px,2vw,24px)}
-#rj .quick .row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+/* ===== КНОПКИ (под схемой приготовления) ===== */
+#rj .quick-in{margin-top:clamp(28px,3vw,40px)}
+#rj .quick-in .row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
 #rj .qa{position:relative;min-width:0;display:flex;align-items:center;gap:16px;padding:16px 58px 16px 16px;border:1px solid var(--line);border-radius:18px;background:var(--paper);box-shadow:0 10px 30px -22px rgba(24,39,95,.45);transition:border-color .35s,transform .35s,box-shadow .35s}
 #rj .qa .ic{width:48px;height:48px}
 #rj .qa .ic svg{width:24px;height:24px;stroke:var(--ink);stroke-width:1.4}
@@ -127,8 +127,8 @@
 #rj .qa:after{content:"\2192";position:absolute;right:16px;top:50%;width:30px;height:30px;margin-top:-15px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;font:400 14px/1 var(--f);color:var(--ink);transition:background .35s,color .35s,border-color .35s,transform .35s}
 #rj .qa:hover{border-color:var(--ink);transform:translateY(-2px);box-shadow:0 18px 40px -24px rgba(24,39,95,.55)}
 #rj .qa:hover:after{background:var(--ink);border-color:var(--ink);color:#fff;transform:translateX(3px)}
-@media (max-width:1060px){#rj .quick .row{grid-template-columns:1fr 1fr}}
-@media (max-width:520px){#rj .quick .row{grid-template-columns:1fr;gap:10px}#rj .qa{padding:12px 44px 12px 12px;gap:10px;border-radius:14px}#rj .qa .ic{width:38px;height:38px}#rj .qa .ic svg{width:20px;height:20px}#rj .qa b{font-size:14px}#rj .qa span.t{font-size:12px}#rj .qa:after{right:10px;width:26px;height:26px;margin-top:-13px}}
+@media (max-width:1060px){#rj .quick-in .row{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){#rj .quick-in .row{grid-template-columns:1fr;gap:10px}#rj .qa{padding:12px 44px 12px 12px;gap:10px;border-radius:14px}#rj .qa .ic{width:38px;height:38px}#rj .qa .ic svg{width:20px;height:20px}#rj .qa b{font-size:14px}#rj .qa span.t{font-size:12px}#rj .qa:after{right:10px;width:26px;height:26px;margin-top:-13px}}
 
 /* ===== 2. ПРЕИМУЩЕСТВА ===== */
 #rj .ben{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(24px,5vw,72px);align-items:center;margin-top:clamp(36px,4vw,56px);text-align:left}
@@ -216,6 +216,36 @@
 #rj .step p{font:400 14.5px/1.6 var(--f);color:var(--muted);margin-top:10px}
 @media (max-width:860px){#rj .steps{grid-template-columns:1fr;gap:26px}#rj .steps:before{left:27px;right:auto;top:28px;bottom:28px;width:1px;height:auto;background:linear-gradient(180deg,var(--gold2),rgba(122,187,229,.6),var(--gold2))}#rj .step{display:grid;grid-template-columns:56px 1fr;gap:0 20px}#rj .step b{grid-row:1/3}#rj .step h3{margin-top:4px}#rj .step p{margin-top:6px}}
 
+/* схема смешивания */
+#rj .mix{display:grid;grid-template-columns:1fr minmax(0,1.35fr) 1fr;gap:clamp(16px,3vw,40px);align-items:end;margin-top:clamp(36px,4vw,56px);text-align:left}
+#rj .vl{display:flex;flex-direction:column;align-items:center;text-align:center}
+#rj .ped{position:relative;width:min(100%,220px);padding:0 10% 18px}
+#rj .ped:after{content:"";position:absolute;left:4%;right:4%;bottom:0;height:34px;border-radius:50%;background:radial-gradient(closest-side,rgba(24,39,95,.22),rgba(24,39,95,0));z-index:-1}
+#rj .ped:before{content:"";position:absolute;left:-6%;right:-6%;bottom:6px;height:46%;border-radius:50% 50% 24px 24px/30% 30% 24px 24px;background:linear-gradient(180deg,rgba(255,255,255,0),rgba(232,243,255,.7));border:1px solid rgba(177,197,220,.5);border-top:0;z-index:-1}
+#rj .ped img{position:relative;width:100%;filter:drop-shadow(0 18px 24px rgba(24,39,95,.18))}
+#rj .v2 .ped img{animation:rjPour 5.6s ease-in-out infinite;transform-origin:50% 90%}
+@keyframes rjPour{0%,55%,100%{transform:rotate(0)}22%,40%{transform:rotate(9deg)}}
+#rj .glw{position:absolute;left:10%;right:10%;top:40%;height:40%;border-radius:40%;background:radial-gradient(closest-side,rgba(160,205,255,.55),rgba(160,205,255,0));mix-blend-mode:screen;animation:rjGlow 5.6s ease-in-out infinite;pointer-events:none}
+#rj .vl figcaption{margin-top:18px;display:flex;flex-direction:column;align-items:center}
+#rj .vt{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#dfeeff,#9fc0ec 70%);box-shadow:0 0 0 1px rgba(181,140,70,.55),0 8px 18px -6px rgba(47,95,196,.45);font:400 19px/1 var(--f);color:var(--ink)}
+#rj .vl small{margin-top:12px;font:500 11px/1 var(--f);letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+#rj .vl b{margin-top:8px;font:400 18px/1.25 var(--f);color:var(--ink)}
+#rj .vl em{margin-top:4px;font:300 26px/1.1 var(--f);font-style:normal;color:var(--ink)}
+#rj .flow{align-self:center;padding-bottom:20px}
+#rj .arc{display:block;width:100%;height:auto;overflow:visible}
+#rj .arc path{fill:none;stroke:url(#rjArc);stroke-width:1.6;stroke-dasharray:6 7;animation:rjDash 1.6s linear infinite}
+#rj .arc path.hd{stroke:#c4a26b;stroke-dasharray:none;animation:none;stroke-linecap:round;stroke-linejoin:round}
+#rj .arc circle{fill:#9fc8f0;filter:drop-shadow(0 0 4px rgba(122,187,229,.9))}
+@keyframes rjDash{to{stroke-dashoffset:-26}}
+#rj .eq{display:flex;justify-content:center;align-items:center;gap:14px;margin-top:-6px}
+#rj .eq b{font:400 clamp(26px,2.6vw,36px)/1 var(--f);letter-spacing:-.02em;color:var(--ink)}
+#rj .eq i{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;border:1px solid var(--gold);color:var(--gold);font:300 20px/1 var(--f);font-style:normal}
+#rj .rules{list-style:none;display:grid;gap:10px;margin-top:22px}
+#rj .rules li{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start;padding:14px 18px;border-radius:18px;background:var(--grad);box-shadow:inset 0 0 0 1px var(--line)}
+#rj .rules li > span{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:#fff;box-shadow:inset 0 0 0 1px var(--gold2);font:400 14px/1 var(--f);color:var(--gold)}
+#rj .rules h3{font:500 15.5px/1.3 var(--f)}
+#rj .rules p{font:400 13.5px/1.5 var(--f);color:var(--muted);margin-top:4px}
+@media (max-width:900px){#rj .mix{grid-template-columns:1fr 1fr;grid-template-areas:"a b" "f f";align-items:end}#rj .v2{grid-area:a}#rj .v1{grid-area:b}#rj .flow{grid-area:f;padding:0}#rj .arc{max-width:340px;margin:0 auto}#rj .ped{width:min(100%,150px)}#rj .vl b{font-size:15px}#rj .vl em{font-size:21px}}
 #rj .course{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:clamp(32px,4vw,48px);text-align:left}
 #rj .course > div{padding:20px 22px;border-radius:22px}
 #rj .course > div:before{border-radius:18px}
@@ -366,18 +396,6 @@
     </div>
   </section>
 
-  <!-- ================= БЫСТРЫЕ ДЕЙСТВИЯ ================= -->
-  <div class="quick">
-    <div class="wrap">
-      <div class="row">
-        <a class="qa" href="#popup:study"><span class="ic"><svg viewBox="0 0 32 32"><path d="M3 12l13-6 13 6-13 6z"/><path d="M8 14.5V21c0 2 3.6 4 8 4s8-2 8-4v-6.5"/><path d="M29 12v8"/></svg></span><div><b>Обучение</b><span class="t">Для косметологов</span></div></a>
-        <a class="qa" href="#popup:protocol_rejusome"><span class="ic"><svg viewBox="0 0 32 32"><path d="M12 4h8M13 4v9L6 26a2 2 0 0 0 1.8 3h16.4A2 2 0 0 0 26 26l-7-13V4"/><path d="M9 21h14"/></svg></span><div><b>Протоколы</b><span class="t">Методики работы</span></div></a>
-        <a class="qa" href="#popup:buy_rejusome"><span class="ic"><svg viewBox="0 0 32 32"><path d="M17 4h10v10L15 26a2 2 0 0 1-2.8 0L5 18.8a2 2 0 0 1 0-2.8z"/><circle cx="22" cy="9" r="1.6"/></svg></span><div><b>Цены</b><span class="t">Условия закупки</span></div></a>
-        <a class="qa" href="#popup:protocol_rejusome"><span class="ic"><svg viewBox="0 0 32 32"><path d="M5 6h22v15H14l-6 5v-5H5z"/><path d="M10 12h12M10 16h8"/></svg></span><div><b>Консультация</b><span class="t">Подбор ухода</span></div></a>
-      </div>
-    </div>
-  </div>
-
   <!-- ================= 2. ПРЕИМУЩЕСТВА ================= -->
   <section class="sec" id="rj-benefits">
     <div class="wrap">
@@ -466,14 +484,33 @@
       <div class="center">
         <span class="port" aria-hidden="true"></span>
         <span class="label rv">Как работать с препаратом</span>
-        <h2 class="h2 rv" style="--rd:.08s">Приготовление <strong>и курс процедур</strong></h2>
+        <h2 class="h2 rv" style="--rd:.08s">Как приготовить <strong>сыворотку</strong></h2>
       </div>
-      <ol class="steps">
-        <li class="step rv"><b>01</b><h3>Смешать</h3><p>Активный растворитель 5&nbsp;мл соединить с&nbsp;лиофилизированным порошком 20&nbsp;мг.</p></li>
-        <li class="step rv" style="--rd:.08s"><b>02</b><h3>Настоять</h3><p>Хорошо перемешать и&nbsp;оставить на&nbsp;3–5&nbsp;минут.</p></li>
-        <li class="step rv" style="--rd:.16s"><b>03</b><h3>Применить</h3><p>Использовать сыворотку в&nbsp;течение 3&nbsp;часов после приготовления.</p></li>
-        <li class="step rv" style="--rd:.24s"><b>04</b><h3>Повторить курсом</h3><p>Не менее 5&nbsp;процедур с&nbsp;перерывом не&nbsp;менее 7&nbsp;дней.</p></li>
-      </ol>
+      <div class="mix">
+        <figure class="vl v2 rv">
+          <div class="ped"><img src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@78846ecd71cf09c644f925f38bf9f6a5e0a471e9/img/vial-2-cut.webp" width="419" height="788" alt="Флакон 2 — активный растворитель 5 мл" loading="lazy"></div>
+          <figcaption><span class="vt">2</span><small>Флакон 2</small><b>Активный растворитель</b><em>5 мл</em></figcaption>
+        </figure>
+        <div class="flow rv" style="--rd:.1s">
+          <svg class="arc" viewBox="0 0 320 90" aria-hidden="true"><defs><linearGradient id="rjArc" x1="0" x2="1"><stop offset="0" stop-color="#7abbe5"/><stop offset="1" stop-color="#c4a26b"/></linearGradient></defs>
+            <path id="rjArcPath" d="M10 78 C 90 -10, 230 -10, 306 70"/>
+            <path class="hd" d="M296 58 L307 72 L290 74"/>
+            <circle r="5"><animateMotion dur="2.8s" repeatCount="indefinite"><mpath href="#rjArcPath"/></animateMotion></circle>
+            <circle r="3.5"><animateMotion dur="2.8s" begin="-.9s" repeatCount="indefinite"><mpath href="#rjArcPath"/></animateMotion></circle>
+            <circle r="2.5"><animateMotion dur="2.8s" begin="-1.8s" repeatCount="indefinite"><mpath href="#rjArcPath"/></animateMotion></circle>
+          </svg>
+          <p class="eq"><b>5 мл</b><i>+</i><b>20 мг</b></p>
+          <ol class="rules">
+            <li><span>1</span><div><h3>Смешать</h3><p>Активный растворитель 5&nbsp;мл соединить с&nbsp;лиофилизированным порошком 20&nbsp;мг.</p></div></li>
+            <li><span>2</span><div><h3>Перемешать и&nbsp;подождать 3–5&nbsp;минут</h3><p>Хорошо перемешать и&nbsp;оставить, чтобы порошок полностью растворился.</p></div></li>
+            <li><span>3</span><div><h3>Использовать в&nbsp;течение 3&nbsp;часов</h3><p>Готовую сыворотку применяют в&nbsp;течение 3&nbsp;часов после приготовления.</p></div></li>
+          </ol>
+        </div>
+        <figure class="vl v1 rv" style="--rd:.2s">
+          <div class="ped"><img src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@78846ecd71cf09c644f925f38bf9f6a5e0a471e9/img/vial-1-cut.webp" width="401" height="756" alt="Флакон 1 — лиофилизированный порошок 20 мг" loading="lazy"><span class="glw"></span></div>
+          <figcaption><span class="vt">1</span><small>Флакон 1</small><b>Лиофилизированный порошок</b><em>20 мг</em></figcaption>
+        </figure>
+      </div>
       <div class="course rv">
         <div class="glass"><b>от 5</b><span>процедур в&nbsp;курсе</span></div>
         <div class="glass"><b>от 7<small>дней</small></b><span>перерыв между процедурами</span></div>
@@ -481,7 +518,12 @@
         <div class="glass"><b>2–4<small>°C</small></b><span>рекомендуемая температура хранения</span></div>
       </div>
       <p class="note center" style="margin-top:14px">Эффект зависит от состояния кожи, общего состояния здоровья и индивидуальных особенностей пациента.</p>
-      <div class="ctas rv"><a class="btn btn--arr" href="#popup:protocol_rejusome">Запросить протоколы</a><a class="link" href="#popup:study">Обучение для косметологов</a></div>
+      <div class="quick-in"><div class="row">
+        <a class="qa" href="#popup:study"><span class="ic"><svg viewBox="0 0 32 32"><path d="M3 12l13-6 13 6-13 6z"/><path d="M8 14.5V21c0 2 3.6 4 8 4s8-2 8-4v-6.5"/><path d="M29 12v8"/></svg></span><div><b>Обучение</b><span class="t">Для косметологов</span></div></a>
+        <a class="qa" href="#popup:protocol_rejusome"><span class="ic"><svg viewBox="0 0 32 32"><path d="M12 4h8M13 4v9L6 26a2 2 0 0 0 1.8 3h16.4A2 2 0 0 0 26 26l-7-13V4"/><path d="M9 21h14"/></svg></span><div><b>Протоколы</b><span class="t">Методики работы</span></div></a>
+        <a class="qa" href="#popup:buy_rejusome"><span class="ic"><svg viewBox="0 0 32 32"><path d="M17 4h10v10L15 26a2 2 0 0 1-2.8 0L5 18.8a2 2 0 0 1 0-2.8z"/><circle cx="22" cy="9" r="1.6"/></svg></span><div><b>Цены</b><span class="t">Условия закупки</span></div></a>
+        <a class="qa" href="#popup:protocol_rejusome"><span class="ic"><svg viewBox="0 0 32 32"><path d="M5 6h22v15H14l-6 5v-5H5z"/><path d="M10 12h12M10 16h8"/></svg></span><div><b>Консультация</b><span class="t">Подбор ухода</span></div></a>
+      </div></div>
     </div>
   </section>
 
@@ -627,7 +669,7 @@
   var links=[];
   [].slice.call(root.querySelectorAll('.port')).forEach(function(pt){
     var sec=pt.closest('section'),prev=sec&&sec.previousElementSibling;
-    while(prev&&prev.tagName!=='SECTION'&&!prev.classList.contains('quick'))prev=prev.previousElementSibling;
+    while(prev&&prev.tagName!=='SECTION')prev=prev.previousElementSibling;
     if(!prev)return;
     var el=document.createElement('div');el.className='rj-link';el.setAttribute('aria-hidden','true');
     el.innerHTML='<i class="fill"></i><b class="msg"></b>';root.appendChild(el);
