@@ -462,9 +462,9 @@
 #rj .pd .center .ctas{justify-content:center}
 #rj .pd .center .tags{justify-content:center}
 #rj .feed-slot{margin-top:clamp(28px,3.4vw,44px)}
-#rj .feed-slot:empty{display:none}
+#rj .feed-slot:not(.has){display:none}
 #rj .feed-empty{margin-top:28px;text-align:center;font:400 15px/1.6 var(--f);color:var(--muted)}
-#rj .feed-slot:not(:empty) + .feed-empty{display:none}
+#rj .feed-slot.has + .feed-empty{display:none}
 /* оформление ленты Тильды внутри блока */
 #rjFeed .t-rec{padding-top:0!important;padding-bottom:0!important;background:none!important}
 #rjFeed .js-block-header,#rjFeed .t-section__container,#rjFeed .t896 h1{display:none!important}
@@ -477,6 +477,11 @@
 #rjFeed .t-feed__post-date,#rjFeed .t-feed__post-date *,#rjFeed .t-feed__post-tag,#rjFeed .t-feed__post-parts-date-row *{color:#b58c46!important;letter-spacing:.12em;text-transform:uppercase;font-size:11px!important;font-weight:500!important}
 #rjFeed .t-feed__parts-switch-btn{border-radius:999px!important;border:1px solid #e3e7ee!important;background:#fff!important;color:#5d6788!important;font-family:"Montserrat",Arial,sans-serif!important;transition:border-color .3s,color .3s}
 #rjFeed .t-feed__parts-switch-btn.t-active,#rjFeed .t-feed__parts-switch-btn:hover{border-color:#b58c46!important;color:#18275f!important}
+#rjFeed,#rjFeed *{font-family:"Montserrat","Helvetica Neue",Arial,sans-serif!important}
+#rjFeed img,#rjFeed [class*="bgimg"]{border-radius:14px}
+#rjFeed h1,#rjFeed h2,#rjFeed h3,#rjFeed [class*="title"],#rjFeed [class*="name"]{color:#18275f}
+#rjFeed [class*="descr"]{color:#5d6788}
+#rjFeed [class*="date"]{color:#b58c46}
 #rjFeed .t-btn,#rjFeed .t-feed__showmore-btn{border-radius:999px!important;background:#18275f!important;color:#fff!important;border:0!important;box-shadow:0 14px 30px -14px rgba(24,39,95,.6)}
 </style>
 
@@ -561,9 +566,30 @@
 </div>
 
 <script>
+/* перенос ленты статей Тильды внутрь блока «Всё про экзосомы».
+   Если лента не подтянулась сама, впишите в FEED_REC ID её блока, например 'rec2400334921'
+   (Тильда: настройки блока → внизу «ID блока»). Можно несколько через запятую. */
 (function(){
-  var slot=document.getElementById('rjFeed');if(!slot)return;
-  ['.t915','.t896'].forEach(function(sel){var el=document.querySelector(sel),rec=el&&el.closest('.t-rec');if(rec&&!slot.contains(rec))slot.appendChild(rec);});
+  var FEED_REC='';
+  var SEL='.js-feed,.t-feed,[class*="t-feed"],[class*="fd302"],[class*="fd-302"],.t915,.t896';
+  function recs(){
+    var out=[];
+    FEED_REC.split(',').forEach(function(id){id=id.trim().replace(/^#/,'');var r=id&&document.getElementById(id);if(r)out.push(r);});
+    [].slice.call(document.querySelectorAll('.t-rec')).forEach(function(r){
+      if(r.closest('#rj')||out.indexOf(r)>-1)return;
+      var t=(r.getAttribute('data-record-type')||'').toLowerCase();
+      if(t==='915'||t==='896'||t.indexOf('fd')===0||r.querySelector(SEL))out.push(r);
+    });
+    return out;
+  }
+  function move(){
+    var slot=document.getElementById('rjFeed');if(!slot)return;
+    var list=recs();list.forEach(function(r){if(!slot.contains(r))slot.appendChild(r);});
+    if(slot.children.length)slot.classList.add('has');
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',move);else move();
+  window.addEventListener('load',move);
+  var n=0,iv=setInterval(function(){move();if(++n>20)clearInterval(iv);},500);
 })();
 (function(){
   var root=document.getElementById('rj');if(!root)return;
