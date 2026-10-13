@@ -459,6 +459,9 @@
 #rj .pd .center .lead{margin-inline:auto;max-width:62ch}
 #rj .pd .center .ctas{justify-content:center}
 #rj .pd .center .tags{justify-content:center}
+#rj .amb-l{list-style:none;display:grid;gap:10px;margin-top:22px;padding:0}
+#rj .amb-l li{position:relative;padding-left:26px;font:400 15px/1.5 var(--f);color:var(--ink)}
+#rj .amb-l li:before{content:"";position:absolute;left:2px;top:.5em;width:9px;height:9px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff,#9fc0ec);box-shadow:0 0 0 1px rgba(181,140,70,.6)}
 #rj .pd h1 .q{display:block;font-weight:200;font-size:clamp(22px,2.4vw,32px);color:var(--gold);letter-spacing:-.01em;margin-bottom:.3em}
 #rj .strip{display:flex;gap:14px;margin-top:clamp(28px,3.4vw,44px);justify-content:center}
 #rj .strip{overflow:hidden}
@@ -497,17 +500,25 @@
 
   <!-- ================= 1. ПЕРВЫЙ ЭКРАН ================= -->
   <section class="pd">
-    <img class="exd hide-m" src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@3cfd0894ec82d3c77e814f5b025831f543a2ddc0/img/exo-5.webp" alt="" aria-hidden="true" style="width:clamp(70px,7vw,120px);left:3%;top:18%;animation-delay:-1s"><img class="exd hide-m" src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@3cfd0894ec82d3c77e814f5b025831f543a2ddc0/img/exo-4.webp" alt="" aria-hidden="true" style="width:clamp(46px,4vw,66px);right:6%;top:10%;animation-delay:-6s">
     <div class="wrap">
       <nav class="crumbs rv" aria-label="Навигация"><a href="https://rejusome.com/">Главная</a><i>·</i><span>Амбассадорам</span></nav>
-      <div class="center">
-        <div class="tags rv" style="margin-top:22px"><span class="tag">Только для косметологов</span><span class="tag n">Сообщество Реджусом</span></div>
-        <h1 class="rv" style="--rd:.06s"><span class="q">Выбираешь экзосомы?</span><strong>Стань амбассадором Реджусом <em>(Rejusome)</em></strong></h1>
-        <p class="lead rv" style="--rd:.1s">Присоединяйтесь к&nbsp;эксклюзивному сообществу косметологов Реджусом: индивидуальные условия сотрудничества и&nbsp;возможность стать настоящим амбассадором бренда.</p>
-        <div class="ctas rv" style="--rd:.12s"><a class="btn btn--arr" href="#popup:specialist_ambassador">Стать амбассадором</a><a class="btn btn--line" href="#rj-events">Наши мероприятия</a></div>
-      </div>
-      <div class="strip rv" style="--rd:.16s">
-        <figure><img src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@7b41c9a0022b9f1f1975844a52ce4f772638c758/img/amb-1.webp" width="223" height="398" alt="Выступление на конференции по экзосомам"></figure><figure><img src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@7b41c9a0022b9f1f1975844a52ce4f772638c758/img/amb-6.webp" width="710" height="398" alt="Участники симпозиума JeuDerm в Дубровнике"></figure><figure><img src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@7b41c9a0022b9f1f1975844a52ce4f772638c758/img/amb-5.webp" width="296" height="398" alt="Косметолог с препаратами Реджусом"></figure><figure><img src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@7b41c9a0022b9f1f1975844a52ce4f772638c758/img/amb-10.webp" width="710" height="400" alt="Выпускники программы JeuDerm, Дубровник 2026"></figure><figure><img src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@7b41c9a0022b9f1f1975844a52ce4f772638c758/img/amb-3.webp" width="225" height="399" alt="Доклад о биотехнологиях"></figure>
+      <div class="pd-grid">
+        <div class="gal rv">
+          <div class="gal-main"><img class="on" src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@02a70f6b415b4a972bee5f89b89ba73422800371/img/amb-hero.webp" width="900" height="1125" alt="Станьте амбассадором Реджусом — косметолог с препаратами Реджусом" fetchpriority="high">
+          </div>
+        </div>
+        <div class="rv" style="--rd:.1s">
+          <div class="tags"><span class="tag">Только для косметологов</span><span class="tag n">Сообщество Реджусом</span></div>
+          <h1><span class="q">Выбираешь экзосомы?</span><strong>Стань амбассадором Реджусом <em>(Rejusome)</em></strong></h1>
+          <p class="lead">Присоединяйтесь к&nbsp;эксклюзивному сообществу косметологов Реджусом: индивидуальные условия сотрудничества и&nbsp;возможность стать настоящим амбассадором бренда.</p>
+          <ul class="amb-l">
+            <li>Эксклюзивные условия, бонусы и&nbsp;подарки</li>
+            <li>Вебинары, мастер-классы и&nbsp;протоколы процедур</li>
+            <li>Маркетинговая поддержка</li>
+            <li>Приглашения на&nbsp;семинары и&nbsp;выставки</li>
+          </ul>
+          <div class="ctas"><a class="btn btn--arr" href="#popup:specialist_ambassador">Стать амбассадором</a><a class="btn btn--line" href="#rj-events">Наши мероприятия</a></div>
+        </div>
       </div>
     </div>
   </section>
