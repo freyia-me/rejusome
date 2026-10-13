@@ -442,6 +442,19 @@
 #rj .rvw .zoom{position:absolute;right:20px;bottom:20px;z-index:2;display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.85);box-shadow:0 6px 16px -6px rgba(24,39,95,.35),inset 0 0 0 1px rgba(196,162,107,.6);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
 #rj .rvw .zoom svg{width:20px;height:20px;fill:none;stroke:var(--gold);stroke-width:1.6;stroke-linecap:round}
 @media (max-width:900px){#rj .rvws{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;margin-inline:calc(var(--pad) * -1);padding:4px var(--pad) 12px;scrollbar-width:none}#rj .rvws::-webkit-scrollbar{display:none}#rj .rvw{flex:0 0 78%;scroll-snap-align:center}}
+/* окно просмотра отзыва */
+#rj .lb{position:fixed;inset:0;z-index:1000;display:grid;place-items:center;padding:clamp(16px,4vw,48px);background:rgba(12,23,69,.55);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);opacity:0;visibility:hidden;transition:opacity .35s,visibility .35s}
+#rj .lb.on{opacity:1;visibility:visible}
+#rj .lb figure{position:relative;max-width:min(860px,100%);max-height:100%;padding:12px;border-radius:26px;background:#fff;box-shadow:0 40px 90px -30px rgba(0,0,0,.6);transform:scale(.9);transition:transform .45s cubic-bezier(.2,.7,.2,1)}
+#rj .lb.on figure{transform:scale(1)}
+#rj .lb img{display:block;max-width:100%;max-height:calc(100vh - 120px);width:auto;height:auto;border-radius:18px}
+#rj .lb-x{position:absolute;top:-16px;right:-16px;width:44px;height:44px;border-radius:50%;border:0;background:#fff;color:var(--ink);cursor:pointer;display:grid;place-items:center;box-shadow:0 8px 20px -6px rgba(0,0,0,.4),inset 0 0 0 1px rgba(196,162,107,.6)}
+#rj .lb-x svg{width:18px;height:18px;stroke:currentColor;stroke-width:1.8;fill:none;stroke-linecap:round}
+#rj .lb-x:hover{background:var(--ink);color:#fff}
+#rj .lb-n{position:absolute;top:50%;width:46px;height:46px;margin-top:-23px;border-radius:50%;border:0;background:rgba(255,255,255,.92);color:var(--ink);cursor:pointer;display:grid;place-items:center;box-shadow:0 8px 20px -6px rgba(0,0,0,.35)}
+#rj .lb-n svg{width:18px;height:18px;stroke:currentColor;stroke-width:1.6;fill:none}
+#rj .lb-n.pr{left:-23px}#rj .lb-n.nx{right:-23px}
+@media (max-width:600px){#rj .lb-x{top:-12px;right:-6px}#rj .lb-n.pr{left:-8px}#rj .lb-n.nx{right:-8px}}
 </style>
 
 <div id="rj">
@@ -600,12 +613,12 @@
         <span class="port" aria-hidden="true"></span>
         <span class="label rv">Отзывы</span>
         <h2 class="h2 rv" style="--rd:.08s">Что говорят <strong>о&nbsp;креме</strong></h2>
-        <p class="sub rv" style="--rd:.12s">Отзывы клиентов и&nbsp;специалистов. Нажмите на&nbsp;отзыв, чтобы открыть его полностью.</p>
+        <p class="sub rv" style="--rd:.12s">Отзывы клиентов и&nbsp;специалистов. Нажмите на&nbsp;отзыв, чтобы увеличить.</p>
       </div>
       <div class="rvws">
-        <a class="rvw pc rv" style="--rd:0.00s" href="https://static.tildacdn.com/tild3537-3665-4331-b066-613866643733/1.png" target="_blank" rel="noopener"><img src="https://static.tildacdn.com/tild3537-3665-4331-b066-613866643733/1.png" alt="Отзыв о креме Реджусом Экзо — 1" loading="lazy"><span class="zoom" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5M11 8v6M8 11h6"/></svg></span></a>
-        <a class="rvw pc rv" style="--rd:0.08s" href="https://static.tildacdn.com/tild3831-3064-4030-a630-363933643133/2.png" target="_blank" rel="noopener"><img src="https://static.tildacdn.com/tild3831-3064-4030-a630-363933643133/2.png" alt="Отзыв о креме Реджусом Экзо — 2" loading="lazy"><span class="zoom" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5M11 8v6M8 11h6"/></svg></span></a>
-        <a class="rvw pc rv" style="--rd:0.16s" href="https://static.tildacdn.com/tild6538-3161-4231-b163-623236643761/3.png" target="_blank" rel="noopener"><img src="https://static.tildacdn.com/tild6538-3161-4231-b163-623236643761/3.png" alt="Отзыв о креме Реджусом Экзо — 3" loading="lazy"><span class="zoom" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5M11 8v6M8 11h6"/></svg></span></a>
+        <a class="rvw pc rv" style="--rd:0.00s" href="https://static.tildacdn.com/tild3537-3665-4331-b066-613866643733/1.png" ><img src="https://static.tildacdn.com/tild3537-3665-4331-b066-613866643733/1.png" alt="Отзыв о креме Реджусом Экзо — 1" loading="lazy"><span class="zoom" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5M11 8v6M8 11h6"/></svg></span></a>
+        <a class="rvw pc rv" style="--rd:0.08s" href="https://static.tildacdn.com/tild3831-3064-4030-a630-363933643133/2.png" ><img src="https://static.tildacdn.com/tild3831-3064-4030-a630-363933643133/2.png" alt="Отзыв о креме Реджусом Экзо — 2" loading="lazy"><span class="zoom" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5M11 8v6M8 11h6"/></svg></span></a>
+        <a class="rvw pc rv" style="--rd:0.16s" href="https://static.tildacdn.com/tild6538-3161-4231-b163-623236643761/3.png" ><img src="https://static.tildacdn.com/tild6538-3161-4231-b163-623236643761/3.png" alt="Отзыв о креме Реджусом Экзо — 3" loading="lazy"><span class="zoom" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5M11 8v6M8 11h6"/></svg></span></a>
       </div>
     </div>
   </section>
@@ -649,6 +662,11 @@
   <!-- плавающая кнопка (телефон) -->
   <div class="sticky glass" id="rjSticky"><div><b>Реджусом Экзо Крем</b><small>10 000 ppm экзосом · 50 мл</small></div><a class="btn" href="#popup:buy_rejusomecream">Узнать цену</a></div>
 
+  <!-- окно просмотра отзыва -->
+  <div class="lb" id="rjLb" role="dialog" aria-modal="true" aria-label="Отзыв" aria-hidden="true">
+    <figure><img src="" alt=""><button type="button" class="lb-x" aria-label="Закрыть"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button><button type="button" class="lb-n pr" aria-label="Предыдущий отзыв"><svg viewBox="0 0 18 18"><path d="M11 3L5 9l6 6"/></svg></button><button type="button" class="lb-n nx" aria-label="Следующий отзыв"><svg viewBox="0 0 18 18"><path d="M7 3l6 6-6 6"/></svg></button></figure>
+  </div>
+
 </div>
 
 <script>
@@ -690,6 +708,20 @@
   /* плавающая кнопка: видна, когда основная кнопка ушла вверх, и скрыта у финальной заявки */
   var st=document.getElementById('rjSticky'),first=root.querySelector('.pd .ctas'),fin=root.querySelector('.final');
   function sticky(){if(!st||!first)return;var a=first.getBoundingClientRect().bottom<0,b=fin&&fin.getBoundingClientRect().top<window.innerHeight;st.classList.toggle('on',a&&!b);}
+
+  /* отзывы: просмотр в окне */
+  var lb=document.getElementById('rjLb'),lbi=lb&&lb.querySelector('img'),rv=[].slice.call(root.querySelectorAll('.rvw')),cur=0;
+  function show(i){cur=(i+rv.length)%rv.length;lbi.src=rv[cur].getAttribute('href');lbi.alt=rv[cur].querySelector('img').alt;}
+  function openLb(i){show(i);lb.classList.add('on');lb.setAttribute('aria-hidden','false');document.documentElement.style.overflow='hidden';lb.querySelector('.lb-x').focus();}
+  function closeLb(){lb.classList.remove('on');lb.setAttribute('aria-hidden','true');document.documentElement.style.overflow='';if(rv[cur])rv[cur].focus();}
+  if(lb){
+    rv.forEach(function(a,i){a.addEventListener('click',function(e){e.preventDefault();openLb(i);});});
+    lb.querySelector('.lb-x').addEventListener('click',closeLb);
+    lb.querySelector('.pr').addEventListener('click',function(){show(cur-1)});
+    lb.querySelector('.nx').addEventListener('click',function(){show(cur+1)});
+    lb.addEventListener('click',function(e){if(e.target===lb)closeLb();});
+    document.addEventListener('keydown',function(e){if(!lb.classList.contains('on'))return;if(e.key==='Escape')closeLb();if(e.key==='ArrowLeft')show(cur-1);if(e.key==='ArrowRight')show(cur+1);});
+  }
 
   /* линия между блоками: экзосома движется вместе с прокруткой */
   var links=[];
