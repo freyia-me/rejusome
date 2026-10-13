@@ -489,6 +489,53 @@
 #rj .evg .rvw .zoom{right:12px;bottom:12px;width:36px;height:36px;opacity:0;transition:opacity .3s}
 #rj .evg .rvw:hover .zoom{opacity:1}
 #rj .evg .cap{position:absolute;left:12px;bottom:12px;right:60px;padding:8px 12px;border-radius:12px;background:rgba(255,255,255,.86);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);font:500 12px/1.35 var(--f);color:var(--ink)}
+/* карта амбассадора */
+#rj .tryon{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,5vw,72px);align-items:center;margin-top:clamp(32px,4vw,52px);text-align:left}
+#rj .acard-wrap{perspective:1200px;display:grid;place-items:center}
+#rj .acard{position:relative;width:min(460px,100%);aspect-ratio:1.586;border-radius:24px;transform-style:preserve-3d;transition:transform .9s cubic-bezier(.2,.7,.2,1);cursor:pointer;--rx:0deg;--ry:0deg;--mx:50%;--my:50%;transform:rotateX(var(--rx)) rotateY(var(--ry))}
+#rj .acard.flip{transform:rotateX(var(--rx)) rotateY(calc(var(--ry) + 180deg))}
+#rj .acard .f,#rj .acard .b{position:absolute;inset:0;border-radius:24px;overflow:hidden;backface-visibility:hidden;-webkit-backface-visibility:hidden;padding:clamp(18px,2.6vw,28px);color:#fff;background:radial-gradient(120% 120% at 15% 0%,#2f56b8 0%,#1a2f7d 40%,#101a47 100%);box-shadow:0 40px 70px -30px rgba(16,26,71,.75),inset 0 0 0 1px rgba(230,191,132,.55)}
+#rj .acard .b{transform:rotateY(180deg)}
+#rj .acard .f:before,#rj .acard .b:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at var(--mx) var(--my),rgba(255,255,255,.35),transparent 45%),linear-gradient(115deg,transparent 30%,rgba(230,191,132,.25) 45%,rgba(159,192,236,.25) 55%,transparent 70%);background-size:100% 100%,220% 100%;background-position:0 0,var(--mx) 0;mix-blend-mode:screen;pointer-events:none}
+#rj .acard .wm{position:absolute;right:-12%;top:-18%;width:62%;opacity:.35;filter:saturate(1.2)}
+#rj .acard .top{position:relative;display:flex;justify-content:space-between;align-items:flex-start}
+#rj .acard .brand{font:500 clamp(18px,2vw,22px)/1 var(--f);letter-spacing:.16em;text-transform:uppercase;background:linear-gradient(90deg,#f3dcae,#c4a26b,#f3dcae);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+#rj .acard .brand small{display:block;margin-top:6px;font:500 9.5px/1 var(--f);letter-spacing:.3em;-webkit-text-fill-color:rgba(255,255,255,.7)}
+#rj .acard .chip{width:46px;height:34px;border-radius:7px;background:linear-gradient(135deg,#f3dcae,#b58c46 55%,#e6bf84);box-shadow:inset 0 0 0 1px rgba(255,255,255,.4)}
+#rj .acard .ow{position:absolute;left:clamp(18px,2.6vw,28px);right:clamp(18px,2.6vw,28px);bottom:clamp(18px,2.6vw,28px)}
+#rj .acard .ow small{display:block;font:500 10px/1 var(--f);letter-spacing:.3em;text-transform:uppercase;color:#e6bf84;margin-bottom:10px}
+#rj .acard .nm{font:300 clamp(22px,2.6vw,30px)/1.1 var(--f);letter-spacing:.02em;min-height:1.1em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#rj .acard .meta{display:flex;justify-content:space-between;margin-top:12px;font:400 11px/1 var(--f);letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.65)}
+#rj .acard .b h4{position:relative;font:500 11px/1 var(--f);letter-spacing:.3em;text-transform:uppercase;color:#e6bf84}
+#rj .acard .b ul{position:relative;list-style:none;display:grid;gap:clamp(6px,1vw,10px);margin-top:14px;padding:0}
+#rj .acard .b li{position:relative;padding-left:20px;font:400 clamp(12.5px,1.2vw,14px)/1.35 var(--f);color:rgba(255,255,255,.92)}
+#rj .acard .b li:before{content:"";position:absolute;left:0;top:.4em;width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,#f3dcae,#b58c46)}
+#rj .acard-hint{margin-top:16px;font:400 12.5px/1.4 var(--f);color:var(--muted);text-align:center}
+#rj .tryon .fld{margin-top:24px}
+#rj .tryon label{display:block;font:500 11px/1 var(--f);letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+#rj .tryon input{width:100%;max-width:420px;padding:16px 20px;border-radius:999px;border:1px solid var(--line);background:#fff;font:400 16px/1.2 var(--f);color:var(--ink);outline:none;transition:border-color .3s,box-shadow .3s}
+#rj .tryon input:focus{border-color:var(--gold2);box-shadow:0 0 0 4px rgba(196,162,107,.15)}
+#rj .tryon .note{font:400 12px/1.5 var(--f);color:var(--muted);margin-top:10px}
+#rj .tryon .ctas{justify-content:flex-start;margin-top:26px}
+/* мини-тест */
+#rj .quiz{text-align:left;max-width:860px;margin:0 auto}
+#rj .quiz .bar{display:flex;gap:8px;margin-top:22px}
+#rj .quiz .bar i{flex:1;height:3px;border-radius:3px;background:rgba(255,255,255,.18);transition:background .4s}
+#rj .quiz .bar i.on{background:linear-gradient(90deg,#e6bf84,#c4a26b)}
+#rj .quiz .q{display:none;animation:rjIn .5s ease both}
+#rj .quiz .q.on{display:block}
+#rj .quiz .q h3{font:300 clamp(24px,2.8vw,36px)/1.2 var(--f);color:#fff;margin-top:26px;letter-spacing:-.01em}
+#rj .quiz .opts{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+#rj .quiz .opts button{padding:15px 24px;border-radius:999px;border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.06);color:#fff;font:400 15px/1.2 var(--f);cursor:pointer;transition:background .3s,border-color .3s,transform .3s}
+#rj .quiz .opts button:hover{background:rgba(255,255,255,.14);border-color:#e6bf84;transform:translateY(-2px)}
+#rj .quiz .res h3 strong{font-weight:500;background:linear-gradient(90deg,#f3dcae,#c4a26b);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+#rj .quiz .res p{font:300 16.5px/1.7 var(--f);color:rgba(255,255,255,.85);margin-top:14px;max-width:60ch}
+#rj .quiz .res .ctas{justify-content:flex-start;margin-top:24px;align-items:center}
+#rj .quiz .res .btn{background:#fff;color:var(--ink)}
+#rj .quiz .again{background:none;border:0;color:rgba(255,255,255,.7);font:400 14px/1 var(--f);cursor:pointer;border-bottom:1px solid rgba(255,255,255,.35);padding:0 0 4px}
+@keyframes rjIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@media (max-width:900px){#rj .tryon{grid-template-columns:1fr}#rj .tryon .txt{text-align:center}#rj .tryon .ctas{justify-content:center}#rj .tryon input{margin:0 auto;display:block}}
+@media (max-width:520px){#rj .quiz .opts button{width:100%;text-align:left}}
 @media (max-width:1180px){#rj .perks{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:760px){#rj .only{grid-template-columns:1fr}#rj .strip figure:nth-child(n+4){display:none}#rj .evg,#rj .evg .r{gap:8px}#rj .evg .rvw{border-radius:12px}#rj .evg .cap{display:none}#rj .evg .rvw .zoom{display:none}}
 @media (max-width:520px){#rj .perks{grid-template-columns:1fr}#rj .strip{gap:8px}#rj .strip figure{border-radius:14px}}
@@ -517,7 +564,41 @@
             <li>Маркетинговая поддержка</li>
             <li>Приглашения на&nbsp;семинары и&nbsp;выставки</li>
           </ul>
-          <div class="ctas"><a class="btn btn--arr" href="#popup:specialist_ambassador">Стать амбассадором</a><a class="btn btn--line" href="#rj-events">Наши мероприятия</a></div>
+          <div class="ctas"><a class="btn btn--arr" href="#popup:specialist_ambassador">Стать амбассадором</a><a class="btn btn--line" href="#rj-card">Примерить статус</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 1.5 ПРИМЕРЬТЕ СТАТУС ================= -->
+  <section class="sec tight" id="rj-card">
+    <div class="wrap">
+      <div class="center">
+        <span class="port" aria-hidden="true"></span>
+        <span class="label rv">Примерьте статус</span>
+        <h2 class="h2 rv" style="--rd:.08s">Ваше имя <strong>в&nbsp;сообществе Реджусом</strong></h2>
+      </div>
+      <div class="tryon">
+        <div class="rv">
+          <div class="acard-wrap">
+            <div class="acard" id="rjCard" role="button" tabindex="0" aria-label="Карта амбассадора: нажмите, чтобы перевернуть">
+              <div class="f">
+                <img class="wm" src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@3cfd0894ec82d3c77e814f5b025831f543a2ddc0/img/exo-1.webp" alt="" aria-hidden="true">
+                <div class="top"><div class="brand">Реджусом<small>Сообщество косметологов</small></div><span class="chip" aria-hidden="true"></span></div>
+                <div class="ow"><small>Амбассадор</small><div class="nm" id="rjNm">Ваше имя</div><div class="meta"><span>Косметолог</span><span>JeuDerm · 2026</span></div></div>
+              </div>
+              <div class="b">
+                <h4>Привилегии амбассадора</h4>
+                <ul><li>Эксклюзивные условия, бонусы и&nbsp;подарки</li><li>Вебинары, мастер-классы, протоколы</li><li>Промо, фото и&nbsp;видео для ваших клиентов</li><li>Приглашения на&nbsp;семинары и&nbsp;выставки</li></ul>
+              </div>
+            </div>
+          </div>
+          <p class="acard-hint">Нажмите на&nbsp;карту, чтобы перевернуть</p>
+        </div>
+        <div class="txt rv" style="--rd:.1s">
+          <p class="sub" style="text-align:inherit;margin:0">Статус амбассадора&nbsp;— это признание вашей экспертности, закрытые материалы и&nbsp;поддержка бренда в&nbsp;продвижении. Впишите имя и&nbsp;посмотрите, как он&nbsp;будет выглядеть.</p>
+          <div class="fld"><label for="rjName">Ваше имя</label><input id="rjName" type="text" maxlength="28" placeholder="Например, Анна Смирнова" autocomplete="name"><p class="note">Имя остаётся только на&nbsp;вашем экране и&nbsp;никуда не&nbsp;отправляется.</p></div>
+          <div class="ctas"><a class="btn btn--arr" href="#popup:specialist_ambassador">Хочу этот статус</a></div>
         </div>
       </div>
     </div>
@@ -541,20 +622,19 @@
     </div>
   </section>
 
-  <!-- ================= 3. ТОЛЬКО ДЛЯ СПЕЦИАЛИСТОВ ================= -->
+  <!-- ================= 3. МИНИ-ТЕСТ ================= -->
   <section class="sec tight" id="rj-tech">
     <div class="wrap">
       <div class="center"><span class="port" aria-hidden="true"></span></div>
       <div class="navy rv">
         <img class="exd" src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@3cfd0894ec82d3c77e814f5b025831f543a2ddc0/img/exo-6.webp" alt="" aria-hidden="true" loading="lazy" style="width:clamp(110px,14vw,210px);right:-3%;top:-10%;opacity:.85;z-index:-1">
-        <div class="only">
-          <div>
-            <span class="label">Только для специалистов</span>
-            <h2>Хочу стать <strong>амбассадором Реджусом</strong></h2>
-            <p>Оставьте заявку&nbsp;— расскажем об&nbsp;индивидуальных условиях сотрудничества.</p>
-            <ul><li>Косметолог-эстетист</li><li>Среднее медицинское образование</li><li>Высшее медицинское образование</li></ul>
-          </div>
-          <a class="btn btn--arr" href="#popup:specialist_ambassador">Узнать условия</a>
+        <div class="quiz" id="rjQuiz">
+          <span class="label">Тест · 3 вопроса</span>
+          <div class="bar" aria-hidden="true"><i class="on"></i><i></i><i></i></div>
+          <div class="q on" data-q="0"><h3>Вы&nbsp;уже работаете с&nbsp;экзосомами?</h3><div class="opts"><button type="button">Да, регулярно</button><button type="button">Иногда пробую</button><button type="button">Пока нет, но&nbsp;интересно</button></div></div>
+          <div class="q" data-q="1"><h3>Что для вас сейчас важнее всего?</h3><div class="opts"><button type="button" data-k="c">Больше клиентов</button><button type="button" data-k="p">Новые протоколы и&nbsp;знания</button><button type="button" data-k="s">Профессиональный статус</button></div></div>
+          <div class="q" data-q="2"><h3>Готовы делиться опытом с&nbsp;коллегами и&nbsp;клиентами?</h3><div class="opts"><button type="button">Да, с&nbsp;удовольствием</button><button type="button">Возможно</button></div></div>
+          <div class="q res" data-q="3"><h3>Статус амбассадора <strong>вам подходит</strong></h3><p id="rjRes"></p><div class="ctas"><a class="btn btn--arr" href="#popup:specialist_ambassador">Стать амбассадором</a><button type="button" class="again">Пройти заново</button></div></div>
         </div>
       </div>
     </div>
@@ -712,5 +792,30 @@
   window.addEventListener('load',req);
   if('ResizeObserver' in window)new ResizeObserver(req).observe(root);
   update();
+})();
+
+/* карта амбассадора и мини-тест */
+(function(){
+  var card=document.getElementById('rjCard'),inp=document.getElementById('rjName'),nm=document.getElementById('rjNm');
+  if(card){
+    var fine=window.matchMedia&&matchMedia('(hover:hover) and (pointer:fine)').matches;
+    var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(fine&&!reduce){
+      card.addEventListener('mousemove',function(e){var r=card.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;card.style.setProperty('--ry',((x-.5)*16).toFixed(2)+'deg');card.style.setProperty('--rx',((.5-y)*12).toFixed(2)+'deg');card.style.setProperty('--mx',(x*100).toFixed(1)+'%');card.style.setProperty('--my',(y*100).toFixed(1)+'%');});
+      card.addEventListener('mouseleave',function(){card.style.setProperty('--rx','0deg');card.style.setProperty('--ry','0deg');});
+    }
+    function flip(){card.classList.toggle('flip');}
+    card.addEventListener('click',flip);
+    card.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();flip();}});
+  }
+  if(inp&&nm){inp.addEventListener('input',function(){var v=inp.value.trim();nm.textContent=v||'Ваше имя';if(card)card.classList.remove('flip');});}
+  var qz=document.getElementById('rjQuiz');if(!qz)return;
+  var qs=[].slice.call(qz.querySelectorAll('.q')),bars=[].slice.call(qz.querySelectorAll('.bar i')),res=document.getElementById('rjRes'),key='p',step=0;
+  var T={c:'Маркетинговая поддержка, промоматериалы, фото и видео помогут привлечь больше клиентов, а эксклюзивные условия сделают работу с Реджусом выгоднее.',
+         p:'Вебинары, мастер-классы и протоколы процедур по каждому продукту — всё, чтобы уверенно работать с экзосомами и расширять список процедур.',
+         s:'Приглашения на семинары и выставки, живое общение с профессионалами и официальный статус амбассадора бренда — для вашего профессионального роста.'};
+  function show(i){step=i;qs.forEach(function(q,k){q.classList.toggle('on',k===i);});bars.forEach(function(b,k){b.classList.toggle('on',k<=Math.min(i,2));});}
+  qs.forEach(function(q,i){[].slice.call(q.querySelectorAll('.opts button')).forEach(function(b){b.addEventListener('click',function(){if(b.getAttribute('data-k'))key=b.getAttribute('data-k');if(i===2&&res)res.textContent=T[key];show(i+1);});});});
+  var ag=qz.querySelector('.again');if(ag)ag.addEventListener('click',function(){show(0);});
 })();
 </script>
