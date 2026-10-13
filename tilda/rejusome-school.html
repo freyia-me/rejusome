@@ -513,6 +513,16 @@
 #rj .mcard .ow{position:absolute;left:clamp(16px,2.2vw,24px);right:clamp(16px,2.2vw,24px);bottom:clamp(16px,2.2vw,24px)}
 #rj .mcard .ow small{display:block;font:500 9.5px/1 var(--f);letter-spacing:.3em;text-transform:uppercase;color:#e6bf84;margin-bottom:8px}
 #rj .mcard .ow b{font:300 clamp(20px,2.2vw,26px)/1.1 var(--f)}
+/* светлый вариант */
+#rj .amb-light{position:relative;overflow:hidden;isolation:isolate;border-radius:30px;padding:clamp(36px,5vw,72px) clamp(20px,4vw,56px);background:linear-gradient(135deg,#fdfeff 0%,#f4f8fa 55%,#eaf2f5 100%);box-shadow:inset 0 0 0 1px #e3e7ee,0 40px 70px -46px rgba(24,39,95,.35)}
+#rj .amb-light:before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;background:linear-gradient(135deg,rgba(196,162,107,.7),rgba(196,162,107,0) 40%,rgba(122,187,229,.5));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+#rj .amb-light .label{color:var(--gold)}
+#rj .amb-light .ambt h2{color:var(--ink)}
+#rj .amb-light .ambt h2 strong{background:linear-gradient(90deg,#c9a463,#9c6428);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+#rj .amb-light .ambt p{color:var(--muted)}
+#rj .amb-light .ambt li{background:#fff;border-color:var(--line);color:var(--ink)}
+#rj .amb-light .ambt .btn{background:var(--ink);color:#fff}
+#rj .amb-light .ambt .link{color:var(--ink);border-color:rgba(24,39,95,.4)}
 @media (max-width:860px){#rj .ambt{grid-template-columns:1fr}#rj .mcard{max-width:340px}}
 @media (prefers-reduced-motion:reduce){#rj .mcard,#rj .mcard:before{animation:none}}
 </style>
@@ -589,7 +599,7 @@
   <section class="sec tight" id="rj-amb">
     <div class="wrap">
       <div class="center"><span class="port" aria-hidden="true"></span></div>
-      <div class="navy rv">
+      <div class="amb-light rv">
         <img class="exd" src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@3cfd0894ec82d3c77e814f5b025831f543a2ddc0/img/exo-6.webp" alt="" aria-hidden="true" loading="lazy" style="width:clamp(110px,14vw,200px);right:-3%;top:-10%;opacity:.85;z-index:-1">
         <div class="ambt">
           <div>
