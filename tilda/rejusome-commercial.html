@@ -480,6 +480,29 @@
 #rj .steps.s3{grid-template-columns:repeat(3,1fr);max-width:960px;margin-inline:auto}
 @media (max-width:860px){#rj .paths{grid-template-columns:1fr}#rj .steps.s3{grid-template-columns:1fr}}
 @media (max-width:520px){#rj .path .btn{width:100%;justify-content:center}}
+/* блок «Станьте амбассадором» */
+#rj .ambt{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(24px,4vw,56px);align-items:center;text-align:left}
+#rj .ambt h2{font:300 clamp(28px,3.4vw,44px)/1.12 var(--f);color:#fff;letter-spacing:-.02em;margin-top:14px}
+#rj .ambt h2 strong{font-weight:500;background:linear-gradient(90deg,#f3dcae,#c4a26b);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+#rj .ambt p{font:300 16px/1.7 var(--f);color:rgba(255,255,255,.82);margin-top:12px;max-width:52ch}
+#rj .ambt ul{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;padding:0}
+#rj .ambt li{padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);font:500 12.5px/1 var(--f);color:#fff}
+#rj .ambt .ctas{justify-content:flex-start;margin-top:24px;align-items:center}
+#rj .ambt .btn{background:#fff;color:var(--ink)}
+#rj .ambt .link{color:#fff;border-color:rgba(255,255,255,.5)}
+#rj .mcard{position:relative;width:min(400px,100%);aspect-ratio:1.586;margin:0 auto;border-radius:22px;overflow:hidden;padding:clamp(16px,2.2vw,24px);color:#fff;background:radial-gradient(120% 120% at 15% 0%,#3a62c4 0%,#1d3487 45%,#121d52 100%);box-shadow:0 40px 70px -30px rgba(0,0,0,.6),inset 0 0 0 1px rgba(230,191,132,.6);transform:rotate(-4deg);animation:rjCardF 7s ease-in-out infinite}
+#rj .mcard:before{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 30%,rgba(230,191,132,.28) 45%,rgba(159,192,236,.28) 55%,transparent 70%);background-size:220% 100%;animation:rjSheenC 5s ease-in-out infinite;mix-blend-mode:screen}
+@keyframes rjCardF{0%,100%{transform:rotate(-4deg) translateY(0)}50%{transform:rotate(-2deg) translateY(-10px)}}
+@keyframes rjSheenC{0%{background-position:120% 0}100%{background-position:-120% 0}}
+#rj .mcard .wm{position:absolute;right:-12%;top:-20%;width:60%;opacity:.35}
+#rj .mcard .br{position:relative;font:500 clamp(16px,1.8vw,20px)/1 var(--f);letter-spacing:.16em;text-transform:uppercase;background:linear-gradient(90deg,#f3dcae,#c4a26b,#f3dcae);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+#rj .mcard .br small{display:block;margin-top:6px;font:500 9px/1 var(--f);letter-spacing:.3em;-webkit-text-fill-color:rgba(255,255,255,.7)}
+#rj .mcard .chip{position:absolute;right:clamp(16px,2.2vw,24px);top:clamp(16px,2.2vw,24px);width:42px;height:31px;border-radius:7px;background:linear-gradient(135deg,#f3dcae,#b58c46 55%,#e6bf84)}
+#rj .mcard .ow{position:absolute;left:clamp(16px,2.2vw,24px);right:clamp(16px,2.2vw,24px);bottom:clamp(16px,2.2vw,24px)}
+#rj .mcard .ow small{display:block;font:500 9.5px/1 var(--f);letter-spacing:.3em;text-transform:uppercase;color:#e6bf84;margin-bottom:8px}
+#rj .mcard .ow b{font:300 clamp(20px,2.2vw,26px)/1.1 var(--f)}
+@media (max-width:860px){#rj .ambt{grid-template-columns:1fr}#rj .mcard{max-width:340px}}
+@media (prefers-reduced-motion:reduce){#rj .mcard,#rj .mcard:before{animation:none}}
 </style>
 
 <div id="rj">
@@ -545,6 +568,30 @@
         <li class="step rv" style="--rd:.08s"><b>02</b><h3>Оставьте заявку</h3><p>Расскажите о&nbsp;себе или о&nbsp;компании в&nbsp;короткой форме.</p></li>
         <li class="step rv" style="--rd:.16s"><b>03</b><h3>Обсудим условия</h3><p>Свяжемся с&nbsp;вами и&nbsp;расскажем об&nbsp;условиях работы с&nbsp;препаратами Реджусом.</p></li>
       </ol>
+    </div>
+  </section>
+
+  <!-- ================= АМБАССАДОР ================= -->
+  <section class="sec tight" id="rj-amb">
+    <div class="wrap">
+      <div class="center"><span class="port" aria-hidden="true"></span></div>
+      <div class="navy rv">
+        <img class="exd" src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@3cfd0894ec82d3c77e814f5b025831f543a2ddc0/img/exo-6.webp" alt="" aria-hidden="true" loading="lazy" style="width:clamp(110px,14vw,200px);right:-3%;top:-10%;opacity:.85;z-index:-1">
+        <div class="ambt">
+          <div>
+            <span class="label">Для косметологов</span>
+            <h2>Станьте <strong>амбассадором Реджусом</strong></h2>
+            <p>Эксклюзивное сообщество косметологов: индивидуальные условия сотрудничества и&nbsp;поддержка бренда.</p>
+            <ul><li>Эксклюзивные условия</li><li>Обучающие материалы</li><li>Маркетинговая поддержка</li><li>Мероприятия</li></ul>
+            <div class="ctas"><a class="btn btn--arr" href="https://rejusome.com/ambassador-rejusome">Стать амбассадором</a><a class="link" href="https://rejusome.com/ambassador-rejusome#rj-card">Примерить статус</a></div>
+          </div>
+          <a class="mcard" href="https://rejusome.com/ambassador-rejusome#rj-card" aria-label="Карта амбассадора Реджусом — примерить статус">
+            <img class="wm" src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@3cfd0894ec82d3c77e814f5b025831f543a2ddc0/img/exo-1.webp" alt="" aria-hidden="true" loading="lazy">
+            <span class="br">Реджусом<small>Сообщество косметологов</small></span><span class="chip" aria-hidden="true"></span>
+            <span class="ow"><small>Амбассадор</small><b>Ваше имя</b></span>
+          </a>
+        </div>
+      </div>
     </div>
   </section>
 

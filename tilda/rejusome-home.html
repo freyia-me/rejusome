@@ -404,6 +404,32 @@
 #rj .cl .link{white-space:nowrap;margin-top:6px}
 @media (max-width:900px){#rj .cl{grid-template-columns:1fr;gap:14px}#rj .cl .link{justify-self:start}}
 
+
+/* ===== НОВОСТИ (лента Тильды FD401 внутри главной) ===== */
+#rj .news-slot{margin-top:clamp(28px,3.4vw,44px)}
+#rj .news-slot:not(.has){display:none}
+#rj .news-slot.has + .news-empty{display:none}
+#rj .news-empty{margin-top:24px;text-align:center;font:400 15px/1.6 var(--f);color:var(--muted)}
+#rjNews .t-rec{padding-top:0!important;padding-bottom:0!important;background:none!important}
+#rjNews .js-block-header,#rjNews .t-section__container{display:none!important}
+#rjNews,#rjNews *{font-family:"Montserrat","Helvetica Neue",Arial,sans-serif!important}
+#rjNews .t-container,#rjNews .t-feed__container,#rjNews .t-feed{width:100%!important;max-width:none!important;padding-left:0!important;padding-right:0!important;margin-left:0!important;margin-right:0!important}
+#rjNews .rj-grid,#rjNews :has(> .t-feed__grid-col){display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px 24px;width:100%!important;max-width:none!important;margin:0!important;padding:0!important}
+#rjNews .rj-grid > :not(.t-feed__grid-col),#rjNews :has(> .t-feed__grid-col) > :not(.t-feed__grid-col){grid-column:1/-1}
+#rjNews .t-feed__grid-separator,#rjNews .rj-grid > .t-clear,#rjNews .rj-grid > .t-feed__post-preloader{display:none!important}
+#rjNews .t-feed__grid-col{float:none!important;width:auto!important;max-width:none!important;margin:0!important;padding:0!important;display:flex}
+#rjNews .t-feed__grid-col > *{flex:1;display:flex;flex-direction:column;height:100%;border-radius:20px!important;overflow:hidden;background:#fff!important;border:1px solid #e3e9f0;box-shadow:0 8px 25px rgba(24,39,95,.05);transition:box-shadow .4s,transform .4s}
+#rjNews .t-feed__grid-col > *:hover{box-shadow:0 22px 44px -22px rgba(24,39,95,.3);transform:translateY(-3px)}
+#rjNews img,#rjNews [class*="bgimg"]{border-radius:14px}
+#rjNews h1,#rjNews h2,#rjNews h3,#rjNews [class*="title"],#rjNews [class*="name"]{color:#18275f}
+#rjNews [class*="descr"]{color:#5d6788}
+#rjNews [class*="date"]{color:#b58c46}
+#rjNews .t-feed__parts-switch-btn{border-radius:999px!important;border:1px solid #e3e7ee!important;background:#fff!important;color:#5d6788!important}
+#rjNews .t-feed__parts-switch-btn.t-active,#rjNews .t-feed__parts-switch-btn:hover{border-color:#b58c46!important;color:#18275f!important}
+#rjNews .t-btn,#rjNews .t-feed__showmore-btn{border-radius:999px!important;background:#18275f!important;color:#fff!important;border:0!important}
+@media (max-width:960px){#rjNews .rj-grid,#rjNews :has(> .t-feed__grid-col){grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}}
+@media (max-width:600px){#rjNews .rj-grid,#rjNews :has(> .t-feed__grid-col){grid-template-columns:1fr;gap:16px}}
+
 /* ===== 12. ЗАЯВКА ===== */
 #rj .final{display:grid;grid-template-columns:1.1fr .9fr;align-items:center;border-radius:28px;background:var(--grad);box-shadow:inset 0 0 0 1px var(--line);overflow:hidden;text-align:left}
 #rj .final .txt{padding:clamp(36px,5vw,80px)}
@@ -713,7 +739,7 @@
           <div class="rv" style="--rd:.16s"><div class="n"><span>03</span><svg viewBox="0 0 32 32"><circle cx="16" cy="12" r="7"/><path d="M11.5 17.5L9 28l7-3.5 7 3.5-2.5-10.5"/><path d="M13.5 12l2 2 3.5-3.5"/></svg></div><h3>Ваш статус</h3><p>Официальное признание экспертности и привилегии в профессиональной среде.</p></div>
           <div class="rv" style="--rd:.24s"><div class="n"><span>04</span><svg viewBox="0 0 32 32"><path d="M5 13v6h4l10 6V7L9 13z"/><path d="M23 11.5a6 6 0 0 1 0 9"/><path d="M9 19l2 7h3l-1.5-6"/></svg></div><h3>Маркетинг</h3><p>Медиа-поддержка, готовые инструменты коммуникации и сопровождение ваших запусков.</p></div>
         </div>
-        <div class="ctas rv"><a class="btn" href="https://rejusome.com/ambassador-rejusome">Стать амбассадором</a><a class="link" href="#popup:study">Обучение</a></div>
+        <div class="ctas rv"><a class="btn" href="https://rejusome.com/ambassador-rejusome">Стать амбассадором</a><a class="link" href="https://rejusome.com/ambassador-rejusome#rj-card">Примерить статус</a><a class="link" href="#popup:study">Обучение</a></div>
       </div>
     </div>
   </section>
@@ -733,6 +759,20 @@
         <div class="cl rv"><div><span class="kind">Клиника-партнёр</span><h3>Профессионал (Москва)</h3></div><p>Клиника эстетической медицины и врачебной косметологии доктора Саромыцкой предлагает широкий спектр услуг для решения эстетических проблем лица и тела. Благодаря современным методам, техническому оснащению и команде профессионалов клиника стала признанным лидером в России.</p><a class="link" href="https://msk.proficlinica.com/" target="_blank" rel="noopener">На сайт</a></div>
       </div>
       <div class="ctas rv"><a class="btn btn--line" href="#popup:consultation">Подобрать косметолога</a></div>
+    </div>
+  </section>
+
+  <!-- ================= 11.5 НОВОСТИ ================= -->
+  <section class="sec" id="rj-news">
+    <div class="wrap">
+      <div class="center">
+        <span class="port" aria-hidden="true"></span>
+        <span class="label rv">Новости и статьи</span>
+        <h2 class="h2 rv" style="--rd:.08s">Всё про <strong>экзосомы</strong></h2>
+      </div>
+      <div class="news-slot" id="rjNews"></div>
+      <p class="news-empty">Новости загружаются…</p>
+      <div class="ctas rv"><a class="btn btn--line" href="https://rejusome.com/articles">Все статьи</a><a class="link" href="https://rejusome.com/ambassador-rejusome">Стать амбассадором</a></div>
     </div>
   </section>
 
@@ -857,5 +897,33 @@
   if(stage)stage.addEventListener('transitionend',req);
   if('ResizeObserver' in window)new ResizeObserver(req).observe(root);
   update();
+})();
+
+/* новости: перенос ленты Тильды (FD401 и др.) в раздел «Всё про экзосомы».
+   Если лента не подтянулась сама, впишите в NEWS_REC ID её блока, например 'rec1234567' */
+(function(){
+  var NEWS_REC='';
+  var SEL='.js-feed,.t-feed,[class*="t-feed"],[class*="fd401"],[class*="fd-401"]';
+  function recs(){
+    var out=[];
+    NEWS_REC.split(',').forEach(function(id){id=id.trim().replace(/^#/,'');var r=id&&document.getElementById(id);if(r)out.push(r);});
+    [].slice.call(document.querySelectorAll('.t-rec')).forEach(function(r){
+      if(r.closest('#rj')||out.indexOf(r)>-1)return;
+      var t=(r.getAttribute('data-record-type')||'').toLowerCase();
+      if(t.indexOf('fd')===0||r.querySelector(SEL))out.push(r);
+    });
+    return out;
+  }
+  function grid(){[].slice.call(document.querySelectorAll('#rjNews .t-feed__grid-col')).forEach(function(c){c.parentNode.classList.add('rj-grid');});}
+  function move(){
+    var slot=document.getElementById('rjNews');if(!slot)return;
+    recs().forEach(function(r){if(!slot.contains(r))slot.appendChild(r);});
+    if(slot.children.length)slot.classList.add('has');
+    grid();
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',move);else move();
+  window.addEventListener('load',move);
+  var n=0,iv=setInterval(function(){move();if(++n>20)clearInterval(iv);},500);
+  if('MutationObserver' in window){var mo=new MutationObserver(grid);document.addEventListener('DOMContentLoaded',function(){var sl=document.getElementById('rjNews');if(sl)mo.observe(sl,{childList:true,subtree:true});});}
 })();
 </script>
