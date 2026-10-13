@@ -146,16 +146,17 @@
 #rj .bc h3{font:500 18px/1.25 var(--f);margin-top:6px}
 #rj .bc p{font:400 13.5px/1.55 var(--f);color:var(--muted);margin-top:6px}
 #rj .bc.wide{grid-column:1/-1;max-width:760px;justify-self:center;margin-top:4px}
-#rj .orbit{position:relative;aspect-ratio:1;width:100%;max-width:380px;margin:0 auto;display:grid;place-items:center}
-#rj .orbit .ring{position:absolute;border-radius:50%;pointer-events:none}
-#rj .orbit .r1{inset:0;border:1px solid rgba(196,162,107,.7)}
-#rj .orbit .r2{inset:9%;border:1px dashed rgba(122,187,229,.55);animation:rjSpin 40s linear infinite}
-#rj .orbit .rays{position:absolute;inset:-6%;border-radius:50%;background:repeating-conic-gradient(rgba(196,162,107,.35) 0 .6deg,transparent .6deg 6deg);-webkit-mask-image:radial-gradient(closest-side,transparent 70%,#000 72%,transparent 100%);mask-image:radial-gradient(closest-side,transparent 70%,#000 72%,transparent 100%);animation:rjSpin 90s linear infinite reverse;opacity:.8}
-#rj .orbit img{position:relative;width:64%;filter:drop-shadow(0 30px 40px rgba(24,39,95,.22));animation:rjBob 12s ease-in-out infinite}
-#rj .orbit .o1{left:22%;top:24%}
-#rj .orbit .o2{left:70%;top:30%;animation-delay:-1.4s}
-#rj .orbit .o3{left:30%;top:70%;animation-delay:-2.6s}
-#rj .orbit .o4{left:62%;top:66%;animation-delay:-3.4s}
+#rj .orbit{position:relative;aspect-ratio:1;width:100%;max-width:340px;margin:0 auto;display:grid;place-items:center}
+#rj .orbit .halo{position:absolute;inset:-4%;border-radius:50%;background:radial-gradient(closest-side,rgba(170,210,250,.55),rgba(170,210,250,.18) 55%,rgba(170,210,250,0));animation:rjHaloP 6s ease-in-out infinite}
+@keyframes rjHaloP{0%,100%{transform:scale(.94);opacity:.75}50%{transform:scale(1.04);opacity:1}}
+#rj .orbit .shd{position:absolute;left:24%;right:24%;bottom:6%;height:7%;border-radius:50%;background:radial-gradient(closest-side,rgba(24,39,95,.22),rgba(24,39,95,0));animation:rjShd 8s ease-in-out infinite}
+@keyframes rjShd{0%,100%{transform:scaleX(1);opacity:.9}50%{transform:scaleX(.85);opacity:.6}}
+#rj .orbit img{position:relative;width:78%;filter:drop-shadow(0 26px 34px rgba(24,39,95,.2));animation:rjFloatY 8s ease-in-out infinite}
+@keyframes rjFloatY{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-5%) rotate(3deg)}}
+#rj .orbit .o1{left:18%;top:22%}
+#rj .orbit .o2{left:72%;top:26%;animation-delay:-1.4s}
+#rj .orbit .o3{left:28%;top:68%;animation-delay:-2.6s}
+#rj .orbit .o4{left:64%;top:62%;animation-delay:-3.4s}
 @keyframes rjSpin{to{transform:rotate(360deg)}}
 @media (max-width:1000px){#rj .ben{grid-template-columns:1fr 1fr}#rj .orbit{grid-column:1/-1;grid-row:1;max-width:280px}#rj .bc.wide{max-width:none}}
 @media (max-width:620px){#rj .ben{grid-template-columns:1fr}#rj .orbit{max-width:220px}#rj .bc{padding:16px 18px;gap:12px}#rj .bc .ic{width:42px;height:42px}#rj .bc .ic svg{width:22px;height:22px}}
@@ -407,7 +408,7 @@
           <article class="bc pc rv" style="--rd:0.00s"><span class="ic"><svg viewBox="0 0 80 80"><path d="M24 5c26 12-26 22 0 34s-26 22 0 34M40 5c-26 12 26 22 0 34s26 22 0 34M20 14h24M20 32h24M20 49h24M20 67h24"/></svg></span><div><small>01</small><h3>Омоложение</h3><p>Мощный антивозрастной эффект: восстанавливается выработка коллагена и эластина более чем в 8 раз, происходит стимуляция роста фибробластов кожи.</p></div></article>
           <article class="bc pc rv" style="--rd:0.07s"><span class="ic"><svg viewBox="0 0 80 80"><path d="M40 8l26 10v18c0 17-11 30-26 36C25 66 14 53 14 36V18z"/><path d="M29 40l8 8 15-16"/></svg></span><div><small>02</small><h3>Барьерные функции кожи</h3><p>Восстановление кожного барьера, улучшение состояния кожи при атопическом дерматите и купирование воспалительных процессов.</p></div></article>
         </div>
-        <div class="orbit rv" aria-hidden="true"><span class="ring r1"></span><span class="ring r2"></span><span class="rays"></span><img src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@3cfd0894ec82d3c77e814f5b025831f543a2ddc0/img/exo-6.webp" alt="" loading="lazy"><span class="spk o1"></span><span class="spk o2"></span><span class="spk o3"></span><span class="spk o4"></span></div>
+        <div class="orbit rv" aria-hidden="true"><span class="halo"></span><span class="shd"></span><img src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@3cfd0894ec82d3c77e814f5b025831f543a2ddc0/img/exo-1.webp" width="442" height="426" alt="" loading="lazy"><span class="spk o1"></span><span class="spk o2"></span><span class="spk o3"></span><span class="spk o4"></span></div>
         <div class="bcol">
           <article class="bc pc rv" style="--rd:0.14s"><span class="ic"><svg viewBox="0 0 80 80"><path d="m40 10 12 7v14l-12 7-12-7V17zM26 34l12 7v14l-12 7-12-7V41zM54 34l12 7v14l-12 7-12-7V41z"/><circle class="f" cx="40" cy="24" r="3"/><circle class="f" cx="26" cy="48" r="3"/><circle class="f" cx="54" cy="48" r="3"/></svg></span><div><small>03</small><h3>Регенерация</h3><p>Комплексно улучшает качество кожи за счёт активной регенерации тканей. Препарат имеет накопительный эффект.</p></div></article>
           <article class="bc pc rv" style="--rd:0.21s"><span class="ic"><svg viewBox="0 0 80 80"><path d="M40 70V40M40 40C40 26 28 18 16 14M40 40c0-14 12-22 24-26M40 52c-8-4-16-4-22 0M40 48c8-4 16-4 22 0"/></svg></span><div><small>04</small><h3>Укрепление сосудов</h3><p>Укрепление капилляров и стимуляция процессов ангиогенеза.</p></div></article>
@@ -444,7 +445,7 @@
             <small>Флакон 2 · 5 мл</small>
             <h3>Активный растворитель</h3>
             <p class="big"><b>5 мл</b><span>активного растворителя</span></p>
-            <ul class="chips"><li>Увлажнение</li><li>Кислоты</li><li>Выравнивание тона · осветление</li><li>Пептиды и аминокислоты</li><li>Витамины и полисахариды</li></ul>
+            <ul class="chips"><li>Увлажнение</li><li>Кислоты</li><li>Выравнивание тона</li><li>Пептиды и аминокислоты</li><li>Витамины и полисахариды</li></ul>
           </div>
         </article>
       </div>
