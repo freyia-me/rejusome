@@ -228,21 +228,34 @@
 @media (max-width:520px){#rj .time{padding:16px 20px;gap:8px 12px;border-radius:26px}#rj .time:before{border-radius:22px}#rj .time-pill{padding:11px 16px;font-size:14px}#rj .mech{grid-template-columns:1fr}#rj .mech details{border-left:0;padding:0 0 14px;border-bottom:1px solid rgba(196,162,107,.35)}#rj .mech summary .ic{width:44px;height:44px}#rj .mech summary span{font-size:15px}}
 
 /* ===== 4. СТЕРИЛЬНЫЕ СЫВОРОТКИ ===== */
-#rj .duo{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:clamp(40px,5vw,72px)}
-#rj .serum{position:relative;display:grid;grid-template-rows:auto 1fr auto;border-radius:var(--r);background:var(--grad);overflow:hidden;box-shadow:inset 0 0 0 1px var(--line)}
-#rj .serum .top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;padding:clamp(28px,3vw,44px) clamp(24px,3vw,44px) 0}
-#rj .serum .big{font:200 clamp(80px,10vw,140px)/.85 var(--f);letter-spacing:-.05em;color:var(--ink);font-variant-numeric:tabular-nums}
-#rj .serum .unit{font:500 11px/1.5 var(--f);letter-spacing:.28em;text-transform:uppercase;color:var(--muted);margin-top:16px;max-width:16ch}
+#rj .duo{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:clamp(24px,3vw,40px)}
+#rj .serum{position:relative;display:grid;grid-template-rows:auto 1fr auto;grid-row:span 3;transition:box-shadow .4s,transform .4s;border-radius:var(--r);background:var(--grad);overflow:hidden;box-shadow:inset 0 0 0 1px var(--line)}
+#rj .serum .top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;padding:clamp(22px,2.4vw,32px) clamp(22px,2.6vw,36px) 0}
+#rj .serum .big{font:200 clamp(54px,5.4vw,84px)/.85 var(--f);letter-spacing:-.05em;color:var(--ink);font-variant-numeric:tabular-nums}
+#rj .serum .unit{font:500 11px/1.5 var(--f);letter-spacing:.28em;text-transform:uppercase;color:var(--muted);margin-top:12px;max-width:16ch}
 #rj .serum .lbl{font:500 10px/1.6 var(--f);letter-spacing:.28em;text-transform:uppercase;color:var(--gold);text-align:right;max-width:14em;padding-top:10px}
-#rj .serum .shot{position:relative;width:min(64%,330px);aspect-ratio:1;margin:28px auto 40px}
+#rj .serum .shot{position:relative;width:min(42%,clamp(140px,21vh,210px));aspect-ratio:1;margin:clamp(6px,1.4vw,14px) auto clamp(18px,2vw,26px);align-self:center}
 #rj .serum .shot:before{content:"";position:absolute;inset:-12%;border-radius:50%;background:radial-gradient(closest-side,rgba(122,187,229,.22),rgba(122,187,229,0))}
 #rj .serum .shot .orb{position:absolute;inset:0;z-index:1;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
 #rj .serum .shot .exd{z-index:2}
 #rj .serum:hover .shot .orb{transform:scale(1.04)}
-#rj .serum .foot{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding:24px clamp(24px,3vw,44px) clamp(28px,3vw,40px);border-top:1px solid var(--line);background:var(--paper)}
+#rj .serum .foot{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding:20px clamp(22px,2.6vw,36px) clamp(22px,2.4vw,28px);border-top:1px solid var(--line);background:var(--paper)}
 #rj .serum .name{font:400 22px/1.2 var(--f);color:var(--ink)}
 #rj .serum .desc{font:300 14px/1.6 var(--f);color:var(--muted);margin-top:6px;max-width:34ch}
-@media (max-width:860px){#rj .duo{grid-template-columns:1fr}}
+#rj .serum .name a{color:inherit}
+#rj .serum .name a:after{content:"";position:absolute;inset:0;z-index:3}
+#rj .serum .acts{position:relative;z-index:4;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+#rj .serum:hover{box-shadow:inset 0 0 0 1px var(--gold2),0 26px 50px -30px rgba(24,39,95,.35);transform:translateY(-3px)}
+#rj .serum .more{font:400 13.5px/1.3 var(--f);color:var(--ink);border-bottom:1px solid rgba(24,39,95,.35);padding-bottom:3px}
+@supports (grid-template-rows:subgrid){#rj .duo{grid-template-rows:auto 1fr auto}#rj .serum{grid-template-rows:subgrid}}
+#rj #rj-pro.sec{padding-block:clamp(40px,5vw,72px)}
+#rj #rj-pro .h2{margin-top:12px;font-size:clamp(28px,3.2vw,46px)}
+#rj #rj-pro .serum .top{padding-top:clamp(18px,2vw,26px)}
+#rj #rj-pro .serum .unit{margin-top:8px}
+#rj #rj-pro .serum .shot{margin:4px auto clamp(12px,1.6vw,20px)}
+#rj #rj-pro .serum .foot{display:grid;grid-template-rows:1fr auto;align-items:start;gap:14px;padding-top:16px;padding-bottom:clamp(18px,2vw,22px)}
+#rj #rj-pro .serum .desc{max-width:44ch}
+@media (max-width:860px){#rj .duo{grid-template-columns:1fr;grid-template-rows:none}#rj .serum{grid-row:auto;grid-template-rows:auto 1fr auto}}
 #rj .care-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-top:clamp(56px,7vw,96px);padding-bottom:24px;border-bottom:1px solid var(--line)}
 #rj .care-head h3{font:300 clamp(26px,2.8vw,38px)/1.15 var(--f);letter-spacing:-.015em;margin-top:14px}
 #rj .lineup{display:grid;grid-template-columns:repeat(6,1fr);gap:24px;margin-top:40px}
@@ -559,8 +572,8 @@
           </div>
           <div class="shot"><img class="exd" src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@3cfd0894ec82d3c77e814f5b025831f543a2ddc0/img/exo-4.webp" alt="" aria-hidden="true" loading="lazy" style="width:20%;right:-12%;top:4%"><img class="exd" src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@3cfd0894ec82d3c77e814f5b025831f543a2ddc0/img/exo-1.webp" alt="" aria-hidden="true" loading="lazy" style="width:12%;left:-9%;bottom:18%;animation-delay:-4s"><div class="orb"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@b849dfa9797ca3fcddc75d993bb0eb6582490dba/img/serum-rejusome-plus.webp" width="720" height="720" alt="Реджусом Плюс"></div></div>
           <div class="foot">
-            <div><div class="name">Реджусом Плюс</div><p class="desc">27 миллиардов экзосом на 1 мл — готовая сыворотка для применения</p></div>
-            <a class="btn" href="#popup:pricemain">Узнать цену</a>
+            <div><div class="name"><a href="https://rejusome.com/rejusome-plus">Реджусом Плюс</a></div><p class="desc">27 миллиардов экзосом на 1 мл — готовая сыворотка для применения</p></div>
+            <div class="acts"><a class="more" href="https://rejusome.com/rejusome-plus">Подробнее</a><a class="btn" href="#popup:pricemain">Узнать цену</a></div>
           </div>
         </article>
         <article class="serum rv" style="--rd:.12s">
@@ -570,8 +583,8 @@
           </div>
           <div class="shot"><img class="exd" src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@3cfd0894ec82d3c77e814f5b025831f543a2ddc0/img/exo-2.webp" alt="" aria-hidden="true" loading="lazy" style="width:20%;right:-12%;top:4%"><img class="exd" src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@3cfd0894ec82d3c77e814f5b025831f543a2ddc0/img/exo-1.webp" alt="" aria-hidden="true" loading="lazy" style="width:12%;left:-9%;bottom:18%;animation-delay:-4s"><div class="orb"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/freyia-me/rejusome@b849dfa9797ca3fcddc75d993bb0eb6582490dba/img/serum-rejusome.webp" width="720" height="720" alt="Реджусом"></div></div>
           <div class="foot">
-            <div><div class="name">Реджусом</div><p class="desc">Двухкомпонентный набор: порошок 20 мг и ампула 5 мл — аминокислоты, пептиды и другие компоненты</p></div>
-            <a class="btn" href="#popup:pricemain">Узнать цену</a>
+            <div><div class="name"><a href="https://rejusome.com/rejusome-pack">Реджусом</a></div><p class="desc">Двухкомпонентный набор: порошок 20 мг и ампула 5 мл — аминокислоты, пептиды и другие компоненты</p></div>
+            <div class="acts"><a class="more" href="https://rejusome.com/rejusome-pack">Подробнее</a><a class="btn" href="#popup:pricemain">Узнать цену</a></div>
           </div>
         </article>
       </div>
