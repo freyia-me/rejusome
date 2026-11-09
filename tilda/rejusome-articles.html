@@ -493,11 +493,8 @@
 @media (max-width:600px){#rjFeed .rj-grid,#rjFeed :has(> .t-feed__grid-col){grid-template-columns:1fr;gap:16px}}
 #rjFeed .t-btn,#rjFeed .t-feed__showmore-btn{border-radius:999px!important;background:#18275f!important;color:#fff!important;border:0!important;box-shadow:0 14px 30px -14px rgba(24,39,95,.6)}
 
-/* открытая статья ленты Тильды: снимаем изоляцию блока, чтобы окно статьи было поверх меню сайта */
-html.rj-pop #rj,html.rj-pop #rj .sec,html.rj-pop #rj .wrap,html.rj-pop #rj [class*="slot"]{isolation:auto!important;z-index:auto!important;transform:none!important;filter:none!important;contain:none!important}
-html.rj-pop #rj{overflow:visible!important}
+/* пока открыта статья ленты Тильды — прячем нашу плавающую кнопку */
 html.rj-pop #rj .sticky{display:none!important}
-html.rj-pop #rj [class*="post-popup"]{z-index:2147483000!important}
 </style>
 
 <div id="rj">
@@ -581,13 +578,18 @@ html.rj-pop #rj [class*="post-popup"]{z-index:2147483000!important}
 </div>
 
 <script>
-/* перенос ленты статей Тильды внутрь блока «Всё про экзосомы».
+/* лента Тильды внутри блока «Всё про экзосомы».
+   Пока статья ленты открыта, лента временно возвращается на своё место в Тильде,
+   чтобы окно статьи работало как задумано в Тильде; после закрытия — обратно сюда.
    Если лента не подтянулась сама, впишите в FEED_REC ID её блока, например 'rec2400334921'
    (Тильда: настройки блока → внизу «ID блока»). Можно несколько через запятую. */
 (function(){
   var FEED_REC='';
+  var SLOT='rjFeed',GRID=true;
   var SEL='.js-feed,.t-feed,[class*="t-feed"],[class*="fd302"],[class*="fd-302"],.t915,.t896';
-  function recs(){
+  var tracked=[],popOpen=false,savedY=0;
+  function slot(){return document.getElementById(SLOT);}
+  function find(){
     var out=[];
     FEED_REC.split(',').forEach(function(id){id=id.trim().replace(/^#/,'');var r=id&&document.getElementById(id);if(r)out.push(r);});
     [].slice.call(document.querySelectorAll('.t-rec')).forEach(function(r){
@@ -597,125 +599,49 @@ html.rj-pop #rj [class*="post-popup"]{z-index:2147483000!important}
     });
     return out;
   }
+  function track(r){
+    for(var i=0;i<tracked.length;i++)if(tracked[i].rec===r)return;
+    var ph=document.createComment('rj-feed');r.parentNode.insertBefore(ph,r);tracked.push({rec:r,ph:ph});
+    if('MutationObserver' in window)new MutationObserver(sync).observe(r,{subtree:true,childList:true,attributes:true,attributeFilter:['class','style']});
+  }
+  function grid(){var s=slot();if(!GRID||!s)return;[].slice.call(s.querySelectorAll('.t-feed__grid-col')).forEach(function(c){c.parentNode.classList.add('rj-grid');});}
   function move(){
-    var slot=document.getElementById('rjFeed');if(!slot)return;
-    var list=recs();list.forEach(function(r){if(!slot.contains(r))slot.appendChild(r);});
-    if(slot.children.length)slot.classList.add('has');
-    [].slice.call(slot.querySelectorAll('.t-feed__grid-col')).forEach(function(c){c.parentNode.classList.add('rj-grid');});
+    var s=slot();if(!s||popOpen)return;
+    find().forEach(track);
+    var moved=0;tracked.forEach(function(t){if(!s.contains(t.rec)){s.appendChild(t.rec);moved++;}});
+    if(s.children.length)s.classList.add('has');
+    grid();
+    if(moved)setTimeout(function(){window.dispatchEvent(new Event('resize'));},60);
   }
-  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',move);else move();
-  window.addEventListener('load',move);
-  var n=0,iv=setInterval(function(){move();if(++n>20)clearInterval(iv);},500);
-  if('MutationObserver' in window){var mo=new MutationObserver(function(){[].slice.call(document.querySelectorAll('#rjFeed .t-feed__grid-col')).forEach(function(c){c.parentNode.classList.add('rj-grid');});});document.addEventListener('DOMContentLoaded',function(){var sl=document.getElementById('rjFeed');if(sl)mo.observe(sl,{childList:true,subtree:true});});}
-})();
-(function(){
-  var root=document.getElementById('rj');if(!root)return;
-  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  /* появление блоков */
-  if('IntersectionObserver' in window && !reduce){
-    root.classList.add('rj-js');
-    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
-    root.querySelectorAll('.rv').forEach(function(el){io.observe(el);});
-    setTimeout(function(){root.querySelectorAll('.rv').forEach(function(el){el.classList.add('in');});},6000);
-  }
-
-  /* досчёт цифр */
-  if('IntersectionObserver' in window && !reduce){
-    var co=new IntersectionObserver(function(es){es.forEach(function(e){
-      if(!e.isIntersecting)return;co.unobserve(e.target);
-      var el=e.target,to=+el.getAttribute('data-count'),sm=el.querySelector('small'),tail=sm?sm.outerHTML:'',t0=null,dur=1800;
-      function f(ts){if(!t0)t0=ts;var p=Math.min((ts-t0)/dur,1);el.innerHTML=String(Math.round(to*(1-Math.pow(1-p,3)))).replace(/\B(?=(\d{3})+(?!\d))/g,'&nbsp;')+tail;if(p<1)requestAnimationFrame(f);}
-      requestAnimationFrame(f);
-    });},{threshold:.5});
-    root.querySelectorAll('[data-count]').forEach(function(el){co.observe(el);});
-  }
-
-  /* галерея */
-  var main=document.getElementById('rjMain'),big=main?[].slice.call(main.querySelectorAll(':scope > img')):[],th=[].slice.call(root.querySelectorAll('.thumbs button'));
-  th.forEach(function(b,i){b.addEventListener('click',function(){
-    big.forEach(function(im,k){im.classList.toggle('on',k===i);});
-    th.forEach(function(x,k){x.setAttribute('aria-pressed',k===i);});
-  });});
-
-  /* До / После */
-  var t=document.getElementById('rjBa');
-  function step(d){var fg=t.querySelector('figure');t.scrollBy({left:d*((fg?fg.offsetWidth:320)+20),behavior:'smooth'});}
-  if(t){document.getElementById('rjPrev').addEventListener('click',function(){step(-1)});document.getElementById('rjNext').addEventListener('click',function(){step(1)});}
-
-  /* плавающая кнопка: видна, когда основная кнопка ушла вверх, и скрыта у финальной заявки */
-  var st=document.getElementById('rjSticky'),first=root.querySelector('.pd .ctas'),fin=root.querySelector('.final');
-  function sticky(){if(!st||!first)return;var a=first.getBoundingClientRect().bottom<0,b=fin&&fin.getBoundingClientRect().top<window.innerHeight;st.classList.toggle('on',a&&!b);}
-
-  /* отзывы: просмотр в окне */
-  var lb=document.getElementById('rjLb'),lbi=lb&&lb.querySelector('img'),rv=[].slice.call(root.querySelectorAll('.rvw')),cur=0;
-  function show(i){cur=(i+rv.length)%rv.length;lbi.src=rv[cur].getAttribute('href');lbi.alt=rv[cur].querySelector('img').alt;}
-  function openLb(i){show(i);lb.classList.add('on');lb.setAttribute('aria-hidden','false');document.documentElement.style.overflow='hidden';lb.querySelector('.lb-x').focus();}
-  function closeLb(){lb.classList.remove('on');lb.setAttribute('aria-hidden','true');document.documentElement.style.overflow='';if(rv[cur])rv[cur].focus();}
-  if(lb){
-    rv.forEach(function(a,i){a.addEventListener('click',function(e){e.preventDefault();openLb(i);});});
-    lb.querySelector('.lb-x').addEventListener('click',closeLb);
-    lb.querySelector('.pr').addEventListener('click',function(){show(cur-1)});
-    lb.querySelector('.nx').addEventListener('click',function(){show(cur+1)});
-    lb.addEventListener('click',function(e){if(e.target===lb)closeLb();});
-    document.addEventListener('keydown',function(e){if(!lb.classList.contains('on'))return;if(e.key==='Escape')closeLb();if(e.key==='ArrowLeft')show(cur-1);if(e.key==='ArrowRight')show(cur+1);});
-  }
-
-  /* линия между блоками: экзосома движется вместе с прокруткой */
-  var links=[];
-  [].slice.call(root.querySelectorAll('.port')).forEach(function(pt){
-    var sec=pt.closest('section'),prev=sec&&sec.previousElementSibling;
-    while(prev&&prev.tagName!=='SECTION')prev=prev.previousElementSibling;
-    if(!prev)return;
-    var el=document.createElement('div');el.className='rj-link';el.setAttribute('aria-hidden','true');
-    el.innerHTML='<i class="fill"></i><b class="msg"></b>';root.appendChild(el);
-    links.push({el:el,port:pt,prev:prev});
-  });
-  var ticking=false;
-  function update(){
-    ticking=false;sticky();
-    var rt=root.getBoundingClientRect().top,c=window.innerHeight*.62-rt,res=[];
-    for(var i=0;i<links.length;i++){var L=links[i],last=L.prev.lastElementChild||L.prev;
-      var a=last.getBoundingClientRect().bottom-rt+28,b=L.port.getBoundingClientRect().top-rt-6;
-      res.push([a,b,Math.max(0,Math.min(1,(c-a)/(b-a)))]);}
-    for(var j=0;j<links.length;j++){var L2=links[j],r=res[j],h=r[1]-r[0];
-      if(h<40){L2.el.style.display='none';L2.port.classList.toggle('lit',r[2]>=1);continue;}
-      L2.el.style.display='';L2.el.style.top=r[0]+'px';L2.el.style.height=h+'px';
-      L2.el.style.setProperty('--p',reduce?(r[2]>0?1:0):r[2].toFixed(4));
-      L2.el.style.setProperty('--o',(!reduce&&r[2]>0&&r[2]<1)?1:0);
-      L2.port.classList.toggle('lit',r[2]>=1);}
-  }
-  function req(){if(!ticking){ticking=true;requestAnimationFrame(update);}}
-  window.addEventListener('scroll',req,{passive:true});
-  window.addEventListener('resize',req);
-  window.addEventListener('load',req);
-  if('ResizeObserver' in window)new ResizeObserver(req).observe(root);
-  update();
-})();
-
-/* открытая статья ленты Тильды: следим за окном статьи и поднимаем его над меню */
-(function(){
-  var SLOT='rjFeed';
-  function open(){
-    var slot=document.getElementById(SLOT);if(!slot)return false;
-    var els=slot.querySelectorAll('[class*="popup"]');
-    for(var i=0;i<els.length;i++){
-      var cs=getComputedStyle(els[i]);
-      if(cs.position==='fixed'&&cs.display!=='none'&&cs.visibility!=='hidden'&&parseFloat(cs.opacity)>0){
-        var r=els[i].getBoundingClientRect();if(r.height>window.innerHeight*0.5&&r.width>window.innerWidth*0.5)return true;
+  function isOpen(){
+    for(var k=0;k<tracked.length;k++){
+      var els=tracked[k].rec.querySelectorAll('[class*="popup"]');
+      for(var i=0;i<els.length;i++){
+        var cs=getComputedStyle(els[i]);
+        if(cs.position==='fixed'&&cs.display!=='none'&&cs.visibility!=='hidden'&&parseFloat(cs.opacity)>0){
+          var r=els[i].getBoundingClientRect();if(r.height>window.innerHeight*.5&&r.width>window.innerWidth*.5)return true;
+        }
       }
     }
     return false;
   }
-  var t;function check(){clearTimeout(t);t=setTimeout(function(){document.documentElement.classList.toggle('rj-pop',open());},60);}
-  function watch(){
-    var slot=document.getElementById(SLOT);if(!slot||!('MutationObserver' in window))return;
-    new MutationObserver(check).observe(slot,{subtree:true,childList:true,attributes:true,attributeFilter:['class','style']});
-    new MutationObserver(check).observe(document.body,{attributes:true,attributeFilter:['class','style']});
-    check();
-  }
-  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',watch);else watch();
-  window.addEventListener('popstate',check);window.addEventListener('hashchange',check);window.addEventListener('load',check);
-  document.addEventListener('click',function(){setTimeout(check,350);setTimeout(check,1200);},true);
+  var tm;
+  function sync(){clearTimeout(tm);tm=setTimeout(function(){
+    var o=isOpen();
+    if(o&&!popOpen){
+      popOpen=true;document.documentElement.classList.add('rj-pop');
+      tracked.forEach(function(t){if(t.ph.parentNode)t.ph.parentNode.insertBefore(t.rec,t.ph.nextSibling);});
+    }else if(!o&&popOpen){
+      popOpen=false;document.documentElement.classList.remove('rj-pop');
+      move();
+      var y=savedY;requestAnimationFrame(function(){window.scrollTo(0,y);});setTimeout(function(){window.scrollTo(0,y);},120);
+    }
+  },60);}
+  function start(){move();sync();if('MutationObserver' in window)new MutationObserver(sync).observe(document.body,{attributes:true,attributeFilter:['class','style']});}
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start);else start();
+  window.addEventListener('load',function(){move();sync();});
+  var n=0,iv=setInterval(function(){move();if(++n>20)clearInterval(iv);},500);
+  document.addEventListener('click',function(){if(!popOpen)savedY=window.scrollY||window.pageYOffset;setTimeout(sync,350);setTimeout(sync,1200);},true);
+  window.addEventListener('popstate',sync);window.addEventListener('hashchange',sync);
 })();
 </script>

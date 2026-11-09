@@ -473,11 +473,8 @@
   #rj.rj-js .rv{opacity:1;transform:none}
 }
 
-/* открытая статья ленты Тильды: снимаем изоляцию блока, чтобы окно статьи было поверх меню сайта */
-html.rj-pop #rj,html.rj-pop #rj .sec,html.rj-pop #rj .wrap,html.rj-pop #rj [class*="slot"]{isolation:auto!important;z-index:auto!important;transform:none!important;filter:none!important;contain:none!important}
-html.rj-pop #rj{overflow:visible!important}
+/* пока открыта статья ленты Тильды — прячем нашу плавающую кнопку */
 html.rj-pop #rj .sticky{display:none!important}
-html.rj-pop #rj [class*="post-popup"]{z-index:2147483000!important}
 </style>
 
 <div id="rj">
@@ -916,12 +913,18 @@ html.rj-pop #rj [class*="post-popup"]{z-index:2147483000!important}
   update();
 })();
 
-/* новости: перенос ленты Тильды (FD401 и др.) в раздел «Всё про экзосомы».
-   Если лента не подтянулась сама, впишите в NEWS_REC ID её блока, например 'rec1234567' */
+/* лента Тильды внутри блока «Всё про экзосомы».
+   Пока статья ленты открыта, лента временно возвращается на своё место в Тильде,
+   чтобы окно статьи работало как задумано в Тильде; после закрытия — обратно сюда.
+   Если лента не подтянулась сама, впишите в NEWS_REC ID её блока, например 'rec2400334921'
+   (Тильда: настройки блока → внизу «ID блока»). Можно несколько через запятую. */
 (function(){
   var NEWS_REC='';
+  var SLOT='rjNews',GRID=false;
   var SEL='.js-feed,.t-feed,[class*="t-feed"],[class*="fd401"],[class*="fd-401"]';
-  function recs(){
+  var tracked=[],popOpen=false,savedY=0;
+  function slot(){return document.getElementById(SLOT);}
+  function find(){
     var out=[];
     NEWS_REC.split(',').forEach(function(id){id=id.trim().replace(/^#/,'');var r=id&&document.getElementById(id);if(r)out.push(r);});
     [].slice.call(document.querySelectorAll('.t-rec')).forEach(function(r){
@@ -931,41 +934,49 @@ html.rj-pop #rj [class*="post-popup"]{z-index:2147483000!important}
     });
     return out;
   }
-  function grid(){}
+  function track(r){
+    for(var i=0;i<tracked.length;i++)if(tracked[i].rec===r)return;
+    var ph=document.createComment('rj-feed');r.parentNode.insertBefore(ph,r);tracked.push({rec:r,ph:ph});
+    if('MutationObserver' in window)new MutationObserver(sync).observe(r,{subtree:true,childList:true,attributes:true,attributeFilter:['class','style']});
+  }
+  function grid(){var s=slot();if(!GRID||!s)return;[].slice.call(s.querySelectorAll('.t-feed__grid-col')).forEach(function(c){c.parentNode.classList.add('rj-grid');});}
   function move(){
-    var slot=document.getElementById('rjNews');if(!slot)return;
-    var moved=0;recs().forEach(function(r){if(!slot.contains(r)){slot.appendChild(r);moved++;}});
-    if(slot.children.length)slot.classList.add('has');
+    var s=slot();if(!s||popOpen)return;
+    find().forEach(track);
+    var moved=0;tracked.forEach(function(t){if(!s.contains(t.rec)){s.appendChild(t.rec);moved++;}});
+    if(s.children.length)s.classList.add('has');
+    grid();
     if(moved)setTimeout(function(){window.dispatchEvent(new Event('resize'));},60);
   }
-  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',move);else move();
-  window.addEventListener('load',move);
-  var n=0,iv=setInterval(function(){move();if(++n>20)clearInterval(iv);},500);
-})();
-
-/* открытая статья ленты Тильды: следим за окном статьи и поднимаем его над меню */
-(function(){
-  var SLOT='rjNews';
-  function open(){
-    var slot=document.getElementById(SLOT);if(!slot)return false;
-    var els=slot.querySelectorAll('[class*="popup"]');
-    for(var i=0;i<els.length;i++){
-      var cs=getComputedStyle(els[i]);
-      if(cs.position==='fixed'&&cs.display!=='none'&&cs.visibility!=='hidden'&&parseFloat(cs.opacity)>0){
-        var r=els[i].getBoundingClientRect();if(r.height>window.innerHeight*0.5&&r.width>window.innerWidth*0.5)return true;
+  function isOpen(){
+    for(var k=0;k<tracked.length;k++){
+      var els=tracked[k].rec.querySelectorAll('[class*="popup"]');
+      for(var i=0;i<els.length;i++){
+        var cs=getComputedStyle(els[i]);
+        if(cs.position==='fixed'&&cs.display!=='none'&&cs.visibility!=='hidden'&&parseFloat(cs.opacity)>0){
+          var r=els[i].getBoundingClientRect();if(r.height>window.innerHeight*.5&&r.width>window.innerWidth*.5)return true;
+        }
       }
     }
     return false;
   }
-  var t;function check(){clearTimeout(t);t=setTimeout(function(){document.documentElement.classList.toggle('rj-pop',open());},60);}
-  function watch(){
-    var slot=document.getElementById(SLOT);if(!slot||!('MutationObserver' in window))return;
-    new MutationObserver(check).observe(slot,{subtree:true,childList:true,attributes:true,attributeFilter:['class','style']});
-    new MutationObserver(check).observe(document.body,{attributes:true,attributeFilter:['class','style']});
-    check();
-  }
-  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',watch);else watch();
-  window.addEventListener('popstate',check);window.addEventListener('hashchange',check);window.addEventListener('load',check);
-  document.addEventListener('click',function(){setTimeout(check,350);setTimeout(check,1200);},true);
+  var tm;
+  function sync(){clearTimeout(tm);tm=setTimeout(function(){
+    var o=isOpen();
+    if(o&&!popOpen){
+      popOpen=true;document.documentElement.classList.add('rj-pop');
+      tracked.forEach(function(t){if(t.ph.parentNode)t.ph.parentNode.insertBefore(t.rec,t.ph.nextSibling);});
+    }else if(!o&&popOpen){
+      popOpen=false;document.documentElement.classList.remove('rj-pop');
+      move();
+      var y=savedY;requestAnimationFrame(function(){window.scrollTo(0,y);});setTimeout(function(){window.scrollTo(0,y);},120);
+    }
+  },60);}
+  function start(){move();sync();if('MutationObserver' in window)new MutationObserver(sync).observe(document.body,{attributes:true,attributeFilter:['class','style']});}
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start);else start();
+  window.addEventListener('load',function(){move();sync();});
+  var n=0,iv=setInterval(function(){move();if(++n>20)clearInterval(iv);},500);
+  document.addEventListener('click',function(){if(!popOpen)savedY=window.scrollY||window.pageYOffset;setTimeout(sync,350);setTimeout(sync,1200);},true);
+  window.addEventListener('popstate',sync);window.addEventListener('hashchange',sync);
 })();
 </script>
