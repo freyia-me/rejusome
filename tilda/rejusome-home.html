@@ -472,6 +472,12 @@
   #rj *,#rj *:before,#rj *:after{transition:none!important;animation:none!important}
   #rj.rj-js .rv{opacity:1;transform:none}
 }
+
+/* открытая статья ленты Тильды: снимаем изоляцию блока, чтобы окно статьи было поверх меню сайта */
+html.rj-pop #rj,html.rj-pop #rj .sec,html.rj-pop #rj .wrap,html.rj-pop #rj [class*="slot"]{isolation:auto!important;z-index:auto!important;transform:none!important;filter:none!important;contain:none!important}
+html.rj-pop #rj{overflow:visible!important}
+html.rj-pop #rj .sticky{display:none!important}
+html.rj-pop #rj [class*="post-popup"]{z-index:2147483000!important}
 </style>
 
 <div id="rj">
@@ -935,5 +941,31 @@
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',move);else move();
   window.addEventListener('load',move);
   var n=0,iv=setInterval(function(){move();if(++n>20)clearInterval(iv);},500);
+})();
+
+/* открытая статья ленты Тильды: следим за окном статьи и поднимаем его над меню */
+(function(){
+  var SLOT='rjNews';
+  function open(){
+    var slot=document.getElementById(SLOT);if(!slot)return false;
+    var els=slot.querySelectorAll('[class*="popup"]');
+    for(var i=0;i<els.length;i++){
+      var cs=getComputedStyle(els[i]);
+      if(cs.position==='fixed'&&cs.display!=='none'&&cs.visibility!=='hidden'&&parseFloat(cs.opacity)>0){
+        var r=els[i].getBoundingClientRect();if(r.height>window.innerHeight*0.5&&r.width>window.innerWidth*0.5)return true;
+      }
+    }
+    return false;
+  }
+  var t;function check(){clearTimeout(t);t=setTimeout(function(){document.documentElement.classList.toggle('rj-pop',open());},60);}
+  function watch(){
+    var slot=document.getElementById(SLOT);if(!slot||!('MutationObserver' in window))return;
+    new MutationObserver(check).observe(slot,{subtree:true,childList:true,attributes:true,attributeFilter:['class','style']});
+    new MutationObserver(check).observe(document.body,{attributes:true,attributeFilter:['class','style']});
+    check();
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',watch);else watch();
+  window.addEventListener('popstate',check);window.addEventListener('hashchange',check);window.addEventListener('load',check);
+  document.addEventListener('click',function(){setTimeout(check,350);setTimeout(check,1200);},true);
 })();
 </script>
